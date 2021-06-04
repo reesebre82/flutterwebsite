@@ -17,8 +17,10 @@ notifications:
 
 after_success:
   - flutter build web
-  - tar -czf package.tgz build/web
+  - tar -czf package.tgz build
   - ls
-  - export SSHPASS=$DEPLOY_PASS
-  - sshpass -e scp -o stricthostkeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
-  - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_PATH/deploy.sh
+  - cd build
+  - ls
+  # - export SSHPASS=$DEPLOY_PASS
+  # - sshpass -e scp -o stricthostkeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+  # - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_PATH/deploy.sh
