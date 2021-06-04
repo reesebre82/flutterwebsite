@@ -1,8 +1,5 @@
 sudo: false
 
-language: dart
-dart: stable
-
 addons:
   apt:
     packages:
