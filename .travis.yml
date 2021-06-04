@@ -7,7 +7,6 @@ addons:
 
 before_script:
   - git clone https://github.com/flutter/flutter.git -b beta
-  - flutter pub get
   - ./flutter/bin/flutter doctor
 
 script:
