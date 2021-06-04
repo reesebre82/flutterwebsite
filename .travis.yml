@@ -1,0 +1,24 @@
+sudo: false
+
+language: dart
+dart: stable
+
+dart_task:
+  - test: --platform chrome
+
+addons:
+  apt:
+    packages:
+      - sshpass
+
+notifications:
+  email: false
+
+after_success:
+  - mkdir build
+  - mv * build
+  - tar -czf package.tgz build
+  - ls
+  - export SSHPASS=$DEPLOY_PASS
+  - sshpass -e scp -o stricthostkeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+  - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_PATH/deploy.sh
