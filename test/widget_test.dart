@@ -14,4 +14,8 @@ void main() {
   test('testing tests', () async {
     expect(1, 1);
   });
+
+  test('testing fail', () async {
+    expect(2, 1);
+  });
 }
