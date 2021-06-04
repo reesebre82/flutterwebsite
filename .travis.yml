@@ -11,16 +11,13 @@ before_script:
 
 script:
   - ./flutter/bin/flutter test
-  - flutter build web
 
 notifications:
   email: false
 
 after_success:
-  - tar -czf package.tgz build
-  - ls
-  - cd web
-  - ls
-  # - export SSHPASS=$DEPLOY_PASS
-  # - sshpass -e scp -o stricthostkeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
-  # - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_PATH/deploy.sh
+  - ./flutter/bin/flutter build web
+  - tar -czf package.tgz build/web
+  - export SSHPASS=$DEPLOY_PASS
+  - sshpass -e scp -o stricthostkeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+  - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_PATH/deploy.sh
