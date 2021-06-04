@@ -19,7 +19,7 @@ after_success:
   - flutter build web
   - tar -czf package.tgz build
   - ls
-  - cd build
+  - cd web
   - ls
   # - export SSHPASS=$DEPLOY_PASS
   # - sshpass -e scp -o stricthostkeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
