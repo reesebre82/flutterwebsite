@@ -3,13 +3,17 @@ sudo: false
 language: dart
 dart: stable
 
-dart_task:
-  - test: --platform chrome
-
 addons:
   apt:
     packages:
       - sshpass
+
+before_script:
+  - git clone https://github.com/flutter/flutter.git -b beta
+  - ./flutter/bin/flutter doctor
+
+script:
+  - ./flutter/bin/flutter test
 
 notifications:
   email: false
