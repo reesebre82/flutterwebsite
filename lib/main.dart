@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:website/HomeContainer.dart';
+import 'package:website/Content.dart';
+import 'package:website/containers/Home/HomeContainer.dart';
 import 'package:website/Responsive.dart';
 
-import 'NavBar.dart';
+import 'containers/NavBar/NavBar.dart';
 import 'controllers/MenuController.dart';
 
 void main() {
@@ -40,7 +41,10 @@ class MyHomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (Responsive.isDesktop(context)) Expanded(flex: 1, child: NavBar()),
-          Expanded(flex: 5, child: HomeContainer())
+          Expanded(
+            flex: 5,
+            child: Content(),
+          )
         ],
       ),
     );
