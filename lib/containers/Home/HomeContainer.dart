@@ -25,6 +25,14 @@ class HomeContainer extends StatelessWidget {
                 image: AssetImage('images/chalkboard_web.jpg'),
                 fit: BoxFit.fill,
               ),
+              Image(
+                image: AssetImage('images/chalkboard_web.jpg'),
+                fit: BoxFit.fill,
+              ),
+              Image(
+                image: AssetImage('images/chalkboard_web.jpg'),
+                fit: BoxFit.fill,
+              ),
             ],
           ),
         ),
@@ -39,6 +47,14 @@ class HomeContainer extends StatelessWidget {
       sliver: SliverList(
         delegate: SliverChildListDelegate(
           [
+            Image(
+              image: AssetImage('images/chalkboard_web.jpg'),
+              fit: BoxFit.fill,
+            ),
+            Image(
+              image: AssetImage('images/chalkboard_web.jpg'),
+              fit: BoxFit.fill,
+            ),
             Image(
               image: AssetImage('images/chalkboard_web.jpg'),
               fit: BoxFit.fill,
