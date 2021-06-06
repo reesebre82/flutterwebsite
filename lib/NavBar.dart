@@ -9,9 +9,7 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      width: 150,
+    return Drawer(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
