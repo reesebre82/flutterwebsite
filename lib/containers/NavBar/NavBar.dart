@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:website/NavBarItem.dart';
+import 'package:website/containers/NavBar/NavBarItem.dart';
 
 class NavBar extends StatefulWidget {
   @override
