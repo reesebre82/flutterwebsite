@@ -21,7 +21,7 @@ class Header extends StatelessWidget {
       _fontSize = 24;
     }
     if (Responsive.isMobile(context)) {
-      _height = 40;
+      _height = 45;
       _iconSize = 22;
       _fontSize = 20;
     }
@@ -36,17 +36,17 @@ class Header extends StatelessWidget {
               style: TextStyle(fontSize: _fontSize),
             ),
           ),
-          if (!Responsive.isDesktop(context) && showMenu)
-            Align(
-              alignment: Alignment.centerLeft,
-              child: IconButton(
-                icon: Icon(
-                  Icons.menu,
-                  size: _iconSize,
-                ),
-                onPressed: context.read<MenuController>().controlMenu,
-              ),
-            ),
+          // if (!Responsive.isDesktop(context) && showMenu)
+          //   Align(
+          //     alignment: Alignment.centerLeft,
+          //     child: IconButton(
+          //       icon: Icon(
+          //         Icons.menu,
+          //         size: _iconSize,
+          //       ),
+          //       onPressed: context.read<MenuController>().controlMenu,
+          //     ),
+          //   ),
         ],
       ),
     );

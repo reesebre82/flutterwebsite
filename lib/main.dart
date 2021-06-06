@@ -34,6 +34,36 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    if (!Responsive.isDesktop(context)) {
+      return Scaffold(
+        key: context.read<MenuController>().scaffoldKey,
+        drawer: NavBar(),
+        floatingActionButton: Padding(
+          padding: EdgeInsets.only(
+            right: MediaQuery.of(context).size.width - 60,
+            bottom: MediaQuery.of(context).size.height - 60,
+          ),
+          child: IconButton(
+            icon: Icon(
+              Icons.menu,
+              size: 24,
+            ),
+            onPressed: context.read<MenuController>().controlMenu,
+          ),
+        ),
+        body: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (Responsive.isDesktop(context))
+              Expanded(flex: 1, child: NavBar()),
+            Expanded(
+              flex: 5,
+              child: Content(),
+            )
+          ],
+        ),
+      );
+    }
     return Scaffold(
       key: context.read<MenuController>().scaffoldKey,
       drawer: NavBar(),
