@@ -1,5 +1,7 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'package:website/containers/Project/Swift/SwiftCarousel.dart';
 
 import '../Header.dart';
 
@@ -14,21 +16,17 @@ class ProjectContainer extends StatelessWidget {
       sliver: SliverList(
         delegate: SliverChildListDelegate(
           [
-            Image(
-              image: AssetImage('images/chalkboard_web.jpg'),
-              fit: BoxFit.fill,
-            ),
-            Image(
-              image: AssetImage('images/chalkboard_web.jpg'),
-              fit: BoxFit.fill,
-            ),
-            Image(
-              image: AssetImage('images/chalkboard_web.jpg'),
-              fit: BoxFit.fill,
-            ),
-            Image(
-              image: AssetImage('images/chalkboard_web.jpg'),
-              fit: BoxFit.fill,
+            Row(
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: SwiftCarousel(),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: SwiftCarousel(),
+                ),
+              ],
             ),
           ],
         ),
