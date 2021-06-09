@@ -9,9 +9,12 @@ import 'containers/Contact/ContactContainer.dart';
 import 'containers/Resume/ResumeContainer.dart';
 
 class Content extends StatelessWidget {
+  final _sliverController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
+      controller: _sliverController,
       slivers: [
         HomeContainer(),
         AboutContainer(),

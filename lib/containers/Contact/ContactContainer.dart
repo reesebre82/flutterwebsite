@@ -17,18 +17,6 @@ class ContactContainer extends StatelessWidget {
               image: AssetImage('images/chalkboard_web.jpg'),
               fit: BoxFit.fill,
             ),
-            Image(
-              image: AssetImage('images/chalkboard_web.jpg'),
-              fit: BoxFit.fill,
-            ),
-            Image(
-              image: AssetImage('images/chalkboard_web.jpg'),
-              fit: BoxFit.fill,
-            ),
-            Image(
-              image: AssetImage('images/chalkboard_web.jpg'),
-              fit: BoxFit.fill,
-            ),
           ],
         ),
       ),
