@@ -6,6 +6,7 @@ import 'package:website/Responsive.dart';
 
 import 'containers/NavBar/NavBar.dart';
 import 'controllers/MenuController.dart';
+import 'controllers/ScrollerController.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,6 +24,9 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(
             create: (context) => MenuController(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => ScrollerController(),
           ),
         ],
         child: MyHomePage(),
