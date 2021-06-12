@@ -147,7 +147,7 @@ class EducationTimelineNode {
             textAlign: TextAlign.center,
           ),
           startChild: Padding(
-            padding: const EdgeInsets.only(top: 198.0),
+            padding: const EdgeInsets.only(top: 175.0),
             child: Text(date),
           ),
         ),

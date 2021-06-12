@@ -43,19 +43,19 @@ class _NavBarState extends State<NavBar> {
                     "Software Developer",
                     style: TextStyle(
                       fontSize: 14,
-                      color: Color(0xff00A5CF),
+                      color: Color(0xff004E64),
                     ),
                   ),
                 ),
               ],
             ),
           ),
-          NavBarItem(
-            title: "About",
-            icon: Icons.person,
-            themeColor: Color(0xff004E64),
-            scrollPosition: scrollValue.about(),
-          ),
+          // NavBarItem(
+          //   title: "About",
+          //   icon: Icons.person,
+          //   themeColor: Color(0xff004E64),
+          //   scrollPosition: scrollValue.about(),
+          // ),
           NavBarItem(
             title: "Projects",
             icon: Icons.account_tree,
@@ -71,19 +71,19 @@ class _NavBarState extends State<NavBar> {
           NavBarItem(
             title: "Education",
             icon: Icons.school,
-            themeColor: Color(0xff25A18E),
+            themeColor: Color(0xff06BCC1),
             scrollPosition: scrollValue.education(),
           ),
           NavBarItem(
             title: "Contact",
             icon: Icons.contact_mail,
-            themeColor: Color(0xff7AE582),
+            themeColor: Color(0xff25A18E),
             scrollPosition: scrollValue.contact(),
           ),
           NavBarItem(
             title: "Resume",
             icon: Icons.description,
-            themeColor: Color(0xffC8AD55),
+            themeColor: Color(0xff7AE582),
             scrollPosition: scrollValue.resume(),
           ),
         ],
@@ -91,3 +91,11 @@ class _NavBarState extends State<NavBar> {
     );
   }
 }
+
+//Colors
+// Color(0xff004E64)
+// Color(0xff00A5CF)
+// Color(0xff06BCC1)
+// Color(0xff25A18E)
+// Color(0xff7AE582)
+// Color(0xffC8AD55)
