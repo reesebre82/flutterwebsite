@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:website/containers/NavBar/NavBarItem.dart';
-import 'package:website/controllers/ScrollerController.dart';
+import 'package:website/controllers/PageViewController.dart';
+
+import '../../Responsive.dart';
 
 class NavBar extends StatefulWidget {
   @override
@@ -11,8 +13,8 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
-    final scrollValue = Provider.of<ScrollerController>(context);
-    scrollValue.setWidth(MediaQuery.of(context).size.width);
+    final pageViewController = Provider.of<PageViewController>(context);
+
     return Drawer(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -50,41 +52,41 @@ class _NavBarState extends State<NavBar> {
               ],
             ),
           ),
-          // NavBarItem(
-          //   title: "About",
-          //   icon: Icons.person,
-          //   themeColor: Color(0xff004E64),
-          //   scrollPosition: scrollValue.about(),
-          // ),
+          NavBarItem(
+            title: "About",
+            icon: Icons.person,
+            themeColor: Color(0xff004E64),
+            page: pageViewController.about(),
+          ),
           NavBarItem(
             title: "Projects",
             icon: Icons.account_tree,
             themeColor: Color(0xff00A5CF),
-            scrollPosition: scrollValue.project(),
+            page: pageViewController.project(),
           ),
           NavBarItem(
             title: "Skills",
             icon: Icons.library_books,
             themeColor: Color(0xff06BCC1),
-            scrollPosition: scrollValue.skills(),
+            page: pageViewController.skills(),
           ),
           NavBarItem(
             title: "Education",
             icon: Icons.school,
             themeColor: Color(0xff06BCC1),
-            scrollPosition: scrollValue.education(),
+            page: pageViewController.education(),
           ),
           NavBarItem(
             title: "Contact",
             icon: Icons.contact_mail,
             themeColor: Color(0xff25A18E),
-            scrollPosition: scrollValue.contact(),
+            page: pageViewController.contact(),
           ),
           NavBarItem(
             title: "Resume",
             icon: Icons.description,
             themeColor: Color(0xff7AE582),
-            scrollPosition: scrollValue.resume(),
+            page: pageViewController.resume(),
           ),
         ],
       ),
