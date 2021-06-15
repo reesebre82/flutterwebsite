@@ -3,7 +3,13 @@ import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 
 import '../Header.dart';
 
-class ResumeContainer extends StatelessWidget {
+class ResumeContainer extends StatefulWidget {
+  ResumeContainer({Key? key}) : super(key: key);
+  @override
+  ResumeContainerState createState() => ResumeContainerState();
+}
+
+class ResumeContainerState extends State<ResumeContainer> {
   @override
   Widget build(BuildContext context) {
     return SliverStickyHeader(
