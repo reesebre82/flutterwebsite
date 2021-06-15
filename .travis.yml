@@ -14,13 +14,13 @@ before_script:
   - ./flutter/bin/flutter doctor
 
 script:
-  - ./flutter/bin/flutter test --no-sound-null-safety
+  - ./flutter/bin/flutter test
 
 notifications:
   email: false
 
 after_success:
-  - ./flutter/bin/flutter build web --no-sound-null-safety
+  - ./flutter/bin/flutter build web
   - tar -czf package.tgz build/web
   - export SSHPASS=$DEPLOY_PASS
   - sshpass -e scp -o stricthostkeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
