@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:website/ColorPallette.dart';
 
 import 'PhoneIcon.dart';
 
@@ -40,17 +41,38 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
         Positioned(
           top: getYOffset(0),
           left: getXOffset(0),
-          child: PhoneIcon(icon: 0, height: widget.height),
+          child: PhoneIcon(
+            icon: 0,
+            height: widget.height,
+            iconData: Icons.person,
+            newScreen: 1,
+            title: "About",
+            color: ColorPallette.getTheme(0),
+          ),
         ),
         Positioned(
           top: getYOffset(0),
           left: getXOffset(1),
-          child: PhoneIcon(icon: 1, height: widget.height),
+          child: PhoneIcon(
+            icon: 0,
+            height: widget.height,
+            iconData: Icons.account_tree,
+            newScreen: 2,
+            title: "Projects",
+            color: ColorPallette.getTheme(2),
+          ),
         ),
         Positioned(
           top: getYOffset(0),
           left: getXOffset(2),
-          child: PhoneIcon(icon: 0, height: widget.height),
+          child: PhoneIcon(
+            icon: 0,
+            height: widget.height,
+            iconData: Icons.school,
+            newScreen: 4,
+            title: "Education",
+            color: ColorPallette.getTheme(1),
+          ),
         ),
         Positioned(
           top: getYOffset(0),
@@ -58,30 +80,51 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
           child: PhoneIcon(
             icon: 0,
             height: widget.height,
-            iconData: Icons.description,
-            newScreen: 6,
+            iconData: Icons.contact_mail,
+            newScreen: 5,
+            title: "Contact",
+            color: ColorPallette.getTheme(3),
           ),
         ),
         //SECOND ROW
         Positioned(
           top: getYOffset(1),
           left: getXOffset(0),
-          child: PhoneIcon(icon: 0, height: widget.height),
+          child: PhoneIcon(
+            icon: 0,
+            height: widget.height,
+            iconData: Icons.description,
+            newScreen: 6,
+            title: "Resume",
+            color: ColorPallette.getTheme(2),
+          ),
         ),
         Positioned(
           top: getYOffset(1),
           left: getXOffset(1),
-          child: PhoneIcon(icon: 0, height: widget.height),
+          child: PhoneIcon(
+            icon: 0,
+            height: widget.height,
+            color: ColorPallette.getTheme(3),
+          ),
         ),
         Positioned(
           top: getYOffset(1),
           left: getXOffset(2),
-          child: PhoneIcon(icon: 1, height: widget.height),
+          child: PhoneIcon(
+            icon: 1,
+            height: widget.height,
+            color: ColorPallette.getTheme(0),
+          ),
         ),
         Positioned(
           top: getYOffset(1),
           left: getXOffset(3),
-          child: PhoneIcon(icon: 0, height: widget.height),
+          child: PhoneIcon(
+            icon: 0,
+            height: widget.height,
+            color: ColorPallette.getTheme(1),
+          ),
         ),
         //Third row
         Positioned(
@@ -92,54 +135,56 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
             height: widget.height,
             iconData: Icons.library_books,
             newScreen: 3,
+            title: "Skills",
+            color: ColorPallette.getTheme(2),
           ),
         ),
-        Positioned(
-          top: getYOffset(2),
-          left: getXOffset(2),
-          child: PhoneIcon(icon: 1, height: widget.height),
-        ),
-        Positioned(
-          top: getYOffset(2),
-          left: getXOffset(3),
-          child: PhoneIcon(icon: 0, height: widget.height),
-        ),
-        Positioned(
-          top: getYOffset(3),
-          left: getXOffset(2),
-          child: PhoneIcon(icon: 0, height: widget.height),
-        ),
-        Positioned(
-          top: getYOffset(3),
-          left: getXOffset(3),
-          child: PhoneIcon(icon: 1, height: widget.height),
-        ),
-        // //Forth Row
-        Positioned(
-          top: getYOffset(4.1),
-          left: getXOffset(2.1),
-          child: PhoneIcon(icon: 3, height: widget.height),
-        ),
-        Positioned(
-          top: getYOffset(4),
-          left: getXOffset(0),
-          child: PhoneIcon(icon: 1, height: widget.height),
-        ),
-        Positioned(
-          top: getYOffset(4),
-          left: getXOffset(1),
-          child: PhoneIcon(icon: 0, height: widget.height),
-        ),
-        Positioned(
-          top: getYOffset(5),
-          left: getXOffset(0),
-          child: PhoneIcon(icon: 1, height: widget.height),
-        ),
-        Positioned(
-          top: getYOffset(5),
-          left: getXOffset(1),
-          child: PhoneIcon(icon: 0, height: widget.height),
-        ),
+        // Positioned(
+        //   top: getYOffset(2),
+        //   left: getXOffset(2),
+        //   child: PhoneIcon(icon: 1, height: widget.height),
+        // ),
+        // Positioned(
+        //   top: getYOffset(2),
+        //   left: getXOffset(3),
+        //   child: PhoneIcon(icon: 0, height: widget.height),
+        // ),
+        // Positioned(
+        //   top: getYOffset(3),
+        //   left: getXOffset(2),
+        //   child: PhoneIcon(icon: 0, height: widget.height),
+        // ),
+        // Positioned(
+        //   top: getYOffset(3),
+        //   left: getXOffset(3),
+        //   child: PhoneIcon(icon: 1, height: widget.height),
+        // ),
+        // // //Forth Row
+        // Positioned(
+        //   top: getYOffset(4.1),
+        //   left: getXOffset(2.1),
+        //   child: PhoneIcon(icon: 3, height: widget.height),
+        // ),
+        // Positioned(
+        //   top: getYOffset(4),
+        //   left: getXOffset(0),
+        //   child: PhoneIcon(icon: 1, height: widget.height),
+        // ),
+        // Positioned(
+        //   top: getYOffset(4),
+        //   left: getXOffset(1),
+        //   child: PhoneIcon(icon: 0, height: widget.height),
+        // ),
+        // Positioned(
+        //   top: getYOffset(5),
+        //   left: getXOffset(0),
+        //   child: PhoneIcon(icon: 1, height: widget.height),
+        // ),
+        // Positioned(
+        //   top: getYOffset(5),
+        //   left: getXOffset(1),
+        //   child: PhoneIcon(icon: 0, height: widget.height),
+        // ),
       ],
     );
   }
