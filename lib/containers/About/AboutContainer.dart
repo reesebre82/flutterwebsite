@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 
+import '../Footer.dart';
 import '../Header.dart';
 
-class AboutContainer extends StatelessWidget {
+class AboutContainer extends StatefulWidget {
+  AboutContainer({Key? key}) : super(key: key);
+  @override
+  AboutContainerState createState() => AboutContainerState();
+}
+
+class AboutContainerState extends State<AboutContainer> {
   @override
   Widget build(BuildContext context) {
     return SliverStickyHeader(
       header: Container(
-        color: Colors.grey,
         child: Header(title: "About Me", showMenu: false),
       ),
       sliver: SliverList(
         delegate: SliverChildListDelegate(
           [
-            Image(
-              image: AssetImage('images/chalkboard_web.jpg'),
-              fit: BoxFit.fill,
-            ),
+            Footer(),
           ],
         ),
       ),
