@@ -34,15 +34,29 @@ class PhoneMenuController extends ChangeNotifier {
     return phoneWidth * 0.1;
   }
 
-  void toggle() {}
+  bool toggled = false;
+  bool closed = false;
+  void toggle() {
+    toggled = !toggled;
+    print(toggled);
+  }
+
+  bool isClosed() {
+    return closed;
+  }
 
   void getOffset() {
-    scrollOffsetX = scrollOffset;
-    double offset = screenWidth * 0.2 + (phoneWidth * 0.9);
-    if (scrollOffsetX > offset) {
-      scrollOffsetX = offset;
-    }
+    if (!toggled) {
+      scrollOffsetX = scrollOffset;
+      double offset = screenWidth * 0.2 + (phoneWidth * 0.9);
+      if (scrollOffsetX > offset) {
+        scrollOffsetX = offset;
+        closed = true;
+      } else {
+        closed = false;
+      }
 
-    notifyListeners();
+      notifyListeners();
+    }
   }
 }
