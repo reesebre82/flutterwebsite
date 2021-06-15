@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:website/ColorPallette.dart';
 import 'package:website/controllers/PageViewController.dart';
 
 class PhoneIcon extends StatefulWidget {
@@ -10,12 +12,16 @@ class PhoneIcon extends StatefulWidget {
   Image? image;
   IconData? iconData;
   int? newScreen;
+  String? title;
+  Color color;
   PhoneIcon(
       {required this.icon,
       required this.height,
+      required this.color,
       this.iconData,
       this.image,
-      this.newScreen});
+      this.newScreen,
+      this.title});
 
   @override
   _PhoneIconState createState() => _PhoneIconState();
@@ -27,7 +33,6 @@ class _PhoneIconState extends State<PhoneIcon>
   late Animation<Offset> animation;
   late bool shouldAnimate;
   late int durationLength;
-  bool isDone = false;
 
   @override
   void initState() {
@@ -53,24 +58,22 @@ class _PhoneIconState extends State<PhoneIcon>
   }
 
   createNewAnimation() {
-    if (!isDone) {
-      shouldAnimate = false;
-      int shouldAnimateInt = Random().nextInt(100);
-      if (shouldAnimateInt > 75) {
-        shouldAnimate = true;
-      }
-      if (shouldAnimate) {
-        double xOffset = (Random().nextDouble() * (0.35 - 0.0) + 0.0) - 0.175;
-        double yOffset = (Random().nextDouble() * (0.35 - 0.0) + 0.0) - 0.175;
-        animation = Tween(begin: Offset.zero, end: Offset(xOffset, yOffset))
-            .animate(
-                CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
-        _controller.forward();
-      } else {
-        Future.delayed(const Duration(milliseconds: 2000), () {
-          createNewAnimation();
-        });
-      }
+    shouldAnimate = false;
+    int shouldAnimateInt = Random().nextInt(100);
+    if (shouldAnimateInt > 75) {
+      shouldAnimate = true;
+    }
+    if (shouldAnimate) {
+      double xOffset = (Random().nextDouble() * (0.35 - 0.0) + 0.0) - 0.175;
+      double yOffset = (Random().nextDouble() * (0.35 - 0.0) + 0.0) - 0.175;
+      animation = Tween(begin: Offset.zero, end: Offset(xOffset, yOffset))
+          .animate(
+              CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+      _controller.forward();
+    } else {
+      Future.delayed(const Duration(milliseconds: 2000), () {
+        createNewAnimation();
+      });
     }
   }
 
@@ -82,14 +85,28 @@ class _PhoneIconState extends State<PhoneIcon>
             if (widget.iconData != null || widget.image != null)
               Container(
                 width: widget.height * 0.0875,
-                height: widget.height * 0.0875,
-                decoration: BoxDecoration(
-                  color: Colors.pink,
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                child: Icon(
-                  widget.iconData,
-                  size: 30,
+                child: Column(
+                  children: [
+                    Container(
+                      width: widget.height * 0.0875,
+                      height: widget.height * 0.0875,
+                      decoration: BoxDecoration(
+                        color: widget.color,
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: Icon(
+                        widget.iconData,
+                        size: 30,
+                      ),
+                    ),
+                    Text(
+                      widget.title!,
+                      style: GoogleFonts.raleway(
+                        textStyle: TextStyle(fontSize: 10),
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
               ),
             if (widget.iconData != null || widget.image != null)
@@ -99,55 +116,39 @@ class _PhoneIconState extends State<PhoneIcon>
                       Provider.of<PageViewController>(context, listen: false);
                   pageController.setPage(widget.newScreen);
                 },
-                child: Image(
-                    image: AssetImage(
-                        'images/icons/PhoneAnimationIcons/appicon.png'),
-                    fit: BoxFit.fitHeight,
-                    height: widget.height * 0.0875),
+                child: Container(
+                  width: widget.height * 0.08785,
+                  height: widget.height * 0.08785,
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 4.0),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                ),
               ),
             if (widget.iconData == null && widget.image == null)
-              Image(
-                  image: AssetImage(
-                      'images/icons/PhoneAnimationIcons/appicon.png'),
-                  fit: BoxFit.fitHeight,
-                  height: widget.height * 0.0875),
+              Container(
+                width: widget.height * 0.08785,
+                height: widget.height * 0.08785,
+                decoration: BoxDecoration(
+                  border: Border.all(width: 4.0),
+                  borderRadius: BorderRadius.circular(12.0),
+                  color: widget.color,
+                ),
+              ),
           ],
         );
       case 1:
         return Stack(
           children: [
-            if (widget.iconData != null || widget.image != null)
-              Container(
-                width: widget.height * 0.0875,
-                height: widget.height * 0.0875,
-                decoration: BoxDecoration(
-                  color: Colors.pink,
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                child: Icon(
-                  widget.iconData,
-                  size: 30,
-                ),
+            Container(
+              width: widget.height * 0.08785,
+              height: widget.height * 0.08785,
+              decoration: BoxDecoration(
+                border: Border.all(width: 4.0),
+                borderRadius: BorderRadius.circular(12.0),
+                color: widget.color,
               ),
-            if (widget.iconData != null || widget.image != null)
-              InkWell(
-                onTap: () {
-                  var pageController =
-                      Provider.of<PageViewController>(context, listen: false);
-                  pageController.setPage(widget.newScreen);
-                },
-                child: Image(
-                    image: AssetImage(
-                        'images/icons/PhoneAnimationIcons/appiconwithline.png'),
-                    fit: BoxFit.fitHeight,
-                    height: widget.height * 0.0875),
-              ),
-            if (widget.iconData == null && widget.image == null)
-              Image(
-                  image: AssetImage(
-                      'images/icons/PhoneAnimationIcons/appiconwithline.png'),
-                  fit: BoxFit.fitHeight,
-                  height: widget.height * 0.0875),
+            ),
           ],
         );
       case 2:
@@ -156,14 +157,28 @@ class _PhoneIconState extends State<PhoneIcon>
             if (widget.iconData != null || widget.image != null)
               Container(
                 width: widget.height * 0.19,
-                height: widget.height * 0.19,
-                decoration: BoxDecoration(
-                  color: Colors.pink,
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-                child: Icon(
-                  widget.iconData,
-                  size: 35,
+                child: Column(
+                  children: [
+                    Container(
+                      width: widget.height * 0.19,
+                      height: widget.height * 0.19,
+                      decoration: BoxDecoration(
+                        color: widget.color,
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
+                      child: Icon(
+                        widget.iconData,
+                        size: 40,
+                      ),
+                    ),
+                    Text(
+                      widget.title!,
+                      style: GoogleFonts.raleway(
+                        textStyle: TextStyle(fontSize: 15),
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
               ),
             if (widget.iconData != null || widget.image != null)
@@ -173,59 +188,39 @@ class _PhoneIconState extends State<PhoneIcon>
                       Provider.of<PageViewController>(context, listen: false);
                   pageController.setPage(widget.newScreen);
                 },
-                child: Image(
-                    image: AssetImage(
-                        'images/icons/PhoneAnimationIcons/appicon.png'),
-                    fit: BoxFit.fill,
-                    height: widget.height * 0.19,
-                    width: widget.height * 0.19),
+                child: Container(
+                  width: widget.height * 0.19,
+                  height: widget.height * 0.19,
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 6.0),
+                    borderRadius: BorderRadius.circular(18.0),
+                  ),
+                ),
               ),
             if (widget.iconData == null && widget.image == null)
-              Image(
-                  image: AssetImage(
-                      'images/icons/PhoneAnimationIcons/appicon.png'),
-                  fit: BoxFit.fill,
-                  height: widget.height * 0.19,
-                  width: widget.height * 0.19),
+              Container(
+                width: widget.height * 0.19,
+                height: widget.height * 0.19,
+                decoration: BoxDecoration(
+                  border: Border.all(width: 6.0),
+                  borderRadius: BorderRadius.circular(18.0),
+                  color: widget.color,
+                ),
+              ),
           ],
         );
       case 3:
         return Stack(
           children: [
-            if (widget.iconData != null || widget.image != null)
-              Container(
-                width: widget.height * 0.19,
-                height: widget.height * 0.19,
-                decoration: BoxDecoration(
-                  color: Colors.pink,
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-                child: Icon(
-                  widget.iconData,
-                  size: 35,
-                ),
+            Container(
+              width: widget.height * 0.19,
+              height: widget.height * 0.19,
+              decoration: BoxDecoration(
+                border: Border.all(width: 6.0),
+                borderRadius: BorderRadius.circular(18.0),
+                color: widget.color,
               ),
-            if (widget.iconData != null || widget.image != null)
-              InkWell(
-                onTap: () {
-                  var pageController =
-                      Provider.of<PageViewController>(context, listen: false);
-                  pageController.setPage(widget.newScreen);
-                },
-                child: Image(
-                    image: AssetImage(
-                        'images/icons/PhoneAnimationIcons/appiconwithline.png'),
-                    fit: BoxFit.fill,
-                    height: widget.height * 0.19,
-                    width: widget.height * 0.19),
-              ),
-            if (widget.iconData == null && widget.image == null)
-              Image(
-                  image: AssetImage(
-                      'images/icons/PhoneAnimationIcons/appiconwithline.png'),
-                  fit: BoxFit.fill,
-                  height: widget.height * 0.19,
-                  width: widget.height * 0.19),
+            ),
           ],
         );
       default:
@@ -234,14 +229,28 @@ class _PhoneIconState extends State<PhoneIcon>
             if (widget.iconData != null || widget.image != null)
               Container(
                 width: widget.height * 0.0875,
-                height: widget.height * 0.0875,
-                decoration: BoxDecoration(
-                  color: Colors.pink,
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                child: Icon(
-                  widget.iconData,
-                  size: 30,
+                child: Column(
+                  children: [
+                    Container(
+                      width: widget.height * 0.0875,
+                      height: widget.height * 0.0875,
+                      decoration: BoxDecoration(
+                        color: Colors.pink,
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: Icon(
+                        widget.iconData,
+                        size: 30,
+                      ),
+                    ),
+                    Text(
+                      widget.title!,
+                      style: GoogleFonts.raleway(
+                        textStyle: TextStyle(fontSize: 10),
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
               ),
             if (widget.iconData != null || widget.image != null)
@@ -280,7 +289,6 @@ class _PhoneIconState extends State<PhoneIcon>
 
   @override
   void dispose() {
-    isDone = true;
     _controller.dispose();
     super.dispose();
   }
