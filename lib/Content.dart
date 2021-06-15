@@ -21,6 +21,7 @@ class Content extends StatefulWidget {
 class ContentState extends State<Content> {
   late ScrollController _scrollController;
   var state = 0;
+  var test = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +76,17 @@ class ContentState extends State<Content> {
               ),
             ),
           ),
+        if (Responsive.isDesktop(context))
+          if (context.read<PhoneMenuController>().isClosed())
+            Positioned(
+              top: MediaQuery.of(context).size.height * 0.15,
+              left: 15,
+              child: FloatingActionButton(
+                onPressed: () {
+                  context.read<PhoneMenuController>().toggle();
+                },
+              ),
+            )
       ],
     );
   }
