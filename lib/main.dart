@@ -3,10 +3,12 @@ import 'package:provider/provider.dart';
 import 'package:website/Content.dart';
 import 'package:website/containers/Home/HomeContainer.dart';
 import 'package:website/Responsive.dart';
+import 'package:website/controllers/MenuController.dart';
 
-import 'containers/NavBar/NavBar.dart';
-import 'controllers/MenuController.dart';
-import 'controllers/ScrollerController.dart';
+import 'package:website/containers/NavBar/NavBar.dart';
+import 'package:website/controllers/PageViewController.dart';
+
+import 'controllers/PhoneMenuController.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,7 +28,10 @@ class MyApp extends StatelessWidget {
             create: (context) => MenuController(),
           ),
           ChangeNotifierProvider(
-            create: (context) => ScrollerController(),
+            create: (context) => PageViewController(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => PhoneMenuController(),
           ),
         ],
         child: MyHomePage(),
@@ -69,15 +74,14 @@ class MyHomePage extends StatelessWidget {
       );
     }
     return Scaffold(
-      key: context.read<MenuController>().scaffoldKey,
-      drawer: NavBar(),
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (Responsive.isDesktop(context)) Expanded(flex: 1, child: NavBar()),
           Expanded(
             flex: 5,
-            child: Content(),
+            child: Content(
+              key: context.read<PhoneMenuController>().phoneMenuKey,
+            ),
           )
         ],
       ),
