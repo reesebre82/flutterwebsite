@@ -47,25 +47,53 @@ class PageViewController extends ChangeNotifier {
     page = newPage;
     switch (page) {
       case 0:
-        Scrollable.ensureVisible(_homePageKey.currentContext!);
+        Scrollable.ensureVisible(
+          _homePageKey.currentContext!,
+          duration: const Duration(seconds: 2),
+          curve: Curves.easeInOut,
+        );
         break;
       case 1:
-        Scrollable.ensureVisible(_aboutPageKey.currentContext!);
+        Scrollable.ensureVisible(
+          _aboutPageKey.currentContext!,
+          duration: const Duration(seconds: 2),
+          curve: Curves.easeInOut,
+        );
         break;
       case 2:
-        Scrollable.ensureVisible(_projectPageKey.currentContext!);
+        Scrollable.ensureVisible(
+          _projectPageKey.currentContext!,
+          duration: const Duration(seconds: 2),
+          curve: Curves.easeInOut,
+        );
         break;
       case 3:
-        Scrollable.ensureVisible(_skillsPageKey.currentContext!);
+        Scrollable.ensureVisible(
+          _skillsPageKey.currentContext!,
+          duration: const Duration(seconds: 2),
+          curve: Curves.easeInOut,
+        );
         break;
       case 4:
-        Scrollable.ensureVisible(_educationPageKey.currentContext!);
+        Scrollable.ensureVisible(
+          _educationPageKey.currentContext!,
+          duration: const Duration(seconds: 2),
+          curve: Curves.easeInOut,
+        );
         break;
       case 5:
-        Scrollable.ensureVisible(_contactPageKey.currentContext!);
+        Scrollable.ensureVisible(
+          _contactPageKey.currentContext!,
+          duration: const Duration(seconds: 2),
+          curve: Curves.easeInOut,
+        );
         break;
       case 6:
-        Scrollable.ensureVisible(_resumePageKey.currentContext!);
+        Scrollable.ensureVisible(
+          _resumePageKey.currentContext!,
+          duration: const Duration(seconds: 2),
+          curve: Curves.easeInOut,
+        );
         break;
       default:
         break;
