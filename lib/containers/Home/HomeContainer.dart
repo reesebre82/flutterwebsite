@@ -1,7 +1,9 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:website/ColorPallette.dart';
 import 'package:website/containers/PhoneAnimation/PhoneAnimation.dart';
 import 'package:website/controllers/PageViewController.dart';
 
@@ -19,6 +21,11 @@ class HomeContainerState extends State<HomeContainer> {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
 
+    final pageViewController = Provider.of<PageViewController>(context);
+    double offset = pageViewController.scrollPosition;
+
+    double scrollTextWidth = 300;
+
     if (Responsive.isDesktop(context)) {
       return SliverStickyHeader(
         header: Container(
@@ -29,6 +36,54 @@ class HomeContainerState extends State<HomeContainer> {
             [
               Container(
                 height: screenHeight * 1.5,
+                color: ColorPallette.seaGreen,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      right: MediaQuery.of(context).size.width * 0.2,
+                      top: MediaQuery.of(context).size.height * 0.3,
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.4,
+                        width: MediaQuery.of(context).size.height * 0.65,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Brendan Reese",
+                              style: GoogleFonts.raleway(
+                                textStyle: TextStyle(fontSize: 70),
+                              ),
+                            ),
+                            Text(
+                              "Software Developer",
+                              style: GoogleFonts.raleway(
+                                textStyle: TextStyle(fontSize: 50),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: MediaQuery.of(context).size.height * 0.95,
+                      left: MediaQuery.of(context).size.width * 0.5 -
+                          scrollTextWidth / 2,
+                      child: Transform.translate(
+                        offset: Offset(offset * 1.9, offset),
+                        child: Container(
+                          width: scrollTextWidth,
+                          child: Center(
+                            child: Text(
+                              "(Scroll down or use phone for more)",
+                              style: GoogleFonts.raleway(),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    // ),
+                  ],
+                ),
               ),
             ],
           ),
