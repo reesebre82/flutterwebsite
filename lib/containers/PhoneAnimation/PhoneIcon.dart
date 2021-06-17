@@ -102,7 +102,7 @@ class _PhoneIconState extends State<PhoneIcon>
                     Text(
                       widget.title!,
                       style: GoogleFonts.raleway(
-                        textStyle: TextStyle(fontSize: 10),
+                        textStyle: TextStyle(fontSize: 9),
                       ),
                       textAlign: TextAlign.center,
                     ),

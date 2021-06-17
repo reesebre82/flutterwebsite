@@ -32,11 +32,33 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image(
+        Container(
           height: widget.height,
           width: widget.width,
-          image: AssetImage('images/icons/PhoneAnimationIcons/phoneicon.png'),
-          fit: BoxFit.fill,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(40),
+            color: Colors.white,
+          ),
+          child: Stack(
+            children: [
+              Positioned(
+                top: widget.height * 0.1,
+                left: widget.width * 0.04,
+                child: Container(
+                  width: widget.width * 0.925,
+                  height: widget.height * 0.78,
+                  color: ColorPallette.ceruleanBlue,
+                ),
+              ),
+              Image(
+                height: widget.height,
+                width: widget.width,
+                image: AssetImage(
+                    'images/icons/PhoneAnimationIcons/phoneicon.png'),
+                fit: BoxFit.fill,
+              ),
+            ],
+          ),
         ),
         Positioned(
           top: getYOffset(0),
