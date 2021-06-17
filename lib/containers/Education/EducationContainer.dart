@@ -7,7 +7,13 @@ import 'package:website/containers/Education/EducationTimelineBuilder.dart';
 
 import '../Header.dart';
 
-class EducationContainer extends StatelessWidget {
+class EducationContainer extends StatefulWidget {
+  EducationContainer({Key? key}) : super(key: key);
+  @override
+  EducationContainerState createState() => EducationContainerState();
+}
+
+class EducationContainerState extends State<EducationContainer> {
   @override
   Widget build(BuildContext context) {
     return SliverStickyHeader(

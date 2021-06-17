@@ -6,7 +6,13 @@ import 'package:website/containers/Skills/LinearSkillBar.dart';
 import 'package:website/containers/Skills/SkillsCard.dart';
 import '../Header.dart';
 
-class SkillsContainer extends StatelessWidget {
+class SkillsContainer extends StatefulWidget {
+  SkillsContainer({Key? key}) : super(key: key);
+  @override
+  SkillsContainerState createState() => SkillsContainerState();
+}
+
+class SkillsContainerState extends State<SkillsContainer> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;

@@ -4,7 +4,13 @@ import 'package:website/containers/Project/ProjectCarousel.dart';
 
 import '../Header.dart';
 
-class ProjectContainer extends StatelessWidget {
+class ProjectContainer extends StatefulWidget {
+  ProjectContainer({Key? key}) : super(key: key);
+  @override
+  ProjectContainerState createState() => ProjectContainerState();
+}
+
+class ProjectContainerState extends State<ProjectContainer> {
   @override
   Widget build(BuildContext context) {
     return SliverStickyHeader(

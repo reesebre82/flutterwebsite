@@ -4,7 +4,14 @@ import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import '../Header.dart';
 import 'ContactSection.dart';
 
-class ContactContainer extends StatelessWidget {
+class ContactContainer extends StatefulWidget {
+  ContactContainer({Key? key}) : super(key: key);
+
+  @override
+  ContactContainerState createState() => ContactContainerState();
+}
+
+class ContactContainerState extends State<ContactContainer> {
   @override
   Widget build(BuildContext context) {
     return SliverStickyHeader(

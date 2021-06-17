@@ -1,15 +1,31 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:website/ColorPallette.dart';
+import 'package:website/containers/PhoneAnimation/PhoneAnimation.dart';
+import 'package:website/controllers/PageViewController.dart';
 
 import '../Header.dart';
 import '../../Responsive.dart';
-import '../../controllers/MenuController.dart';
-import 'package:provider/provider.dart';
 
-class HomeContainer extends StatelessWidget {
+class HomeContainer extends StatefulWidget {
+  HomeContainer({Key? key}) : super(key: key);
+  @override
+  HomeContainerState createState() => HomeContainerState();
+}
+
+class HomeContainerState extends State<HomeContainer> {
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+
+    final pageViewController = Provider.of<PageViewController>(context);
+    double offset = pageViewController.scrollPosition;
+
+    double scrollTextWidth = 300;
+
     if (Responsive.isDesktop(context)) {
       return SliverStickyHeader(
         header: Container(
@@ -19,78 +35,56 @@ class HomeContainer extends StatelessWidget {
           delegate: SliverChildListDelegate(
             [
               Container(
-                height: MediaQuery.of(context).size.height,
+                height: screenHeight * 1.5,
+                color: ColorPallette.seaGreen,
                 child: Stack(
                   children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.5,
-                          width: MediaQuery.of(context).size.width * 0.25,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Text('  1    '),
-                                  AnimatedTextKit(
-                                    animatedTexts: [
-                                      TyperAnimatedText(
-                                        "class BrendanReese extends SoftwareDeveloper {",
-                                        speed: const Duration(milliseconds: 50),
-                                      )
-                                    ],
-                                    totalRepeatCount: 1,
-                                  )
-                                ],
+                    Positioned(
+                      right: MediaQuery.of(context).size.width * 0.2,
+                      top: MediaQuery.of(context).size.height * 0.3,
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.4,
+                        width: MediaQuery.of(context).size.height * 0.65,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Brendan Reese",
+                              style: GoogleFonts.raleway(
+                                textStyle: TextStyle(fontSize: 70),
                               ),
-                              Text('  2    '),
-                              Text('  3    '),
-                              Text('  4    '),
-                              Text('  5    '),
-                              Text('  6    '),
-                              Text('  7    '),
-                              Text('  8    '),
-                              Text('  9    '),
-                              Text('10     '),
-                              Text('11     '),
-                              Text('12     '),
-                              Text('13     '),
-                              Text('14     '),
-                              Text('15     '),
-                              Text('16     '),
-                              Text('17     '),
-                              Text('18     '),
-                            ],
+                            ),
+                            Text(
+                              "Software Developer",
+                              style: GoogleFonts.raleway(
+                                textStyle: TextStyle(fontSize: 50),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: MediaQuery.of(context).size.height * 0.95,
+                      left: MediaQuery.of(context).size.width * 0.5 -
+                          scrollTextWidth / 2,
+                      child: Transform.translate(
+                        offset: Offset(offset * 1.9, offset),
+                        child: Container(
+                          width: scrollTextWidth,
+                          child: Center(
+                            child: Text(
+                              "(Scroll down or use phone for more)",
+                              style: GoogleFonts.raleway(),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.5,
-                          width: MediaQuery.of(context).size.width * 0.25,
-                          color: Colors.amber,
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Image(
-                        image: AssetImage('images/headshot.png'),
-                        fit: BoxFit.fill,
-                        height: MediaQuery.of(context).size.height,
-                      ),
-                    ),
+                    // ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -104,20 +98,7 @@ class HomeContainer extends StatelessWidget {
       ),
       sliver: SliverList(
         delegate: SliverChildListDelegate(
-          [
-            Stack(
-              children: [
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Image(
-                    image: AssetImage('images/headshot.png'),
-                    fit: BoxFit.fill,
-                    height: MediaQuery.of(context).size.height - 45,
-                  ),
-                ),
-              ],
-            )
-          ],
+          [],
         ),
       ),
     );

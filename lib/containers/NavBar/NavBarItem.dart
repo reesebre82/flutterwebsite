@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:website/controllers/ScrollerController.dart';
+import 'package:website/controllers/PageViewController.dart';
 
 class NavBarItem extends StatefulWidget {
   final String title;
   final IconData icon;
   final Color themeColor;
-  final double scrollPosition;
+  final int page;
 
   NavBarItem(
       {required this.title,
       required this.icon,
       required this.themeColor,
-      required this.scrollPosition});
+      required this.page});
 
   //ADD STATE AND APPROVED EVERYWHERE
 
@@ -38,7 +38,7 @@ class _NavBarItemState extends State<NavBarItem> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final scrollValue = Provider.of<ScrollerController>(context);
+    final pageController = Provider.of<PageViewController>(context);
     if (isHovered) {
       color = Colors.white;
       controller.forward();
@@ -60,7 +60,7 @@ class _NavBarItemState extends State<NavBarItem> with TickerProviderStateMixin {
             color: color,
             child: InkWell(
               onTap: () {
-                scrollValue.scrollTo(widget.scrollPosition);
+                pageController.setPage(widget.page);
               },
               onHover: (value) {
                 setState(() {
