@@ -13,6 +13,9 @@ class ColorPallette {
   static Color seaGreen = Color(0xff29BA7E);
   static Color lightPurple = Color(0xff968EF6);
 
+  static Color charcoalBlue = Color(0xff37515f);
+  static Color ceruleanBlue = Color(0xff6d9dc5);
+
   static Color getRandom() {
     switch (Random().nextInt(4)) {
       case 0:
