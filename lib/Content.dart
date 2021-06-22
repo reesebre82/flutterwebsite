@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:website/Responsive.dart';
 import 'package:website/containers/Home/HomeContainer.dart';
 import 'package:website/containers/About/AboutContainer.dart';
+import 'package:website/controllers/AboutAnimationController.dart';
+import 'package:website/controllers/EducationAnimationController.dart';
 import 'package:website/controllers/PhoneMenuController.dart';
 import 'containers/PhoneAnimation/PhoneAnimation.dart';
 import 'controllers/PageViewController.dart';
@@ -18,7 +20,7 @@ class Content extends StatefulWidget {
   ContentState createState() => ContentState();
 }
 
-class ContentState extends State<Content> {
+class ContentState extends State<Content> with SingleTickerProviderStateMixin {
   late ScrollController _scrollController;
   var state = 0;
   var test = 0;
@@ -28,9 +30,12 @@ class ContentState extends State<Content> {
     double phoneHeight = 500;
     double phoneWidth = 275;
     double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     context.read<PhoneMenuController>().setPhoneHeight(phoneHeight);
     context.read<PhoneMenuController>().setPhoneWidth(phoneWidth);
     context.read<PhoneMenuController>().setScreenWidth(screenWidth);
+    context.read<AboutAnimationController>().setScreenHeight(screenHeight);
+    context.read<EducationAnimationController>().setScreenHeight(screenHeight);
 
     final phoneMenuController = Provider.of<PhoneMenuController>(context);
     double offsetX = phoneMenuController.scrollOffsetX;
@@ -42,6 +47,12 @@ class ContentState extends State<Content> {
             .updateScrollOffset(_scrollController.offset);
         context
             .read<PageViewController>()
+            .updateScrollPosition(_scrollController.offset);
+        context
+            .read<AboutAnimationController>()
+            .updateScrollPosition(_scrollController.offset);
+        context
+            .read<EducationAnimationController>()
             .updateScrollPosition(_scrollController.offset);
       });
     // executeAfterBuild();
@@ -86,7 +97,19 @@ class ContentState extends State<Content> {
                   context.read<PhoneMenuController>().toggle();
                 },
               ),
-            )
+            ),
+        if (Responsive.isDesktop(context))
+          if (!context.read<PhoneMenuController>().isClosed())
+            Positioned(
+              top: MediaQuery.of(context).size.height * 0.15,
+              left: 15,
+              child: Opacity(
+                opacity: context.read<PhoneMenuController>().getButtonOpactiy(),
+                child: FloatingActionButton(
+                  onPressed: () {},
+                ),
+              ),
+            ),
       ],
     );
   }
