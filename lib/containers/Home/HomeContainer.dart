@@ -35,7 +35,7 @@ class HomeContainerState extends State<HomeContainer> {
           delegate: SliverChildListDelegate(
             [
               Container(
-                height: screenHeight * 1.5,
+                height: screenHeight * 1.25,
                 color: ColorPallette.seaGreen,
                 child: Stack(
                   children: [
@@ -60,6 +60,16 @@ class HomeContainerState extends State<HomeContainer> {
                                 textStyle: TextStyle(fontSize: 50),
                               ),
                             ),
+                            Padding(
+                              padding: EdgeInsets.only(top: 30.0),
+                              child: Text(
+                                "A Full Stack developer ready to change the world one line at a time.",
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.raleway(
+                                  textStyle: TextStyle(fontSize: 25),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -75,7 +85,9 @@ class HomeContainerState extends State<HomeContainer> {
                           child: Center(
                             child: Text(
                               "(Scroll down or use phone for more)",
-                              style: GoogleFonts.raleway(),
+                              style: GoogleFonts.raleway(
+                                textStyle: TextStyle(fontSize: 18),
+                              ),
                             ),
                           ),
                         ),

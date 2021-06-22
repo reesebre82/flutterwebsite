@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:website/ColorPallette.dart';
 import 'package:website/containers/Skills/DoubleLinearSkillBar.dart';
 import 'package:website/containers/Skills/LinearSkillBar.dart';
 import 'package:website/containers/Skills/SkillsCard.dart';
@@ -18,56 +20,96 @@ class SkillsContainerState extends State<SkillsContainer> {
     double width = MediaQuery.of(context).size.width;
     return SliverStickyHeader(
       header: Container(
-        color: Colors.grey,
-        child: Header(title: "Skills", showMenu: false),
+        height: 0,
+        // color: Colors.grey,
+        // child: Header(title: "Skills", showMenu: false),
       ),
       sliver: SliverList(
         delegate: SliverChildListDelegate(
           [
-            Padding(
-              padding: const EdgeInsets.only(top: 50),
-              child: Row(
+            Container(
+              height: MediaQuery.of(context).size.height * 0.25,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [ColorPallette.aquamarine, ColorPallette.seaGreen],
+                ),
+              ),
+              child: Stack(
                 children: [
-                  Spacer(flex: 1),
-                  Expanded(
-                    flex: 5,
-                    child: SkillsCard(title: "Mobile Development", icons: [
-                      "images/icons/swift.png",
-                      "images/icons/flutter.png",
-                      "images/icons/firebase.png",
-                    ], skill: [
-                      "Swift",
-                      "Flutter",
-                      "Firebase",
-                    ]),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Center(
+                      child: Text(
+                        "Skills",
+                        style: GoogleFonts.raleway(
+                          textStyle: TextStyle(fontSize: 30),
+                        ),
+                      ),
+                    ),
                   ),
-                  Spacer(flex: 1),
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 50, bottom: 50),
-              child: Row(
-                children: [
-                  Spacer(flex: 1),
-                  Expanded(
-                    flex: 5,
-                    child: SkillsCard(title: "Language Proficiencies", icons: [
-                      "images/icons/c++.png",
-                      "images/icons/java.png",
-                      "images/icons/html.png",
-                      "images/icons/css.png",
-                      "images/icons/js.png",
-                    ], skill: [
-                      "C++",
-                      "Java",
-                      "HTML",
-                      "CSS",
-                      "JavaScript"
-                    ]),
-                  ),
-                  Spacer(flex: 1),
-                ],
+            Container(
+              color: ColorPallette.seaGreen,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 100),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 50),
+                      child: Row(
+                        children: [
+                          Spacer(flex: 1),
+                          Expanded(
+                            flex: 5,
+                            child:
+                                SkillsCard(title: "Mobile Development", icons: [
+                              "images/icons/swift.png",
+                              "images/icons/flutter.png",
+                              "images/icons/firebase.png",
+                            ], skill: [
+                              "Swift",
+                              "Flutter",
+                              "Firebase",
+                            ]),
+                          ),
+                          Spacer(flex: 1),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 50, bottom: 50),
+                      child: Row(
+                        children: [
+                          Spacer(flex: 1),
+                          Expanded(
+                            flex: 5,
+                            child: SkillsCard(
+                                title: "Language Proficiencies",
+                                icons: [
+                                  "images/icons/c++.png",
+                                  "images/icons/java.png",
+                                  "images/icons/html.png",
+                                  "images/icons/css.png",
+                                  "images/icons/js.png",
+                                ],
+                                skill: [
+                                  "C++",
+                                  "Java",
+                                  "HTML",
+                                  "CSS",
+                                  "JavaScript"
+                                ]),
+                          ),
+                          Spacer(flex: 1),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
 
