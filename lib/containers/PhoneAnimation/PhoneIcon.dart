@@ -223,6 +223,116 @@ class _PhoneIconState extends State<PhoneIcon>
             ),
           ],
         );
+      case 4:
+        return Stack(
+          children: [
+            Container(
+              width: widget.height * 0.19,
+              height: widget.height * 0.19,
+              decoration: BoxDecoration(
+                border: Border.all(width: 6.0),
+                borderRadius: BorderRadius.circular(18.0),
+                color: ColorPallette.aquamarine,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 6.0, top: 6.0),
+                        child: Image(
+                          image: AssetImage("images/icons/swift.png"),
+                          width: widget.height * 0.19 / 5,
+                          height: widget.height * 0.19 / 5,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 6.0, top: 6.0),
+                        child: Image(
+                          image: AssetImage("images/icons/c++.png"),
+                          width: widget.height * 0.19 / 5,
+                          height: widget.height * 0.19 / 5,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 6.0, top: 6.0),
+                        child: Image(
+                          image: AssetImage("images/icons/java.png"),
+                          width: widget.height * 0.19 / 5,
+                          height: widget.height * 0.19 / 5,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 6.0, top: 6.0),
+                        child: Image(
+                          image: AssetImage("images/icons/html.png"),
+                          width: widget.height * 0.19 / 5,
+                          height: widget.height * 0.19 / 5,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 6.0, top: 6.0),
+                        child: Image(
+                          image: AssetImage("images/icons/css.png"),
+                          width: widget.height * 0.19 / 5,
+                          height: widget.height * 0.19 / 5,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 6.0, top: 6.0),
+                        child: Image(
+                          image: AssetImage("images/icons/js.png"),
+                          width: widget.height * 0.19 / 5,
+                          height: widget.height * 0.19 / 5,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 6.0, top: 6.0),
+                        child: Image(
+                          image: AssetImage("images/icons/flutter.png"),
+                          width: widget.height * 0.19 / 5,
+                          height: widget.height * 0.19 / 5,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 6.0, top: 6.0),
+                        child: Image(
+                          image: AssetImage("images/icons/firebase.png"),
+                          width: widget.height * 0.19 / 5,
+                          height: widget.height * 0.19 / 5,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 6.0, top: 6.0),
+                        child: Image(
+                          image: AssetImage("images/icons/xcode.png"),
+                          width: widget.height * 0.19 / 5,
+                          height: widget.height * 0.19 / 5,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
       default:
         return Stack(
           children: [
