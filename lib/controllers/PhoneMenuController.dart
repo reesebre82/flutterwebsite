@@ -30,6 +30,11 @@ class PhoneMenuController extends ChangeNotifier {
     getOffset();
   }
 
+  double getButtonOpactiy() {
+    double offset = screenWidth * 0.2 + (phoneWidth * 0.9);
+    return scrollOffsetX / offset;
+  }
+
   double getPhoneMenuOffset() {
     return phoneWidth * 0.1;
   }
@@ -38,7 +43,33 @@ class PhoneMenuController extends ChangeNotifier {
   bool closed = false;
   void toggle() {
     toggled = !toggled;
-    print(toggled);
+    if (toggled) {
+      // scrollOffsetX = screenWidth * 0.2;
+      open();
+      notifyListeners();
+      print("open");
+    } else {
+      // scrollOffsetX = screenWidth * 0.2 + (phoneWidth * 0.9);
+      getOffset();
+      print("closed");
+    }
+  }
+
+  //TESTING FOR ANIMATING OUTWARD SLIDE
+
+  //END TESTING
+
+  void open() {
+    if (scrollOffsetX > 30) {
+      scrollOffsetX = scrollOffsetX -= 20;
+      notifyListeners();
+      Future.delayed(const Duration(microseconds: 1), () {
+        open();
+      });
+    } else {
+      scrollOffsetX = 0;
+      notifyListeners();
+    }
   }
 
   bool isClosed() {
