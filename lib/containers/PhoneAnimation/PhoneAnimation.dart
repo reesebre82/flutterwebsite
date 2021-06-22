@@ -153,11 +153,9 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
           top: getYOffset(2),
           left: getXOffset(0),
           child: PhoneIcon(
-            icon: 2,
+            icon: 4,
             height: widget.height,
-            iconData: Icons.library_books,
             newScreen: 3,
-            title: "Skills",
             color: ColorPallette.getTheme(2),
           ),
         ),
