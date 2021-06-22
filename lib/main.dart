@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:website/Content.dart';
-import 'package:website/containers/Home/HomeContainer.dart';
 import 'package:website/Responsive.dart';
+import 'package:website/controllers/EducationAnimationController.dart';
 import 'package:website/controllers/MenuController.dart';
 
 import 'package:website/containers/NavBar/NavBar.dart';
 import 'package:website/controllers/PageViewController.dart';
 
+import 'controllers/AboutAnimationController.dart';
 import 'controllers/PhoneMenuController.dart';
 
 void main() {
@@ -32,6 +33,12 @@ class MyApp extends StatelessWidget {
           ),
           ChangeNotifierProvider(
             create: (context) => PhoneMenuController(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => AboutAnimationController(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => EducationAnimationController(),
           ),
         ],
         child: MyHomePage(),
