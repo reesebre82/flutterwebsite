@@ -47,30 +47,45 @@ class PhoneMenuController extends ChangeNotifier {
       // scrollOffsetX = screenWidth * 0.2;
       open();
       notifyListeners();
-      print("open");
+      // print("open");
     } else {
       // scrollOffsetX = screenWidth * 0.2 + (phoneWidth * 0.9);
-      getOffset();
-      print("closed");
+      close();
+      Future.delayed(Duration(milliseconds: 500), () {
+        _phoneMenuKey.currentState!.isPhoneOpen = false;
+        getOffset();
+      });
     }
   }
-
-  //TESTING FOR ANIMATING OUTWARD SLIDE
-
-  //END TESTING
 
   void open() {
-    if (scrollOffsetX > 30) {
-      scrollOffsetX = scrollOffsetX -= 20;
-      notifyListeners();
-      Future.delayed(const Duration(microseconds: 1), () {
-        open();
-      });
-    } else {
-      scrollOffsetX = 0;
-      notifyListeners();
-    }
+    _phoneMenuKey.currentState!.openPhone();
   }
+
+  void close() {
+    _phoneMenuKey.currentState!.closePhone();
+  }
+
+  double getBeginOffset() {
+    return screenWidth * 0.2 + (phoneWidth * 0.9);
+  }
+
+  double getEndOffset() {
+    return 300;
+  }
+
+  // void open() {
+  //   if (scrollOffsetX > 30) {
+  //     scrollOffsetX = scrollOffsetX -= 20;
+  //     notifyListeners();
+  //     Future.delayed(const Duration(microseconds: 1), () {
+  //       open();
+  //     });
+  //   } else {
+  //     scrollOffsetX = 0;
+  //     notifyListeners();
+  //   }
+  // }
 
   bool isClosed() {
     return closed;
