@@ -6,7 +6,7 @@ import 'package:website/containers/About/AboutBoxAnimation.dart';
 import 'package:website/controllers/AboutAnimationController.dart';
 import 'package:website/controllers/PageViewController.dart';
 
-import '../../ColorPallette.dart';
+import '../../ColorPalette.dart';
 import '../Footer.dart';
 import '../Header.dart';
 
@@ -17,6 +17,10 @@ class AboutContainer extends StatefulWidget {
 }
 
 class AboutContainerState extends State<AboutContainer> {
+  double getHeight() {
+    return MediaQuery.of(context).size.height * 1.25;
+  }
+
   @override
   Widget build(BuildContext context) {
     var aboutController = Provider.of<AboutAnimationController>(context);
@@ -30,32 +34,18 @@ class AboutContainerState extends State<AboutContainer> {
           [
             Container(
               height: MediaQuery.of(context).size.height * 0.25,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [ColorPallette.seaGreen, ColorPallette.ceruleanBlue],
-                ),
-              ),
-              child: Stack(
-                children: [
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Center(
-                      child: Text(
-                        "About Me",
-                        style: GoogleFonts.raleway(
-                          textStyle: TextStyle(fontSize: 30),
-                        ),
-                      ),
-                    ),
+              child: Center(
+                child: Text(
+                  "About Me",
+                  style: GoogleFonts.raleway(
+                    textStyle: TextStyle(fontSize: 30),
+                    color: Colors.white,
                   ),
-                ],
+                ),
               ),
             ),
             Container(
               height: MediaQuery.of(context).size.height,
-              color: ColorPallette.ceruleanBlue,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
