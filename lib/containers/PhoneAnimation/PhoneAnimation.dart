@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:website/ColorPallette.dart';
+import 'package:website/ColorPalette.dart';
 
 import 'PhoneIcon.dart';
 
@@ -47,7 +47,7 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
                 child: Container(
                   width: widget.width * 0.925,
                   height: widget.height * 0.78,
-                  color: ColorPallette.ceruleanBlue,
+                  color: ColorPalette.ceruleanBlue,
                 ),
               ),
               Image(
@@ -69,7 +69,7 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
             iconData: Icons.person,
             newScreen: 1,
             title: "About",
-            color: ColorPallette.getTheme(0),
+            color: ColorPalette.getTheme(0),
           ),
         ),
         Positioned(
@@ -81,7 +81,7 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
             iconData: Icons.account_tree,
             newScreen: 2,
             title: "Projects",
-            color: ColorPallette.getTheme(2),
+            color: ColorPalette.getTheme(2),
           ),
         ),
         Positioned(
@@ -93,7 +93,7 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
             iconData: Icons.school,
             newScreen: 4,
             title: "Education",
-            color: ColorPallette.getTheme(1),
+            color: ColorPalette.getTheme(1),
           ),
         ),
         Positioned(
@@ -105,7 +105,7 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
             iconData: Icons.contact_mail,
             newScreen: 5,
             title: "Contact",
-            color: ColorPallette.getTheme(3),
+            color: ColorPalette.getTheme(3),
           ),
         ),
         //SECOND ROW
@@ -118,7 +118,7 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
             iconData: Icons.description,
             newScreen: 6,
             title: "Resume",
-            color: ColorPallette.getTheme(2),
+            color: ColorPalette.getTheme(2),
           ),
         ),
         Positioned(
@@ -127,7 +127,7 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
           child: PhoneIcon(
             icon: 0,
             height: widget.height,
-            color: ColorPallette.getTheme(3),
+            color: ColorPalette.getTheme(3),
           ),
         ),
         Positioned(
@@ -136,7 +136,7 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
           child: PhoneIcon(
             icon: 1,
             height: widget.height,
-            color: ColorPallette.getTheme(0),
+            color: ColorPalette.getTheme(0),
           ),
         ),
         Positioned(
@@ -145,7 +145,7 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
           child: PhoneIcon(
             icon: 0,
             height: widget.height,
-            color: ColorPallette.getTheme(1),
+            color: ColorPalette.getTheme(1),
           ),
         ),
         //Third row
@@ -156,7 +156,7 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
             icon: 4,
             height: widget.height,
             newScreen: 3,
-            color: ColorPallette.getTheme(2),
+            color: ColorPalette.getTheme(2),
           ),
         ),
         // Positioned(
