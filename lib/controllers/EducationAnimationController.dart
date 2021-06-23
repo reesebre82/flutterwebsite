@@ -17,7 +17,7 @@ class EducationAnimationController extends ChangeNotifier {
 
   checkAnimation() {
     if (animated[0] == false) {
-      if (scrollPosition >= 3695) {
+      if (scrollPosition >= 4581) {
         animated[0] = true;
         Future.delayed(Duration(milliseconds: 500), () {
           completeAnimation();
@@ -40,7 +40,6 @@ class EducationAnimationController extends ChangeNotifier {
   void updateScrollPosition(double newScrollPositon) {
     _scrollPosition = newScrollPositon;
 
-    print(_scrollPosition);
     checkAnimation();
   }
 }

@@ -17,7 +17,7 @@ class AboutAnimationController extends ChangeNotifier {
 
   checkAnimation() {
     if (animated[0] == false) {
-      if (scrollPosition >= screenHeight * 1.2) {
+      if (scrollPosition >= 1190) {
         animated[0] = true;
         Future.delayed(Duration(milliseconds: 500), () {
           completeAnimation();
