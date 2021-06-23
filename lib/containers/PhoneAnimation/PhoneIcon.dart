@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:website/ColorPallette.dart';
+import 'package:website/ColorPalette.dart';
 import 'package:website/controllers/PageViewController.dart';
 
 class PhoneIcon extends StatefulWidget {
@@ -232,7 +232,7 @@ class _PhoneIconState extends State<PhoneIcon>
               decoration: BoxDecoration(
                 border: Border.all(width: 6.0),
                 borderRadius: BorderRadius.circular(18.0),
-                color: ColorPallette.aquamarine,
+                color: ColorPalette.aquamarine,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
