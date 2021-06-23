@@ -3,12 +3,11 @@ import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:website/ColorPallette.dart';
+import 'package:website/ColorPalette.dart';
 
 import 'package:website/controllers/PageViewController.dart';
 
 class EducationBoxAnimation extends StatefulWidget {
-  bool fromLeft;
   double centerOffset;
   double width;
   double height;
@@ -20,7 +19,6 @@ class EducationBoxAnimation extends StatefulWidget {
   String? subTitle;
 
   EducationBoxAnimation({
-    required this.fromLeft,
     required this.centerOffset,
     required this.width,
     required this.height,
@@ -71,15 +69,8 @@ class EducationBoxAnimationState extends State<EducationBoxAnimation>
     double startLocation = 0.0;
     double endLocation = 0.0;
 
-    if (widget.fromLeft) {
-      endLocation =
-          (screenWidth / 2) - widget.centerOffset - (widget.width / 2);
-      startLocation = endLocation - 250;
-    } else {
-      endLocation =
-          (screenWidth / 2) + widget.centerOffset - (widget.width / 2);
-      startLocation = endLocation + 250;
-    }
+    endLocation = (screenWidth / 2) + widget.centerOffset - (widget.width / 2);
+    startLocation = endLocation - 300;
 
     animation = Tween(begin: startLocation, end: endLocation)
         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
@@ -96,7 +87,7 @@ class EducationBoxAnimationState extends State<EducationBoxAnimation>
           height: widget.height,
           width: widget.width,
           decoration: BoxDecoration(
-            color: ColorPallette.ceruleanBlue,
+            color: ColorPalette.ceruleanBlue,
             borderRadius: BorderRadius.circular(15.0),
             boxShadow: [
               BoxShadow(

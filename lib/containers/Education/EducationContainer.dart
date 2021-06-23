@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:timeline_tile/timeline_tile.dart';
-import 'package:website/ColorPallette.dart';
+import 'package:website/ColorPalette.dart';
 import 'package:website/containers/Education/EducationBoxAnimation.dart';
 import 'package:website/containers/Education/EducationTimelineBuilder.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +17,10 @@ class EducationContainer extends StatefulWidget {
 }
 
 class EducationContainerState extends State<EducationContainer> {
+  double getHeight() {
+    return MediaQuery.of(context).size.height * 1.25;
+  }
+
   @override
   Widget build(BuildContext context) {
     var educationController =
@@ -32,13 +36,6 @@ class EducationContainerState extends State<EducationContainer> {
           [
             Container(
               height: MediaQuery.of(context).size.height * 0.25,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [ColorPallette.seaGreen, ColorPallette.getTheme(0)],
-                ),
-              ),
               child: Stack(
                 children: [
                   Align(
@@ -56,8 +53,7 @@ class EducationContainerState extends State<EducationContainer> {
               ),
             ),
             Container(
-              color: ColorPallette.getTheme(0),
-              constraints: BoxConstraints(minHeight: 800),
+              height: MediaQuery.of(context).size.height,
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 100),
                 child: Column(
@@ -65,8 +61,7 @@ class EducationContainerState extends State<EducationContainer> {
                   children: [
                     if (educationController.animated[0])
                       EducationBoxAnimation(
-                        centerOffset: 250,
-                        fromLeft: true,
+                        centerOffset: -300,
                         width: 400,
                         height: 175,
                         title: "Self Learning",
@@ -80,8 +75,7 @@ class EducationContainerState extends State<EducationContainer> {
                       Padding(
                         padding: const EdgeInsets.only(top: 20.0),
                         child: EducationBoxAnimation(
-                          centerOffset: 250,
-                          fromLeft: false,
+                          centerOffset: -150,
                           width: 400,
                           height: 175,
                           title: "Deployment",
@@ -96,8 +90,7 @@ class EducationContainerState extends State<EducationContainer> {
                       Padding(
                         padding: const EdgeInsets.only(top: 20.0),
                         child: EducationBoxAnimation(
-                          centerOffset: 250,
-                          fromLeft: true,
+                          centerOffset: 150,
                           width: 400,
                           height: 175,
                           title: "Graduated High School",
@@ -112,8 +105,7 @@ class EducationContainerState extends State<EducationContainer> {
                       Padding(
                         padding: const EdgeInsets.only(top: 20.0),
                         child: EducationBoxAnimation(
-                          centerOffset: 250,
-                          fromLeft: false,
+                          centerOffset: 300,
                           width: 400,
                           height: 175,
                           title: "Graduated College",
