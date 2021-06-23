@@ -1,8 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
-class ColorPallette {
+class ColorPalette {
   static Color darkGreen = Color(0xff157F1F);
   static Color lightGreen = Color(0xff4CB963);
   static Color teal = Color(0xffA0EADE);
@@ -16,33 +14,34 @@ class ColorPallette {
   static Color charcoalBlue = Color(0xff37515f);
   static Color ceruleanBlue = Color(0xff6d9dc5);
 
-  static Color getRandom() {
-    switch (Random().nextInt(4)) {
-      case 0:
-        return yellow;
-      case 1:
-        return aquamarine;
-      case 2:
-        return seaGreen;
-      case 3:
-        return lightPurple;
-      default:
-        return Colors.black;
-    }
-  }
+  static Color mindaro = Color(0xFFE0FC8E);
+  static Color mediumTurquise = Color(0xFF73D9DD);
+  static Color blueMunsell = Color(0xFF3594AB);
+  static Color lightSalmon = Color(0xFFFFB18B);
+  static Color darkJungleGreen = Color(0xFF042828);
 
   static Color getTheme(id) {
     switch (id) {
       case 0:
-        return yellow;
+        return mindaro;
       case 1:
-        return aquamarine;
+        return mediumTurquise;
       case 2:
-        return seaGreen;
+        return blueMunsell;
       case 3:
-        return lightPurple;
+        return lightSalmon;
+      case 4:
+        return darkJungleGreen;
       default:
         return Colors.black;
     }
   }
 }
+
+//Mindaro #FFE0FC8E
+//MediumTurquoise #FF73D9DD
+//BlueMunsell #FF3594AB
+//light Salmon #FFFFB18B
+//Dark Jungle Green #FF042828
+
+// Background: alternate between tuquise, dark jungle, blue munsell
