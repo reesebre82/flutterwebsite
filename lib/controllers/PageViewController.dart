@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:website/ColorPalette.dart';
 import 'package:website/containers/About/AboutContainer.dart';
@@ -285,7 +283,6 @@ class PageViewController extends ChangeNotifier {
     double transition = getTransitionKey();
     Color? returnColor = Color.lerp(getStartColor(), getEndColor(), transition);
 
-    print(_scrollPosition);
     return returnColor ?? ColorPalette.ceruleanBlue;
   }
 
