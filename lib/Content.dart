@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:website/ColorPalette.dart';
 import 'package:website/Responsive.dart';
 import 'package:website/containers/Home/HomeContainer.dart';
 import 'package:website/containers/About/AboutContainer.dart';
@@ -22,8 +23,33 @@ class Content extends StatefulWidget {
 
 class ContentState extends State<Content> with SingleTickerProviderStateMixin {
   late ScrollController _scrollController;
+  late AnimationController _animationController;
+  late Animation _animation;
+  late bool isPhoneOpen = false;
   var state = 0;
   var test = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+  }
+
+  openPhone() {
+    _animationController.forward();
+    isPhoneOpen = true;
+  }
+
+  closePhone() {
+    _animationController.reverse();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _animationController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +62,19 @@ class ContentState extends State<Content> with SingleTickerProviderStateMixin {
     context.read<PhoneMenuController>().setScreenWidth(screenWidth);
     context.read<AboutAnimationController>().setScreenHeight(screenHeight);
     context.read<EducationAnimationController>().setScreenHeight(screenHeight);
+    context.read<PageViewController>().setScreenHeight(screenHeight);
 
     final phoneMenuController = Provider.of<PhoneMenuController>(context);
     double offsetX = phoneMenuController.scrollOffsetX;
+
+    _animation = Tween(
+            begin: -context.read<PhoneMenuController>().getBeginOffset(),
+            end: -context.read<PhoneMenuController>().getEndOffset())
+        .animate(CurvedAnimation(
+            parent: _animationController, curve: Curves.easeOut));
+    _animationController.addListener(() {
+      setState(() {});
+    });
 
     _scrollController = ScrollController()
       ..addListener(() {
@@ -58,6 +94,11 @@ class ContentState extends State<Content> with SingleTickerProviderStateMixin {
     // executeAfterBuild();
     return Stack(
       children: [
+        Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          color: context.read<PageViewController>().getBackgroundColor(),
+        ),
         CustomScrollView(
           controller: _scrollController,
           slivers: [
@@ -77,22 +118,36 @@ class ContentState extends State<Content> with SingleTickerProviderStateMixin {
           ],
         ),
         if (Responsive.isDesktop(context))
-          Transform.translate(
-            offset: Offset(-offsetX, 0),
-            child: Padding(
-              padding: EdgeInsets.only(left: screenWidth * 0.2),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: PhoneAnimation(height: phoneHeight, width: phoneWidth),
+          if (!isPhoneOpen)
+            Transform.translate(
+              offset: Offset(-offsetX, 0),
+              child: Padding(
+                padding: EdgeInsets.only(left: screenWidth * 0.2),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: PhoneAnimation(height: phoneHeight, width: phoneWidth),
+                ),
               ),
             ),
-          ),
+        if (Responsive.isDesktop(context))
+          if (isPhoneOpen)
+            Transform.translate(
+              offset: Offset(_animation.value, 0),
+              child: Padding(
+                padding: EdgeInsets.only(left: screenWidth * 0.2),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: PhoneAnimation(height: phoneHeight, width: phoneWidth),
+                ),
+              ),
+            ),
         if (Responsive.isDesktop(context))
           if (context.read<PhoneMenuController>().isClosed())
             Positioned(
               top: MediaQuery.of(context).size.height * 0.15,
               left: 15,
               child: FloatingActionButton(
+                backgroundColor: ColorPalette.mediumTurquise,
                 onPressed: () {
                   context.read<PhoneMenuController>().toggle();
                 },
@@ -106,6 +161,7 @@ class ContentState extends State<Content> with SingleTickerProviderStateMixin {
               child: Opacity(
                 opacity: context.read<PhoneMenuController>().getButtonOpactiy(),
                 child: FloatingActionButton(
+                  backgroundColor: ColorPalette.mediumTurquise,
                   onPressed: () {},
                 ),
               ),
