@@ -11,6 +11,10 @@ class ProjectContainer extends StatefulWidget {
 }
 
 class ProjectContainerState extends State<ProjectContainer> {
+  double getHeight() {
+    return MediaQuery.of(context).size.height;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SliverStickyHeader(
@@ -21,19 +25,22 @@ class ProjectContainerState extends State<ProjectContainer> {
       sliver: SliverList(
         delegate: SliverChildListDelegate(
           [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 3,
-                    child: Text("TEST"),
-                  ),
-                  Expanded(
-                    flex: 4,
-                    child: ProjectCarousel(),
-                  ),
-                ],
+            Container(
+              height: MediaQuery.of(context).size.height,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: Text("TEST"),
+                    ),
+                    Expanded(
+                      flex: 4,
+                      child: ProjectCarousel(),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

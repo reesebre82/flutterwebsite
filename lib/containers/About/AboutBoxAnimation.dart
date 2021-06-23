@@ -2,7 +2,7 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:website/ColorPallette.dart';
+import 'package:website/ColorPalette.dart';
 
 import 'package:website/controllers/PageViewController.dart';
 
@@ -91,7 +91,7 @@ class AboutBoxAnimationState extends State<AboutBoxAnimation>
           height: widget.height,
           width: widget.width,
           decoration: BoxDecoration(
-            color: ColorPallette.yellow,
+            color: ColorPalette.yellow,
             borderRadius: BorderRadius.circular(15.0),
             boxShadow: [
               BoxShadow(

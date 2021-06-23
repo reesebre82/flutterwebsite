@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:website/ColorPallette.dart';
+import 'package:website/ColorPalette.dart';
 import '../Header.dart';
 import 'ContactSection.dart';
 
@@ -14,6 +14,10 @@ class ContactContainer extends StatefulWidget {
 }
 
 class ContactContainerState extends State<ContactContainer> {
+  double getHeight() {
+    return MediaQuery.of(context).size.height;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SliverStickyHeader(
@@ -27,16 +31,6 @@ class ContactContainerState extends State<ContactContainer> {
           [
             Container(
               height: MediaQuery.of(context).size.height * 0.25,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    ColorPallette.getTheme(0),
-                    ColorPallette.ceruleanBlue
-                  ],
-                ),
-              ),
               child: Stack(
                 children: [
                   Align(
@@ -55,7 +49,6 @@ class ContactContainerState extends State<ContactContainer> {
             ),
             Container(
               height: MediaQuery.of(context).size.height * 0.75,
-              color: ColorPallette.ceruleanBlue,
               child: Column(
                 children: [
                   Spacer(),

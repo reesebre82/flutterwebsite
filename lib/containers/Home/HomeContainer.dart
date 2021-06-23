@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:website/ColorPallette.dart';
+import 'package:website/ColorPalette.dart';
 import 'package:website/containers/PhoneAnimation/PhoneAnimation.dart';
 import 'package:website/controllers/PageViewController.dart';
 
@@ -17,6 +17,10 @@ class HomeContainer extends StatefulWidget {
 }
 
 class HomeContainerState extends State<HomeContainer> {
+  double getHeight() {
+    return MediaQuery.of(context).size.height * 1.25;
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -36,7 +40,6 @@ class HomeContainerState extends State<HomeContainer> {
             [
               Container(
                 height: screenHeight * 1.25,
-                color: ColorPallette.seaGreen,
                 child: Stack(
                   children: [
                     Positioned(
@@ -79,7 +82,7 @@ class HomeContainerState extends State<HomeContainer> {
                       left: MediaQuery.of(context).size.width * 0.5 -
                           scrollTextWidth / 2,
                       child: Transform.translate(
-                        offset: Offset(offset * 1.9, offset),
+                        offset: Offset(offset * 2.5, offset),
                         child: Container(
                           width: scrollTextWidth,
                           child: Center(

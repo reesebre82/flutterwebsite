@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:website/ColorPallette.dart';
+import 'package:website/ColorPalette.dart';
 import 'package:website/containers/Skills/DoubleLinearSkillBar.dart';
 import 'package:website/containers/Skills/LinearSkillBar.dart';
 import 'package:website/containers/Skills/SkillsCard.dart';
@@ -15,6 +15,10 @@ class SkillsContainer extends StatefulWidget {
 }
 
 class SkillsContainerState extends State<SkillsContainer> {
+  double getHeight() {
+    return MediaQuery.of(context).size.height * 1.25;
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -29,13 +33,6 @@ class SkillsContainerState extends State<SkillsContainer> {
           [
             Container(
               height: MediaQuery.of(context).size.height * 0.25,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [ColorPallette.aquamarine, ColorPallette.seaGreen],
-                ),
-              ),
               child: Stack(
                 children: [
                   Align(
@@ -53,7 +50,7 @@ class SkillsContainerState extends State<SkillsContainer> {
               ),
             ),
             Container(
-              color: ColorPallette.seaGreen,
+              height: MediaQuery.of(context).size.height,
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 100),
                 child: Column(
