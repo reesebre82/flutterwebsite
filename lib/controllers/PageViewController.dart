@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:website/ColorPalette.dart';
+import 'package:website/Content/Content.dart';
 import 'package:website/containers/About/AboutContainer.dart';
 import 'package:website/containers/Contact/ContactContainer.dart';
 import 'package:website/containers/Education/EducationContainer.dart';
@@ -37,71 +38,44 @@ class PageViewController extends ChangeNotifier {
       GlobalKey<ResumeContainerState>();
   GlobalKey<ResumeContainerState> get resumePageKey => _resumePageKey;
 
+  final GlobalKey<ContentState> _contentKey = GlobalKey<ContentState>();
+  GlobalKey<ContentState> get contentKey => _contentKey;
+
   int page = 0;
   double _scrollPosition = 0.0;
 
   double get scrollPosition => _scrollPosition;
   double screenHeight = 0.0;
 
-  void setPage(newPage) {
+  void setPage(int newPage) {
     page = newPage;
-    switch (page) {
-      case 0:
-        Scrollable.ensureVisible(
-          _homePageKey.currentContext!,
-          duration: const Duration(seconds: 2),
-          curve: Curves.easeInOut,
-        );
-        break;
-      case 1:
-        Scrollable.ensureVisible(
-          _aboutPageKey.currentContext!,
-          duration: const Duration(seconds: 2),
-          curve: Curves.easeInOut,
-        );
-        break;
-      case 2:
-        Scrollable.ensureVisible(
-          _projectPageKey.currentContext!,
-          duration: const Duration(seconds: 2),
-          curve: Curves.easeInOut,
-        );
-        break;
-      case 3:
-        Scrollable.ensureVisible(
-          _skillsPageKey.currentContext!,
-          duration: const Duration(seconds: 2),
-          curve: Curves.easeInOut,
-        );
-        break;
-      case 4:
-        Scrollable.ensureVisible(
-          _educationPageKey.currentContext!,
-          duration: const Duration(seconds: 2),
-          curve: Curves.easeInOut,
-        );
-        break;
-      case 5:
-        Scrollable.ensureVisible(
-          _contactPageKey.currentContext!,
-          duration: const Duration(seconds: 2),
-          curve: Curves.easeInOut,
-        );
-        break;
-      case 6:
-        Scrollable.ensureVisible(
-          _resumePageKey.currentContext!,
-          duration: const Duration(seconds: 2),
-          curve: Curves.easeInOut,
-        );
-        break;
-      default:
-        break;
-    }
+    _contentKey.currentState!.scrollController.animateTo(
+      getCombinedHeight(newPage - 1),
+      duration: const Duration(seconds: 2),
+      curve: Curves.easeInOut,
+    );
   }
 
   setScreenHeight(double height) {
     screenHeight = height;
+  }
+
+  List<double> movingOffsets = [0, 0, 0, 0];
+
+  double getMovingOffset(int index, double height, double maxHeight) {
+    if (shouldMove(index, height)) {
+      movingOffsets[index] = _scrollPosition - getCombinedHeight(index - 1);
+    }
+    return movingOffsets[index];
+  }
+
+  bool shouldMove(int index, double height) {
+    double scrollHeight = getCombinedHeight(index - 1);
+    if (_scrollPosition >= scrollHeight &&
+        _scrollPosition < getCombinedHeight(index) - height) {
+      return true;
+    }
+    return false;
   }
 
   int resume() {
@@ -166,6 +140,8 @@ class PageViewController extends ChangeNotifier {
   double getCombinedHeight(int index) {
     double returnValue = 0.0;
 
+    if (index < 0) return returnValue;
+
     if (_homePageKey.currentState != null)
       returnValue += _homePageKey.currentState!.getHeight();
     if (index == 0) return returnValue;
@@ -197,94 +173,93 @@ class PageViewController extends ChangeNotifier {
     return returnValue;
   }
 
-  int section = 0;
+  // int section = 0;
 
-  double getTransitionKey() {
-    double transition = 0.0;
-    for (int i = 0; i < 7; i++) {
-      if (i >= 1) {
-        transition =
-            (_scrollPosition - getCombinedHeight(i - 1)) / getHeight(i);
-      } else {
-        transition = _scrollPosition / getHeight(i);
-      }
-      if (transition <= 1.00) {
-        return transition;
-      }
-    }
+  // double getTransitionKey() {
+  //   double transition = 0.0;
+  //   for (int i = 0; i < 7; i++) {
+  //     if (i >= 1) {
+  //       transition =
+  //           (_scrollPosition - getCombinedHeight(i - 1)) / getHeight(i);
+  //     } else {
+  //       transition = _scrollPosition / getHeight(i);
+  //     }
+  //     if (transition <= 1.00) {
+  //       return transition;
+  //     }
+  //   }
 
-    return 0.0;
-  }
+  //   return 0.0;
+  // }
 
-  Color getStartColor() {
-    switch (section) {
-      case 0:
-        return ColorPalette.mediumTurquise;
-      case 1:
-        return ColorPalette.darkJungleGreen;
-      case 2:
-        return ColorPalette.blueMunsell;
-      case 3:
-        return ColorPalette.mediumTurquise;
-      case 4:
-        return ColorPalette.darkJungleGreen;
-      case 5:
-        return ColorPalette.blueMunsell;
-      case 6:
-        return ColorPalette.mediumTurquise;
-      default:
-        return Colors.black;
-    }
-  }
+  // Color getStartColor() {
+  //   switch (section) {
+  //     case 0:
+  //       return ColorPalette.mediumTurquise;
+  //     case 1:
+  //       return ColorPalette.blueMunsell;
+  //     case 2:
+  //       return ColorPalette.white;
+  //     case 3:
+  //       return ColorPalette.mediumTurquise;
+  //     case 4:
+  //       return ColorPalette.blueMunsell;
+  //     case 5:
+  //       return ColorPalette.white;
+  //     case 6:
+  //       return ColorPalette.mediumTurquise;
+  //     default:
+  //       return Colors.black;
+  //   }
+  // }
 
-  Color getEndColor() {
-    switch (section) {
-      case 0:
-        return ColorPalette.darkJungleGreen;
-      case 1:
-        return ColorPalette.blueMunsell;
-      case 2:
-        return ColorPalette.mediumTurquise;
-      case 3:
-        return ColorPalette.darkJungleGreen;
-      case 4:
-        return ColorPalette.blueMunsell;
-      case 5:
-        return ColorPalette.mediumTurquise;
-      case 6:
-        return ColorPalette.darkJungleGreen;
-      default:
-        return Colors.black;
-    }
-  }
+  // Color getEndColor() {
+  //   switch (section) {
+  //     case 0:
+  //       return ColorPalette.blueMunsell;
+  //     case 1:
+  //       return ColorPalette.white;
+  //     case 2:
+  //       return ColorPalette.mediumTurquise;
+  //     case 3:
+  //       return ColorPalette.blueMunsell;
+  //     case 4:
+  //       return ColorPalette.white;
+  //     case 5:
+  //       return ColorPalette.mediumTurquise;
+  //     case 6:
+  //       return ColorPalette.blueMunsell;
+  //     default:
+  //       return Colors.black;
+  //   }
+  // }
 
-  void getSection() {
-    if (getCombinedHeight(0) >= _scrollPosition) {
-      section = 0;
-    } else if (getCombinedHeight(1) >= _scrollPosition) {
-      section = 1;
-    } else if (getCombinedHeight(2) >= _scrollPosition) {
-      section = 2;
-    } else if (getCombinedHeight(3) >= _scrollPosition) {
-      section = 3;
-    } else if (getCombinedHeight(4) >= _scrollPosition) {
-      section = 4;
-    } else if (getCombinedHeight(5) >= _scrollPosition) {
-      section = 5;
-    } else if (getCombinedHeight(6) >= _scrollPosition) {
-      section = 6;
-    } else {
-      section = 0;
-    }
-  }
+  // void getSection() {
+  //   if (getCombinedHeight(0) >= _scrollPosition) {
+  //     section = 0;
+  //   } else if (getCombinedHeight(1) >= _scrollPosition) {
+  //     section = 1;
+  //   } else if (getCombinedHeight(2) >= _scrollPosition) {
+  //     section = 2;
+  //   } else if (getCombinedHeight(3) >= _scrollPosition) {
+  //     section = 3;
+  //   } else if (getCombinedHeight(4) >= _scrollPosition) {
+  //     section = 4;
+  //   } else if (getCombinedHeight(5) >= _scrollPosition) {
+  //     section = 5;
+  //   } else if (getCombinedHeight(6) >= _scrollPosition) {
+  //     section = 6;
+  //   } else {
+  //     section = 0;
+  //   }
+  // }
 
-  Color getBackgroundColor() {
-    getSection();
-    double transition = getTransitionKey();
-    Color? returnColor = Color.lerp(getStartColor(), getEndColor(), transition);
-
-    return returnColor ?? ColorPalette.ceruleanBlue;
-  }
+  // Color getBackgroundColor() {
+  //   getSection();
+  //   double transition = getTransitionKey();
+  //   Color? returnColor = Color.lerp(getStartColor(), getEndColor(), transition);
+  //   return returnColor ?? ColorPalette.ceruleanBlue;
+  // }
 
   void updateScrollPosition(double offset) {
     _scrollPosition = offset;
