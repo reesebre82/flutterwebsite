@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:website/Content.dart';
+import 'package:website/Content/Content.dart';
 import 'package:website/Responsive.dart';
 import 'package:website/controllers/EducationAnimationController.dart';
 import 'package:website/controllers/MenuController.dart';
@@ -22,6 +23,9 @@ class MyApp extends StatelessWidget {
       title: 'Brendan Reese',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        textTheme: GoogleFonts.domineTextTheme(
+          Theme.of(context).textTheme,
+        ),
       ),
       home: MultiProvider(
         providers: [
@@ -81,17 +85,7 @@ class MyHomePage extends StatelessWidget {
       );
     }
     return Scaffold(
-      body: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            flex: 5,
-            child: Content(
-              key: context.read<PhoneMenuController>().phoneMenuKey,
-            ),
-          )
-        ],
-      ),
+      body: Content(key: context.read<PageViewController>().contentKey),
     );
   }
 }
