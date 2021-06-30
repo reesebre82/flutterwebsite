@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:website/Content.dart';
+import 'package:website/Content/Content.dart';
+import 'package:website/Content/PhoneContent.dart';
 
 class PhoneMenuController extends ChangeNotifier {
-  final GlobalKey<ContentState> _phoneMenuKey = GlobalKey<ContentState>();
+  final GlobalKey<PhoneContentState> _phoneMenuKey =
+      GlobalKey<PhoneContentState>();
 
-  GlobalKey<ContentState> get phoneMenuKey => _phoneMenuKey;
+  GlobalKey<PhoneContentState> get phoneMenuKey => _phoneMenuKey;
 
   double scrollOffset = 0.0;
   double phoneHeight = 0.0;
