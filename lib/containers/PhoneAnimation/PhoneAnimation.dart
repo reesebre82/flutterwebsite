@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:website/ColorPalette.dart';
+import 'package:website/controllers/PageViewController.dart';
 
 import 'PhoneIcon.dart';
 
@@ -34,11 +36,6 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
       children: [
         Container(
           height: widget.height,
-          width: widget.width,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(40),
-            color: Colors.white,
-          ),
           child: Stack(
             children: [
               Positioned(
@@ -47,7 +44,7 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
                 child: Container(
                   width: widget.width * 0.925,
                   height: widget.height * 0.78,
-                  color: ColorPalette.ceruleanBlue,
+                  color: ColorPalette.darkGrey,
                 ),
               ),
               Image(
@@ -81,7 +78,7 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
             iconData: Icons.account_tree,
             newScreen: 2,
             title: "Projects",
-            color: ColorPalette.getTheme(2),
+            color: ColorPalette.getTheme(3),
           ),
         ),
         Positioned(
@@ -93,7 +90,7 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
             iconData: Icons.school,
             newScreen: 4,
             title: "Education",
-            color: ColorPalette.getTheme(1),
+            color: ColorPalette.getTheme(2),
           ),
         ),
         Positioned(
@@ -127,14 +124,14 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
           child: PhoneIcon(
             icon: 0,
             height: widget.height,
-            color: ColorPalette.getTheme(3),
+            color: ColorPalette.getTheme(1),
           ),
         ),
         Positioned(
           top: getYOffset(1),
           left: getXOffset(2),
           child: PhoneIcon(
-            icon: 1,
+            icon: 0,
             height: widget.height,
             color: ColorPalette.getTheme(0),
           ),
@@ -156,7 +153,7 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
             icon: 4,
             height: widget.height,
             newScreen: 3,
-            color: ColorPalette.getTheme(2),
+            color: ColorPalette.getTheme(5),
           ),
         ),
         // Positioned(
@@ -205,6 +202,31 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
         //   left: getXOffset(1),
         //   child: PhoneIcon(icon: 0, height: widget.height),
         // ),
+
+        Positioned(
+          bottom: 20,
+          child: Container(
+            width: widget.width,
+            height: widget.height * 0.1,
+            child: Center(
+              child: InkWell(
+                onTap: () {
+                  var pageController =
+                      Provider.of<PageViewController>(context, listen: false);
+                  pageController.setPage(0);
+                },
+                child: Container(
+                  width: widget.width * 0.9,
+                  height: widget.height * 0.1,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25.0),
+                    color: ColorPalette.grey,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }

@@ -101,8 +101,9 @@ class _PhoneIconState extends State<PhoneIcon>
                     ),
                     Text(
                       widget.title!,
-                      style: GoogleFonts.raleway(
+                      style: GoogleFonts.asap(
                         textStyle: TextStyle(fontSize: 9),
+                        color: Colors.white,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -114,15 +115,15 @@ class _PhoneIconState extends State<PhoneIcon>
                 onTap: () {
                   var pageController =
                       Provider.of<PageViewController>(context, listen: false);
-                  pageController.setPage(widget.newScreen);
+                  pageController.setPage(widget.newScreen!);
                 },
                 child: Container(
                   width: widget.height * 0.08785,
                   height: widget.height * 0.08785,
-                  decoration: BoxDecoration(
-                    border: Border.all(width: 4.0),
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
+                  // decoration: BoxDecoration(
+                  //   border: Border.all(width: 4.0),
+                  //   borderRadius: BorderRadius.circular(12.0),
+                  // ),
                 ),
               ),
             if (widget.iconData == null && widget.image == null)
@@ -130,7 +131,7 @@ class _PhoneIconState extends State<PhoneIcon>
                 width: widget.height * 0.08785,
                 height: widget.height * 0.08785,
                 decoration: BoxDecoration(
-                  border: Border.all(width: 4.0),
+                  // border: Border.all(width: 4.0),
                   borderRadius: BorderRadius.circular(12.0),
                   color: widget.color,
                 ),
@@ -144,7 +145,7 @@ class _PhoneIconState extends State<PhoneIcon>
               width: widget.height * 0.08785,
               height: widget.height * 0.08785,
               decoration: BoxDecoration(
-                border: Border.all(width: 4.0),
+                //  border: Border.all(width: 4.0),
                 borderRadius: BorderRadius.circular(12.0),
                 color: widget.color,
               ),
@@ -173,8 +174,9 @@ class _PhoneIconState extends State<PhoneIcon>
                     ),
                     Text(
                       widget.title!,
-                      style: GoogleFonts.raleway(
+                      style: GoogleFonts.asap(
                         textStyle: TextStyle(fontSize: 15),
+                        color: Colors.white,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -186,13 +188,13 @@ class _PhoneIconState extends State<PhoneIcon>
                 onTap: () {
                   var pageController =
                       Provider.of<PageViewController>(context, listen: false);
-                  pageController.setPage(widget.newScreen);
+                  pageController.setPage(widget.newScreen!);
                 },
                 child: Container(
                   width: widget.height * 0.19,
                   height: widget.height * 0.19,
                   decoration: BoxDecoration(
-                    border: Border.all(width: 6.0),
+                    // border: Border.all(width: 6.0),
                     borderRadius: BorderRadius.circular(18.0),
                   ),
                 ),
@@ -202,7 +204,7 @@ class _PhoneIconState extends State<PhoneIcon>
                 width: widget.height * 0.19,
                 height: widget.height * 0.19,
                 decoration: BoxDecoration(
-                  border: Border.all(width: 6.0),
+                  // border: Border.all(width: 6.0),
                   borderRadius: BorderRadius.circular(18.0),
                   color: widget.color,
                 ),
@@ -216,7 +218,7 @@ class _PhoneIconState extends State<PhoneIcon>
               width: widget.height * 0.19,
               height: widget.height * 0.19,
               decoration: BoxDecoration(
-                border: Border.all(width: 6.0),
+                // border: Border.all(width: 6.0),
                 borderRadius: BorderRadius.circular(18.0),
                 color: widget.color,
               ),
@@ -230,105 +232,80 @@ class _PhoneIconState extends State<PhoneIcon>
               width: widget.height * 0.19,
               height: widget.height * 0.19,
               decoration: BoxDecoration(
-                border: Border.all(width: 6.0),
+                // border: Border.all(width: 6.0),
                 borderRadius: BorderRadius.circular(18.0),
-                color: ColorPalette.aquamarine,
+                color: widget.color,
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: 6.0, top: 6.0),
-                        child: Image(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Image(
                           image: AssetImage("images/icons/swift.png"),
                           width: widget.height * 0.19 / 5,
                           height: widget.height * 0.19 / 5,
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 6.0, top: 6.0),
-                        child: Image(
+                        Image(
                           image: AssetImage("images/icons/c++.png"),
                           width: widget.height * 0.19 / 5,
                           height: widget.height * 0.19 / 5,
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 6.0, top: 6.0),
-                        child: Image(
+                        Image(
                           image: AssetImage("images/icons/java.png"),
                           width: widget.height * 0.19 / 5,
                           height: widget.height * 0.19 / 5,
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: 6.0, top: 6.0),
-                        child: Image(
+                      ],
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Image(
                           image: AssetImage("images/icons/html.png"),
                           width: widget.height * 0.19 / 5,
                           height: widget.height * 0.19 / 5,
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 6.0, top: 6.0),
-                        child: Image(
+                        Image(
                           image: AssetImage("images/icons/css.png"),
                           width: widget.height * 0.19 / 5,
                           height: widget.height * 0.19 / 5,
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 6.0, top: 6.0),
-                        child: Image(
+                        Image(
                           image: AssetImage("images/icons/js.png"),
                           width: widget.height * 0.19 / 5,
                           height: widget.height * 0.19 / 5,
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: 6.0, top: 6.0),
-                        child: Image(
+                      ],
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Image(
                           image: AssetImage("images/icons/flutter.png"),
                           width: widget.height * 0.19 / 5,
                           height: widget.height * 0.19 / 5,
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 6.0, top: 6.0),
-                        child: Image(
+                        Image(
                           image: AssetImage("images/icons/firebase.png"),
                           width: widget.height * 0.19 / 5,
                           height: widget.height * 0.19 / 5,
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 6.0, top: 6.0),
-                        child: Image(
+                        Image(
                           image: AssetImage("images/icons/xcode.png"),
                           width: widget.height * 0.19 / 5,
                           height: widget.height * 0.19 / 5,
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
@@ -355,8 +332,9 @@ class _PhoneIconState extends State<PhoneIcon>
                     ),
                     Text(
                       widget.title!,
-                      style: GoogleFonts.raleway(
+                      style: GoogleFonts.asap(
                         textStyle: TextStyle(fontSize: 10),
+                        color: Colors.white,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -368,7 +346,7 @@ class _PhoneIconState extends State<PhoneIcon>
                 onTap: () {
                   var pageController =
                       Provider.of<PageViewController>(context, listen: false);
-                  pageController.setPage(widget.newScreen);
+                  pageController.setPage(widget.newScreen!);
                 },
                 child: Image(
                     image: AssetImage(
