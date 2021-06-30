@@ -11,6 +11,7 @@ class SkillsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
+      width: MediaQuery.of(context).size.width * 0.6,
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [

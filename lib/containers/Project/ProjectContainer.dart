@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
-import 'package:website/containers/Project/ProjectCarousel.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:website/ColorPalette.dart';
+
+import 'package:website/containers/Project/FullProject.dart';
+import 'package:website/containers/Project/ProjectData.dart';
+
+import 'package:website/containers/Project/ProjectIcon.dart';
+import 'package:website/containers/Project/HeroDialogRoute.dart';
+import 'package:website/controllers/PageViewController.dart';
 
 import '../Header.dart';
 
@@ -12,35 +21,126 @@ class ProjectContainer extends StatefulWidget {
 
 class ProjectContainerState extends State<ProjectContainer> {
   double getHeight() {
-    return MediaQuery.of(context).size.height;
+    return MediaQuery.of(context).size.height * 1.25;
+  }
+
+  double getHeader() {
+    return MediaQuery.of(context).size.height * 0.5;
   }
 
   @override
   Widget build(BuildContext context) {
+    var pageViewController = Provider.of<PageViewController>(context);
+    double offset =
+        pageViewController.getMovingOffset(2, getHeader(), getHeight());
+
     return SliverStickyHeader(
       header: Container(
-        color: Colors.grey,
-        child: Header(title: "Projects", showMenu: false),
+        height: 0,
+        // color: Colors.grey,
+        // child: Header(title: "Projects", showMenu: false),
       ),
       sliver: SliverList(
         delegate: SliverChildListDelegate(
           [
             Container(
-              height: MediaQuery.of(context).size.height,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Text("TEST"),
+              height: MediaQuery.of(context).size.height * 1.25,
+              color: ColorPalette.white,
+              child: Stack(
+                children: [
+                  Transform.translate(
+                    offset: Offset(0, offset),
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.5,
+                      child: Center(
+                        child: Text(
+                          "Projects",
+                          style: TextStyle(
+                            fontSize: 350,
+                            color: ColorPalette.lightGrey,
+                          ),
+                        ),
+                      ),
                     ),
-                    Expanded(
-                      flex: 4,
-                      child: ProjectCarousel(),
+                  ),
+                  Positioned(
+                    top: 425,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      // color: Colors.deepOrange,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              // Spacer(),
+                              // Spacer(),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(HeroDialogRoute(
+                                    builder: (context) {
+                                      return FullProject(
+                                        index: 0,
+                                        text: "f",
+                                        icon: 'reelcaster',
+                                      );
+                                    },
+                                    settings: RouteSettings(name: "test"),
+                                  ));
+                                },
+                                child: ProjectIcon(
+                                  icon: "reelcaster",
+                                  title: ProjectData.titles[0],
+                                  description: ProjectData.shortDescriptions[0],
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(HeroDialogRoute(
+                                    builder: (context) {
+                                      return FullProject(
+                                        index: 0,
+                                        text: "f",
+                                        icon: 'sudoku',
+                                      );
+                                    },
+                                    settings: RouteSettings(name: "test"),
+                                  ));
+                                },
+                                child: ProjectIcon(
+                                  icon: "sudoku",
+                                  title: ProjectData.titles[1],
+                                  description: ProjectData.shortDescriptions[1],
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(HeroDialogRoute(
+                                    builder: (context) {
+                                      return FullProject(
+                                        index: 0,
+                                        text: "f",
+                                        icon: 'tset',
+                                      );
+                                    },
+                                    settings: RouteSettings(name: "test"),
+                                  ));
+                                },
+                                child: ProjectIcon(
+                                  icon: "test",
+                                  title: ProjectData.titles[2],
+                                  description: ProjectData.shortDescriptions[2],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],

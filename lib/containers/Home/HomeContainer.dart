@@ -53,14 +53,16 @@ class HomeContainerState extends State<HomeContainer> {
                           children: [
                             Text(
                               "Brendan Reese",
-                              style: GoogleFonts.raleway(
-                                textStyle: TextStyle(fontSize: 70),
+                              style: TextStyle(
+                                fontSize: 65,
+                                color: ColorPalette.darkJungleGreen,
                               ),
                             ),
                             Text(
                               "Software Developer",
-                              style: GoogleFonts.raleway(
-                                textStyle: TextStyle(fontSize: 50),
+                              style: TextStyle(
+                                fontSize: 24,
+                                color: ColorPalette.darkJungleGreen,
                               ),
                             ),
                             Padding(
@@ -68,8 +70,9 @@ class HomeContainerState extends State<HomeContainer> {
                               child: Text(
                                 "A Full Stack developer ready to change the world one line at a time.",
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.raleway(
-                                  textStyle: TextStyle(fontSize: 25),
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: ColorPalette.darkJungleGreen,
                                 ),
                               ),
                             ),
@@ -77,25 +80,23 @@ class HomeContainerState extends State<HomeContainer> {
                         ),
                       ),
                     ),
-                    Positioned(
-                      top: MediaQuery.of(context).size.height * 0.95,
-                      left: MediaQuery.of(context).size.width * 0.5 -
-                          scrollTextWidth / 2,
-                      child: Transform.translate(
-                        offset: Offset(offset * 2.5, offset),
-                        child: Container(
-                          width: scrollTextWidth,
-                          child: Center(
-                            child: Text(
-                              "(Scroll down or use phone for more)",
-                              style: GoogleFonts.raleway(
-                                textStyle: TextStyle(fontSize: 18),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    // Positioned(
+                    //   top: MediaQuery.of(context).size.height * 0.95,
+                    //   left: MediaQuery.of(context).size.width * 0.5 -
+                    //       scrollTextWidth / 2,
+                    //   child: Transform.translate(
+                    //     offset: Offset(offset * 2.5, offset),
+                    //     child: Container(
+                    //       width: scrollTextWidth,
+                    //       child: Center(
+                    //         child: Text(
+                    //           "(Scroll down or use phone for more)",
+                    //           style: TextStyle(fontSize: 16),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                     // ),
                   ],
                 ),
