@@ -20,6 +20,14 @@ class ColorPalette {
   static Color lightSalmon = Color(0xFFFFB18B);
   static Color darkJungleGreen = Color(0xFF042828);
 
+  static Color grey = Color(0xFF507474);
+  static Color darkGrey = Color(0xFF3A4F50);
+  static Color white = Color(0XFFFFFFFF);
+
+  static Color lightGrey = Color(0XFFF2F2F2);
+  static Color lightMediumTurquise = Color(0XFF6DCDD1);
+  static Color lightBlueMunsell = Color(0XFF2E859A);
+
   static Color getTheme(id) {
     switch (id) {
       case 0:
@@ -32,6 +40,8 @@ class ColorPalette {
         return lightSalmon;
       case 4:
         return darkJungleGreen;
+      case 5:
+        return grey;
       default:
         return Colors.black;
     }
