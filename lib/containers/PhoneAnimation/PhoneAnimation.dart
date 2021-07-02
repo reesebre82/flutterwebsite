@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:website/ColorPalette.dart';
 import 'package:website/controllers/PageViewController.dart';
+import 'package:website/controllers/PhoneMenuController.dart';
 
 import 'PhoneIcon.dart';
 
@@ -211,6 +212,11 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
             child: Center(
               child: InkWell(
                 onTap: () {
+                  var phoneController =
+                      Provider.of<PhoneMenuController>(context, listen: false);
+                  if (phoneController.toggled) {
+                    phoneController.toggle();
+                  }
                   var pageController =
                       Provider.of<PageViewController>(context, listen: false);
                   pageController.setPage(0);

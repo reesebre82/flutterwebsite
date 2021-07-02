@@ -39,6 +39,7 @@ class AboutContainerState extends State<AboutContainer> {
           [
             Container(
               height: MediaQuery.of(context).size.height * 1.5,
+              width: MediaQuery.of(context).size.width,
               color: ColorPalette.blueMunsell,
               child: Stack(
                 children: [
@@ -61,31 +62,33 @@ class AboutContainerState extends State<AboutContainer> {
                     top: 360,
                     child: Container(
                       height: MediaQuery.of(context).size.height,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          if (aboutController.animated[0])
-                            AboutBoxAnimation(
-                              centerOffset: 250,
-                              fromLeft: true,
-                              width: 400,
-                              height: 250,
-                              title: "test",
-                              text: "test",
-                            ),
-                          if (aboutController.animated[1])
-                            Padding(
-                              padding: const EdgeInsets.only(top: 20.0),
-                              child: AboutBoxAnimation(
+                      child: Center(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            if (aboutController.animated[0])
+                              AboutBoxAnimation(
                                 centerOffset: 250,
-                                fromLeft: false,
+                                fromLeft: true,
                                 width: 400,
                                 height: 250,
                                 title: "test",
                                 text: "test",
                               ),
-                            ),
-                        ],
+                            if (aboutController.animated[1])
+                              Padding(
+                                padding: const EdgeInsets.only(top: 20.0),
+                                child: AboutBoxAnimation(
+                                  centerOffset: 250,
+                                  fromLeft: false,
+                                  width: 400,
+                                  height: 250,
+                                  title: "test",
+                                  text: "test",
+                                ),
+                              ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

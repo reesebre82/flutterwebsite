@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:website/ColorPalette.dart';
 import 'package:website/controllers/PageViewController.dart';
+import 'package:website/controllers/PhoneMenuController.dart';
 
 class PhoneIcon extends StatefulWidget {
   int icon;
@@ -113,6 +114,11 @@ class _PhoneIconState extends State<PhoneIcon>
             if (widget.iconData != null || widget.image != null)
               InkWell(
                 onTap: () {
+                  var phoneController =
+                      Provider.of<PhoneMenuController>(context, listen: false);
+                  if (phoneController.toggled) {
+                    phoneController.toggle();
+                  }
                   var pageController =
                       Provider.of<PageViewController>(context, listen: false);
                   pageController.setPage(widget.newScreen!);
@@ -186,6 +192,11 @@ class _PhoneIconState extends State<PhoneIcon>
             if (widget.iconData != null || widget.image != null)
               InkWell(
                 onTap: () {
+                  var phoneController =
+                      Provider.of<PhoneMenuController>(context, listen: false);
+                  if (phoneController.toggled) {
+                    phoneController.toggle();
+                  }
                   var pageController =
                       Provider.of<PageViewController>(context, listen: false);
                   pageController.setPage(widget.newScreen!);
@@ -344,6 +355,11 @@ class _PhoneIconState extends State<PhoneIcon>
             if (widget.iconData != null || widget.image != null)
               InkWell(
                 onTap: () {
+                  var phoneController =
+                      Provider.of<PhoneMenuController>(context, listen: false);
+                  if (phoneController.toggled) {
+                    phoneController.toggle();
+                  }
                   var pageController =
                       Provider.of<PageViewController>(context, listen: false);
                   pageController.setPage(widget.newScreen!);

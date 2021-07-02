@@ -52,6 +52,7 @@ class ProjectIcon extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Container(
+              constraints: BoxConstraints(maxWidth: 275),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,

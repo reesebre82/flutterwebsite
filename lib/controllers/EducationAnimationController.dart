@@ -26,7 +26,7 @@ class EducationAnimationController extends ChangeNotifier {
     }
   }
 
-  int completeIndex = 1;
+  int completeIndex = 0;
   void completeAnimation() {
     animated[completeIndex++] = true;
     notifyListeners();

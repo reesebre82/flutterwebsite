@@ -60,7 +60,7 @@ class PageViewController extends ChangeNotifier {
     screenHeight = height;
   }
 
-  List<double> movingOffsets = [0, 0, 0, 0];
+  List<double> movingOffsets = [0, 0, 0, 0, 0, 0, 0];
 
   double getMovingOffset(int index, double height, double maxHeight) {
     if (shouldMove(index, height)) {
