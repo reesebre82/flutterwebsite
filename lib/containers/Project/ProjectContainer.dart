@@ -83,8 +83,16 @@ class ProjectContainerState extends State<ProjectContainer> {
                                     builder: (context) {
                                       return FullProject(
                                         index: 0,
-                                        text: "f",
+                                        title: ProjectData.titles[0],
+                                        text: ProjectData.descriptions[0],
                                         icon: 'reelcaster',
+                                        tag: 'reelcaster',
+                                        device: Icons.phone_iphone,
+                                        images: 4,
+                                        videoURL:
+                                            'images/reelcaster/reelcastervideo.mov',
+                                        githubURL:
+                                            'https://github.com/reesebre82/ReelCaster',
                                       );
                                     },
                                     settings: RouteSettings(name: "test"),
@@ -94,6 +102,7 @@ class ProjectContainerState extends State<ProjectContainer> {
                                   icon: "reelcaster",
                                   title: ProjectData.titles[0],
                                   description: ProjectData.shortDescriptions[0],
+                                  device: Icons.phone_iphone,
                                 ),
                               ),
                               GestureDetector(
@@ -102,8 +111,14 @@ class ProjectContainerState extends State<ProjectContainer> {
                                     builder: (context) {
                                       return FullProject(
                                         index: 0,
-                                        text: "f",
+                                        text: ProjectData.descriptions[1],
                                         icon: 'sudoku',
+                                        tag: 'sudoku',
+                                        title: ProjectData.titles[1],
+                                        device: Icons.computer,
+                                        images: 0,
+                                        githubURL:
+                                            'https://github.com/reesebre82/SudokuSolver',
                                       );
                                     },
                                     settings: RouteSettings(name: "test"),
@@ -113,6 +128,7 @@ class ProjectContainerState extends State<ProjectContainer> {
                                   icon: "sudoku",
                                   title: ProjectData.titles[1],
                                   description: ProjectData.shortDescriptions[1],
+                                  device: Icons.computer,
                                 ),
                               ),
                               GestureDetector(
@@ -123,16 +139,21 @@ class ProjectContainerState extends State<ProjectContainer> {
                                         index: 0,
                                         text: "f",
                                         icon: 'tset',
+                                        tag: 'test',
+                                        title: ProjectData.titles[2],
+                                        device: Icons.phone_iphone,
+                                        images: 0,
                                       );
                                     },
                                     settings: RouteSettings(name: "test"),
                                   ));
                                 },
                                 child: ProjectIcon(
-                                  icon: "test",
-                                  title: ProjectData.titles[2],
-                                  description: ProjectData.shortDescriptions[2],
-                                ),
+                                    icon: "test",
+                                    title: ProjectData.titles[2],
+                                    description:
+                                        ProjectData.shortDescriptions[2],
+                                    device: Icons.phone_iphone),
                               ),
                             ],
                           ),
