@@ -10,7 +10,7 @@ import 'package:website/controllers/PhoneMenuController.dart';
 class PhoneIcon extends StatefulWidget {
   int icon;
   double height;
-  Image? image;
+  String? image;
   IconData? iconData;
   int? newScreen;
   String? title;
@@ -317,6 +317,65 @@ class _PhoneIconState extends State<PhoneIcon>
                     ),
                   ],
                 ),
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                var phoneController =
+                    Provider.of<PhoneMenuController>(context, listen: false);
+                if (phoneController.toggled) {
+                  phoneController.toggle();
+                }
+                var pageController =
+                    Provider.of<PageViewController>(context, listen: false);
+                pageController.setPage(widget.newScreen!);
+              },
+              child: Container(
+                width: widget.height * 0.19,
+                height: widget.height * 0.19,
+                decoration: BoxDecoration(
+                  // border: Border.all(width: 6.0),
+                  borderRadius: BorderRadius.circular(18.0),
+                ),
+              ),
+            ),
+          ],
+        );
+      case 5:
+        return Stack(
+          children: [
+            Container(
+              width: widget.height * 0.0875,
+              child: Column(
+                children: [
+                  Container(
+                    width: widget.height * 0.0875,
+                    height: widget.height * 0.0875,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    child: Hero(
+                      tag: 'phone-${widget.image}',
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
+                        child: Image(
+                          width: widget.height * 0.0875,
+                          height: widget.height * 0.0875,
+                          image: AssetImage("images/icons/${widget.image}.png"),
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Text(
+                    widget.title!,
+                    style: GoogleFonts.asap(
+                      textStyle: TextStyle(fontSize: 9),
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
             ),
           ],

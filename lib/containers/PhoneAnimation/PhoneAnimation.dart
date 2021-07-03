@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:website/ColorPalette.dart';
+import 'package:website/containers/Project/FullProject.dart';
+import 'package:website/containers/Project/HeroDialogRoute.dart';
+import 'package:website/containers/Project/ProjectData.dart';
 import 'package:website/controllers/PageViewController.dart';
 import 'package:website/controllers/PhoneMenuController.dart';
 
@@ -122,19 +125,62 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
         Positioned(
           top: getYOffset(1),
           left: getXOffset(1),
-          child: PhoneIcon(
-            icon: 0,
-            height: widget.height,
-            color: ColorPalette.getTheme(1),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(HeroDialogRoute(
+                builder: (context) {
+                  return FullProject(
+                    index: 0,
+                    text: ProjectData.descriptions[0],
+                    icon: 'reelcaster',
+                    tag: 'phone-reelcaster',
+                    title: ProjectData.titles[0],
+                    device: Icons.phone_iphone,
+                    images: 4,
+                    videoURL: 'images/reelcaster/reelcastervideo.mov',
+                    githubURL: 'https://github.com/reesebre82/ReelCaster',
+                  );
+                },
+                settings: RouteSettings(name: "test"),
+              ));
+            },
+            child: PhoneIcon(
+              icon: 5,
+              height: widget.height,
+              title: "Reelcaster",
+              color: Colors.white,
+              image: "reelcaster",
+            ),
           ),
         ),
         Positioned(
           top: getYOffset(1),
           left: getXOffset(2),
-          child: PhoneIcon(
-            icon: 0,
-            height: widget.height,
-            color: ColorPalette.getTheme(0),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(HeroDialogRoute(
+                builder: (context) {
+                  return FullProject(
+                    index: 0,
+                    text: ProjectData.descriptions[1],
+                    icon: 'sudoku',
+                    tag: 'phone-sudoku',
+                    title: ProjectData.titles[1],
+                    device: Icons.computer,
+                    images: 0,
+                    githubURL: 'https://github.com/reesebre82/SudokuSolver',
+                  );
+                },
+                settings: RouteSettings(name: "test"),
+              ));
+            },
+            child: PhoneIcon(
+              icon: 5,
+              height: widget.height,
+              title: "Sudoku",
+              color: Colors.white,
+              image: "sudoku",
+            ),
           ),
         ),
         Positioned(
