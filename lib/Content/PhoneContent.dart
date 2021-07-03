@@ -86,10 +86,15 @@ class PhoneContentState extends State<PhoneContent>
           ),
         if (context.read<PhoneMenuController>().isClosed())
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.15,
+            top: MediaQuery.of(context).size.height * 0.125,
             left: 15,
             child: FloatingActionButton(
               backgroundColor: ColorPalette.mediumTurquise,
+              child: Icon(
+                Icons.phone_iphone,
+                size: 30,
+                color: ColorPalette.mindaro,
+              ),
               onPressed: () {
                 context.read<PhoneMenuController>().toggle();
               },
@@ -97,11 +102,13 @@ class PhoneContentState extends State<PhoneContent>
           ),
         if (!context.read<PhoneMenuController>().isClosed())
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.15,
+            top: MediaQuery.of(context).size.height * 0.125,
             left: 15,
             child: Opacity(
               opacity: context.read<PhoneMenuController>().getButtonOpactiy(),
               child: FloatingActionButton(
+                child: Icon(Icons.phone_iphone,
+                    size: 30, color: ColorPalette.mindaro),
                 backgroundColor: ColorPalette.mediumTurquise,
                 onPressed: () {},
               ),
