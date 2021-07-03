@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:timeline_tile/timeline_tile.dart';
 import 'package:website/ColorPalette.dart';
 import 'package:website/controllers/PageViewController.dart';
 import 'package:website/containers/Education/EducationBoxAnimation.dart';
-import 'package:website/containers/Education/EducationTimelineBuilder.dart';
 import 'package:provider/provider.dart';
 import 'package:website/controllers/EducationAnimationController.dart';
 

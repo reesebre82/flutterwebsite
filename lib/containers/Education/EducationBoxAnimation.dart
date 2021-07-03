@@ -85,7 +85,7 @@ class EducationBoxAnimationState extends State<EducationBoxAnimation>
           height: widget.height,
           width: widget.width,
           decoration: BoxDecoration(
-            color: ColorPalette.ceruleanBlue,
+            color: ColorPalette.mindaro,
             borderRadius: BorderRadius.circular(15.0),
             boxShadow: [
               BoxShadow(
@@ -105,14 +105,14 @@ class EducationBoxAnimationState extends State<EducationBoxAnimation>
                   children: [
                     Text(
                       widget.title,
-                      style: GoogleFonts.raleway(
+                      style: GoogleFonts.domine(
                         textStyle: TextStyle(fontSize: 17),
                       ),
                     ),
                     Spacer(),
                     Text(
                       widget.date,
-                      style: GoogleFonts.raleway(
+                      style: GoogleFonts.domine(
                         textStyle: TextStyle(fontSize: 17),
                       ),
                     ),
@@ -124,7 +124,7 @@ class EducationBoxAnimationState extends State<EducationBoxAnimation>
                   padding: EdgeInsets.only(left: 8.0),
                   child: Text(
                     widget.subTitle!,
-                    style: GoogleFonts.raleway(
+                    style: GoogleFonts.domine(
                       textStyle: TextStyle(fontSize: 14),
                     ),
                   ),
@@ -133,7 +133,7 @@ class EducationBoxAnimationState extends State<EducationBoxAnimation>
                 padding: const EdgeInsets.all(15.0),
                 child: Text(
                   widget.text,
-                  style: GoogleFonts.raleway(
+                  style: GoogleFonts.domine(
                     textStyle: TextStyle(fontSize: 15),
                   ),
                 ),
