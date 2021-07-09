@@ -18,6 +18,9 @@ class HomeContainer extends StatefulWidget {
 
 class HomeContainerState extends State<HomeContainer> {
   double getHeight() {
+    if (!Responsive.isDesktop(context)) {
+      return MediaQuery.of(context).size.height;
+    }
     return MediaQuery.of(context).size.height * 1.25;
   }
 
@@ -108,34 +111,54 @@ class HomeContainerState extends State<HomeContainer> {
     }
     return SliverStickyHeader(
       header: Container(
-        color: Colors.grey,
-        child: Header(
-            title: "Brendan Reese, Software Development", showMenu: true),
+        height: 0,
+        // color: Colors.grey,
+        // child: Header(
+        //     title: "Brendan Reese, Software Development", showMenu: true),
       ),
       sliver: SliverList(
         delegate: SliverChildListDelegate(
-          [],
+          [
+            Container(
+              height: MediaQuery.of(context).size.height,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Brendan Reese",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 65,
+                        color: ColorPalette.darkJungleGreen,
+                      ),
+                    ),
+                    Text(
+                      "Software Developer",
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: ColorPalette.darkJungleGreen,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 30.0),
+                      child: Text(
+                        "A Full Stack developer ready to change the world one line at a time.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: ColorPalette.darkJungleGreen,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Container(
-  //     color: Colors.grey,
-  //     child: Column(
-  //       children: [
-  //         if (!Responsive.isDesktop(context))
-  //           Header(
-  //             title: "Brendan Reese",
-  //             showMenu: true,
-  //           ),
-  //         Image(
-  //           image: AssetImage('images/chalkboard_web.jpg'),
-  //           fit: BoxFit.fill,
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
 }

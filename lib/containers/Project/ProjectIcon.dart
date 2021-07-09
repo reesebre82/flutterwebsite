@@ -6,6 +6,7 @@ class ProjectIcon extends StatelessWidget {
   String title;
   String description;
   IconData device;
+  double width;
 
   ProjectIcon({
     Key? key,
@@ -13,15 +14,28 @@ class ProjectIcon extends StatelessWidget {
     required this.description,
     required this.title,
     required this.device,
+    required this.width,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double titleText = 24;
+    double bodyText = 16;
+
+    if (MediaQuery.of(context).size.width < 1000) {
+      titleText = 22;
+      bodyText = 14;
+    }
+    if (MediaQuery.of(context).size.width < 550) {
+      titleText = 20;
+      bodyText = 12;
+    }
+
     return Stack(
       children: [
         Container(
-          width: 450,
-          height: 150,
+          width: width,
+          height: width / 3,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.0),
             color: ColorPalette.white,
@@ -38,14 +52,14 @@ class ProjectIcon extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 10.0),
                 child: Container(
-                  width: 130,
+                  width: (width / 3) - 20,
                   child: Hero(
                     tag: icon,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
                       child: Image(
-                        width: 130,
-                        height: 130,
+                        width: (width / 3) - 20,
+                        height: (width / 3) - 20,
                         image: AssetImage("images/icons/${icon}.png"),
                         fit: BoxFit.fill,
                       ),
@@ -56,19 +70,19 @@ class ProjectIcon extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Container(
-                  constraints: BoxConstraints(maxWidth: 275),
+                  constraints: BoxConstraints(maxWidth: width * 0.62),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(title,
                           style: TextStyle(
-                              fontSize: 24, color: ColorPalette.grey)),
+                              fontSize: titleText, color: ColorPalette.grey)),
                       Padding(
                         padding: const EdgeInsets.only(top: 2.0),
                         child: Text(description,
                             style: TextStyle(
-                                fontSize: 16, color: ColorPalette.grey)),
+                                fontSize: bodyText, color: ColorPalette.grey)),
                       ),
                     ],
                   ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:provider/provider.dart';
 import 'package:website/ColorPalette.dart';
+import 'package:website/Responsive.dart';
 import 'package:website/controllers/PageViewController.dart';
 import 'package:website/containers/About/AboutBoxAnimation.dart';
 import 'package:website/controllers/AboutAnimationController.dart';
@@ -14,10 +15,16 @@ class AboutContainer extends StatefulWidget {
 
 class AboutContainerState extends State<AboutContainer> {
   double getHeight() {
+    if (Responsive.isMobile(context) || Responsive.isTablet(context)) {
+      return MediaQuery.of(context).size.height * 1.25;
+    }
     return MediaQuery.of(context).size.height * 1.5;
   }
 
   double getHeader() {
+    if (Responsive.isMobile(context) || Responsive.isTablet(context)) {
+      return MediaQuery.of(context).size.height * 0.25;
+    }
     return MediaQuery.of(context).size.height * 0.5;
   }
 
@@ -29,6 +36,24 @@ class AboutContainerState extends State<AboutContainer> {
     double offset =
         pageViewController.getMovingOffset(1, getHeader(), getHeight());
 
+    double centerOffset = 250;
+    double titleSize = 350;
+    double titleHeight = getHeader();
+
+    if (Responsive.isMobile(context)) {
+      centerOffset = 0;
+    }
+
+    if (MediaQuery.of(context).size.width > 1400) {
+      titleSize = 275;
+    } else if (MediaQuery.of(context).size.width > 1000) {
+      titleSize = 200;
+    } else if (MediaQuery.of(context).size.width > 550) {
+      titleSize = 115;
+    } else {
+      titleSize = 75;
+    }
+
     return SliverStickyHeader(
       header: Container(
         height: 0,
@@ -38,7 +63,7 @@ class AboutContainerState extends State<AboutContainer> {
         delegate: SliverChildListDelegate(
           [
             Container(
-              height: MediaQuery.of(context).size.height * 1.5,
+              height: getHeight(),
               width: MediaQuery.of(context).size.width,
               color: ColorPalette.blueMunsell,
               child: Stack(
@@ -46,12 +71,12 @@ class AboutContainerState extends State<AboutContainer> {
                   Transform.translate(
                     offset: Offset(0, offset),
                     child: Container(
-                      height: MediaQuery.of(context).size.height * 0.5,
+                      height: getHeader(),
                       child: Center(
                         child: Text(
                           "About Me",
                           style: TextStyle(
-                            fontSize: 350,
+                            fontSize: titleSize,
                             color: ColorPalette.lightBlueMunsell,
                           ),
                         ),
@@ -68,7 +93,7 @@ class AboutContainerState extends State<AboutContainer> {
                           children: [
                             if (aboutController.animated[0])
                               AboutBoxAnimation(
-                                centerOffset: 250,
+                                centerOffset: centerOffset,
                                 fromLeft: true,
                                 width: 400,
                                 height: 250,
@@ -79,7 +104,7 @@ class AboutContainerState extends State<AboutContainer> {
                               Padding(
                                 padding: const EdgeInsets.only(top: 20.0),
                                 child: AboutBoxAnimation(
-                                  centerOffset: 250,
+                                  centerOffset: centerOffset,
                                   fromLeft: false,
                                   width: 400,
                                   height: 250,

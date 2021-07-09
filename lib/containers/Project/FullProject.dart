@@ -18,6 +18,8 @@ class FullProject extends StatefulWidget {
   int images;
   String? videoURL;
   String? githubURL;
+  bool isGif;
+  bool isPhone;
 
   FullProject({
     required this.index,
@@ -27,6 +29,8 @@ class FullProject extends StatefulWidget {
     required this.title,
     required this.device,
     required this.images,
+    required this.isGif,
+    required this.isPhone,
     this.videoURL,
     this.githubURL,
   });
@@ -41,6 +45,27 @@ class _FullProjectState extends State<FullProject> {
     for (int i = 0; i < widget.images; i++) {
       images.add(getImage(i));
     }
+
+    if (widget.isPhone) {
+      return Container(
+        width: MediaQuery.of(context).size.width * 0.75,
+        height: MediaQuery.of(context).size.height * 0.5,
+        child: ListView.builder(
+          itemCount: widget.images,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, i) {
+            return Padding(
+              padding: EdgeInsets.only(right: 0),
+              child: ScreenshotImage(
+                image: images[i],
+                height: 550,
+                width: 250,
+              ),
+            );
+          },
+        ),
+      );
+    }
     return Container(
       width: MediaQuery.of(context).size.width * 0.75,
       height: MediaQuery.of(context).size.height * 0.5,
@@ -49,11 +74,11 @@ class _FullProjectState extends State<FullProject> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, i) {
           return Padding(
-            padding: EdgeInsets.only(right: 0),
+            padding: EdgeInsets.only(right: 30),
             child: ScreenshotImage(
               image: images[i],
-              height: 550,
-              width: 250,
+              height: 100,
+              width: 600,
             ),
           );
         },
@@ -62,6 +87,9 @@ class _FullProjectState extends State<FullProject> {
   }
 
   AssetImage getImage(int index) {
+    if (widget.isGif) {
+      return AssetImage("images/${widget.icon}/${index}${widget.icon}.gif");
+    }
     return AssetImage("images/${widget.icon}/${index}${widget.icon}.png");
   }
 
@@ -181,7 +209,7 @@ class _FullProjectState extends State<FullProject> {
                         maxWidth: MediaQuery.of(context).size.width * 0.575),
                     child: Text(
                       widget.text,
-                      style: GoogleFonts.domine(
+                      style: GoogleFonts.asap(
                         textStyle: TextStyle(fontSize: 16),
                         color: ColorPalette.grey,
                         decoration: TextDecoration.none,
