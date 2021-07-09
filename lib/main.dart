@@ -78,7 +78,8 @@ class MyHomePage extends StatelessWidget {
               Expanded(flex: 1, child: NavBar()),
             Expanded(
               flex: 5,
-              child: Content(),
+              child:
+                  Content(key: context.read<PageViewController>().contentKey),
             )
           ],
         ),
