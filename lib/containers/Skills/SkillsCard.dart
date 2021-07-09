@@ -9,8 +9,27 @@ class SkillsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double titleSize = 35;
+    double iconSize = 125;
+    if (MediaQuery.of(context).size.width > 1500) {
+      titleSize = 35;
+      iconSize = 125;
+    } else if (MediaQuery.of(context).size.width > 1400) {
+      titleSize = 35;
+      iconSize = 125;
+    } else if (MediaQuery.of(context).size.width > 1000) {
+      titleSize = 35;
+      iconSize = 100;
+    } else if (MediaQuery.of(context).size.width > 550) {
+      titleSize = 25;
+      iconSize = 75;
+    } else {
+      titleSize = 20;
+      iconSize = 50;
+    }
+
     return Container(
-      height: 300,
+      height: MediaQuery.of(context).size.height * 0.35,
       width: MediaQuery.of(context).size.width * 0.6,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -33,7 +52,7 @@ class SkillsCard extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 25.0, left: 15),
                 child: Text(
                   title,
-                  style: TextStyle(fontSize: 35),
+                  style: TextStyle(fontSize: titleSize),
                 ),
               ),
             ),
@@ -58,8 +77,8 @@ class SkillsCard extends StatelessWidget {
                         left: 30.0, right: 30.0, top: 10.0),
                     child: Image(
                       image: AssetImage(icons[index]),
-                      width: 125,
-                      height: 125,
+                      width: iconSize,
+                      height: iconSize,
                     ),
                   ),
                   Padding(

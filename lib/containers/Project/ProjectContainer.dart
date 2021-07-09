@@ -41,17 +41,24 @@ class ProjectContainerState extends State<ProjectContainer> {
     double contentOffset = 425;
 
     if (MediaQuery.of(context).size.width > 1400) {
-      titleSize = 275;
       contentOffset = 425;
     } else if (MediaQuery.of(context).size.width > 1000) {
-      titleSize = 200;
       contentOffset = 300;
     } else if (MediaQuery.of(context).size.width > 550) {
-      titleSize = 115;
       contentOffset = 225;
     } else {
-      titleSize = 75;
       contentOffset = 200;
+    }
+    if (MediaQuery.of(context).size.width > 1500) {
+      titleSize = 350;
+    } else if (MediaQuery.of(context).size.width > 1400) {
+      titleSize = 275;
+    } else if (MediaQuery.of(context).size.width > 1000) {
+      titleSize = 200;
+    } else if (MediaQuery.of(context).size.width > 550) {
+      titleSize = 115;
+    } else {
+      titleSize = 75;
     }
 
     var pageViewController = Provider.of<PageViewController>(context);

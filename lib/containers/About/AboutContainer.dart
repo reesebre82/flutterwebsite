@@ -40,18 +40,19 @@ class AboutContainerState extends State<AboutContainer> {
     double titleSize = 350;
     double titleHeight = getHeader();
 
-    if (Responsive.isMobile(context)) {
-      centerOffset = 0;
-    }
-
-    if (MediaQuery.of(context).size.width > 1400) {
+    if (MediaQuery.of(context).size.width > 1500) {
+      titleSize = 350;
+    } else if (MediaQuery.of(context).size.width > 1400) {
       titleSize = 275;
     } else if (MediaQuery.of(context).size.width > 1000) {
       titleSize = 200;
+      centerOffset = 125;
     } else if (MediaQuery.of(context).size.width > 550) {
       titleSize = 115;
+      centerOffset = 0;
     } else {
       titleSize = 75;
+      centerOffset = 0;
     }
 
     return SliverStickyHeader(

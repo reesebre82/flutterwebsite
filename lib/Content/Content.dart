@@ -48,7 +48,8 @@ class ContentState extends State<Content> with SingleTickerProviderStateMixin {
         context
             .read<EducationAnimationController>()
             .updateScrollPosition(scrollController.offset);
-        print(MediaQuery.of(context).size.width);
+        print('width: ${MediaQuery.of(context).size.width}');
+        print('height: ${MediaQuery.of(context).size.height}');
       });
 
     return Stack(

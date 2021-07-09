@@ -4,8 +4,7 @@ import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:website/ColorPalette.dart';
-import 'package:website/containers/Skills/DoubleLinearSkillBar.dart';
-import 'package:website/containers/Skills/LinearSkillBar.dart';
+import 'package:website/Responsive.dart';
 import 'package:website/containers/Skills/SkillsCard.dart';
 import 'package:website/controllers/PageViewController.dart';
 import '../Header.dart';
@@ -18,10 +17,16 @@ class SkillsContainer extends StatefulWidget {
 
 class SkillsContainerState extends State<SkillsContainer> {
   double getHeight() {
+    if (Responsive.isMobile(context) || Responsive.isTablet(context)) {
+      return MediaQuery.of(context).size.height * 1.25;
+    }
     return MediaQuery.of(context).size.height * 1.5;
   }
 
   double getHeader() {
+    if (Responsive.isMobile(context) || Responsive.isTablet(context)) {
+      return MediaQuery.of(context).size.height * 0.25;
+    }
     return MediaQuery.of(context).size.height * 0.5;
   }
 
@@ -31,6 +36,30 @@ class SkillsContainerState extends State<SkillsContainer> {
 
     double offset =
         pageViewController.getMovingOffset(3, getHeader(), getHeight());
+
+    double titleSize = 350;
+    if (MediaQuery.of(context).size.width > 1500) {
+      titleSize = 350;
+    } else if (MediaQuery.of(context).size.width > 1400) {
+      titleSize = 275;
+    } else if (MediaQuery.of(context).size.width > 1000) {
+      titleSize = 200;
+    } else if (MediaQuery.of(context).size.width > 550) {
+      titleSize = 115;
+    } else {
+      titleSize = 75;
+    }
+    double contentOffset = 425;
+
+    if (MediaQuery.of(context).size.width > 1400) {
+      contentOffset = 425;
+    } else if (MediaQuery.of(context).size.width > 1000) {
+      contentOffset = 300;
+    } else if (MediaQuery.of(context).size.width > 550) {
+      contentOffset = 225;
+    } else {
+      contentOffset = 200;
+    }
 
     return SliverStickyHeader(
       header: Container(
@@ -42,19 +71,19 @@ class SkillsContainerState extends State<SkillsContainer> {
         delegate: SliverChildListDelegate(
           [
             Container(
-              height: MediaQuery.of(context).size.height * 1.5,
+              height: getHeight(),
               color: ColorPalette.mediumTurquise,
               child: Stack(
                 children: [
                   Transform.translate(
                     offset: Offset(0, offset),
                     child: Container(
-                      height: MediaQuery.of(context).size.height * 0.5,
+                      height: getHeader(),
                       child: Center(
                         child: Text(
                           "Skills",
                           style: TextStyle(
-                            fontSize: 350,
+                            fontSize: titleSize,
                             color: ColorPalette.lightMediumTurquise,
                           ),
                         ),
@@ -62,7 +91,7 @@ class SkillsContainerState extends State<SkillsContainer> {
                     ),
                   ),
                   Positioned(
-                    top: 360,
+                    top: contentOffset,
                     child: Container(
                       height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width,

@@ -4,6 +4,7 @@ import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:website/ColorPalette.dart';
+import 'package:website/Responsive.dart';
 import 'package:website/controllers/PageViewController.dart';
 import '../Header.dart';
 import 'ContactSection.dart';
@@ -21,6 +22,9 @@ class ContactContainerState extends State<ContactContainer> {
   }
 
   double getHeader() {
+    if (Responsive.isMobile(context) || Responsive.isTablet(context)) {
+      return MediaQuery.of(context).size.height * 0.25;
+    }
     return MediaQuery.of(context).size.height * 0.5;
   }
 
@@ -30,6 +34,20 @@ class ContactContainerState extends State<ContactContainer> {
 
     double offset =
         pageViewController.getMovingOffset(5, getHeader(), getHeight());
+
+    double titleSize = 350;
+
+    if (MediaQuery.of(context).size.width > 1500) {
+      titleSize = 350;
+    } else if (MediaQuery.of(context).size.width > 1400) {
+      titleSize = 275;
+    } else if (MediaQuery.of(context).size.width > 1000) {
+      titleSize = 200;
+    } else if (MediaQuery.of(context).size.width > 550) {
+      titleSize = 115;
+    } else {
+      titleSize = 75;
+    }
 
     return SliverStickyHeader(
       header: Container(
@@ -41,19 +59,19 @@ class ContactContainerState extends State<ContactContainer> {
         delegate: SliverChildListDelegate(
           [
             Container(
-              height: MediaQuery.of(context).size.height * 1.25,
+              height: getHeight(),
               color: ColorPalette.white,
               child: Stack(
                 children: [
                   Transform.translate(
                     offset: Offset(0, offset),
                     child: Container(
-                      height: MediaQuery.of(context).size.height * 0.5,
+                      height: getHeader(),
                       child: Center(
                         child: Text(
                           "Contact",
                           style: TextStyle(
-                            fontSize: 350,
+                            fontSize: titleSize,
                             color: ColorPalette.lightGrey,
                           ),
                         ),
