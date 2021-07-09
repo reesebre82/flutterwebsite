@@ -137,6 +137,8 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
                     title: ProjectData.titles[0],
                     device: Icons.phone_iphone,
                     images: 4,
+                    isGif: false,
+                    isPhone: true,
                     videoURL: 'images/reelcaster/reelcastervideo.mov',
                     githubURL: 'https://github.com/reesebre82/ReelCaster',
                   );
@@ -167,7 +169,9 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
                     tag: 'phone-sudoku',
                     title: ProjectData.titles[1],
                     device: Icons.computer,
-                    images: 0,
+                    images: 2,
+                    isGif: true,
+                    isPhone: false,
                     githubURL: 'https://github.com/reesebre82/SudokuSolver',
                   );
                 },
