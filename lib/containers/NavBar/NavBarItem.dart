@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:website/controllers/MenuController.dart';
 import 'package:website/controllers/PageViewController.dart';
 
 class NavBarItem extends StatefulWidget {
@@ -39,6 +40,7 @@ class _NavBarItemState extends State<NavBarItem> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final pageController = Provider.of<PageViewController>(context);
+    final menuController = Provider.of<MenuController>(context);
     if (isHovered) {
       color = Colors.white;
       controller.forward();
@@ -60,6 +62,7 @@ class _NavBarItemState extends State<NavBarItem> with TickerProviderStateMixin {
             color: color,
             child: InkWell(
               onTap: () {
+                menuController.controlMenu();
                 pageController.setPage(widget.page);
               },
               onHover: (value) {
