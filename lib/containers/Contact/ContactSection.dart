@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:website/ColorPalette.dart';
 
 class ContactSection extends StatelessWidget {
   final IconData icon;
@@ -35,7 +36,7 @@ class ContactSection extends StatelessWidget {
               height: 100,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                color: Color(0xff7AE582),
+                color: ColorPalette.mindaro,
               ),
               child: Icon(
                 icon,
@@ -46,7 +47,7 @@ class ContactSection extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: Text(
                 title,
-                style: TextStyle(fontSize: 24),
+                style: TextStyle(fontSize: 24, color: ColorPalette.grey),
               ),
             ),
             for (var i = 0; i < dataTitle.length; i++)
@@ -75,7 +76,7 @@ class ContactSection extends StatelessWidget {
             height: 100,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
-              color: Color(0xff7AE582),
+              color: ColorPalette.mindaro,
             ),
             child: Icon(
               icon,
@@ -86,10 +87,14 @@ class ContactSection extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: Text(
               title,
-              style: TextStyle(fontSize: 24),
+              style: TextStyle(fontSize: 24, color: ColorPalette.grey),
             ),
           ),
-          for (var i = 0; i < combinedData.length; i++) Text(combinedData[i]),
+          for (var i = 0; i < combinedData.length; i++)
+            Text(
+              combinedData[i],
+              style: TextStyle(color: ColorPalette.grey),
+            ),
         ],
       ),
     );

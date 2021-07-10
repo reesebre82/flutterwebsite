@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:website/ColorPalette.dart';
 import 'package:website/Responsive.dart';
+import 'package:website/containers/Contact/ContactForm.dart';
 import 'package:website/controllers/PageViewController.dart';
 import '../Header.dart';
 import 'ContactSection.dart';
@@ -76,6 +77,13 @@ class ContactContainerState extends State<ContactContainer> {
                           ),
                         ),
                       ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 380,
+                    child: ContactForm(
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      width: MediaQuery.of(context).size.width,
                     ),
                   ),
                   Positioned(
