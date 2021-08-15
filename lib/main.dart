@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:website/Content/Content.dart';
 import 'package:website/Responsive.dart';
+import 'package:website/containers/Home/SplashScreen.dart';
 import 'package:website/controllers/EducationAnimationController.dart';
 import 'package:website/controllers/MenuController.dart';
 
@@ -52,41 +53,48 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  bool _COMPLETED = false;
   @override
   Widget build(BuildContext context) {
-    if (!Responsive.isDesktop(context)) {
-      return Scaffold(
-        key: context.read<MenuController>().scaffoldKey,
-        drawer: NavBar(),
-        floatingActionButton: Padding(
-          padding: EdgeInsets.only(
-            right: MediaQuery.of(context).size.width - 60,
-            bottom: MediaQuery.of(context).size.height - 60,
-          ),
-          child: IconButton(
-            icon: Icon(
-              Icons.menu,
-              size: 24,
+    if (_COMPLETED) {
+      if (!Responsive.isDesktop(context)) {
+        return Scaffold(
+          key: context.read<MenuController>().scaffoldKey,
+          drawer: NavBar(),
+          floatingActionButton: Padding(
+            padding: EdgeInsets.only(
+              right: MediaQuery.of(context).size.width - 60,
+              bottom: MediaQuery.of(context).size.height - 60,
             ),
-            onPressed: context.read<MenuController>().controlMenu,
+            child: IconButton(
+              icon: Icon(
+                Icons.menu,
+                size: 24,
+              ),
+              onPressed: context.read<MenuController>().controlMenu,
+            ),
           ),
-        ),
-        body: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (Responsive.isDesktop(context))
-              Expanded(flex: 1, child: NavBar()),
-            Expanded(
-              flex: 5,
-              child:
-                  Content(key: context.read<PageViewController>().contentKey),
-            )
-          ],
-        ),
+          body: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (Responsive.isDesktop(context))
+                Expanded(flex: 1, child: NavBar()),
+              Expanded(
+                flex: 5,
+                child:
+                    Content(key: context.read<PageViewController>().contentKey),
+              )
+            ],
+          ),
+        );
+      }
+      return Scaffold(
+        body: Content(key: context.read<PageViewController>().contentKey),
       );
     }
+
     return Scaffold(
-      body: Content(key: context.read<PageViewController>().contentKey),
+      body: SplashScreen(),
     );
   }
 }
