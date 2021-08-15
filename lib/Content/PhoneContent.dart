@@ -5,7 +5,8 @@ import 'package:website/containers/PhoneAnimation/PhoneAnimation.dart';
 import 'package:website/controllers/PhoneMenuController.dart';
 
 class PhoneContent extends StatefulWidget {
-  const PhoneContent({Key? key}) : super(key: key);
+  bool clickable;
+  PhoneContent({Key? key, required this.clickable}) : super(key: key);
 
   @override
   PhoneContentState createState() => PhoneContentState();
@@ -69,7 +70,10 @@ class PhoneContentState extends State<PhoneContent>
               padding: EdgeInsets.only(left: screenWidth * 0.2),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: PhoneAnimation(height: phoneHeight, width: phoneWidth),
+                child: PhoneAnimation(
+                    height: phoneHeight,
+                    width: phoneWidth,
+                    clickable: widget.clickable),
               ),
             ),
           ),
@@ -80,13 +84,17 @@ class PhoneContentState extends State<PhoneContent>
               padding: EdgeInsets.only(left: screenWidth * 0.2),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: PhoneAnimation(height: phoneHeight, width: phoneWidth),
+                child: PhoneAnimation(
+                  height: phoneHeight,
+                  width: phoneWidth,
+                  clickable: widget.clickable,
+                ),
               ),
             ),
           ),
         if (context.read<PhoneMenuController>().isClosed())
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.125,
+            top: MediaQuery.of(context).size.height * 0.1,
             left: 15,
             child: FloatingActionButton(
               backgroundColor: ColorPalette.mediumTurquise,
@@ -102,7 +110,7 @@ class PhoneContentState extends State<PhoneContent>
           ),
         if (!context.read<PhoneMenuController>().isClosed())
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.125,
+            top: MediaQuery.of(context).size.height * 0.1,
             left: 15,
             child: Opacity(
               opacity: context.read<PhoneMenuController>().getButtonOpactiy(),

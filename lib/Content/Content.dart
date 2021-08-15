@@ -48,8 +48,7 @@ class ContentState extends State<Content> with SingleTickerProviderStateMixin {
         context
             .read<EducationAnimationController>()
             .updateScrollPosition(scrollController.offset);
-        print('width: ${MediaQuery.of(context).size.width}');
-        print('height: ${MediaQuery.of(context).size.height}');
+        print(scrollController.offset);
       });
 
     return Stack(
@@ -79,7 +78,10 @@ class ContentState extends State<Content> with SingleTickerProviderStateMixin {
           ],
         ),
         if (Responsive.isDesktop(context))
-          PhoneContent(key: context.read<PhoneMenuController>().phoneMenuKey),
+          PhoneContent(
+            key: context.read<PhoneMenuController>().phoneMenuKey,
+            clickable: true,
+          ),
       ],
     );
   }

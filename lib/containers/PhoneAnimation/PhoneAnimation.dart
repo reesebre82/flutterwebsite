@@ -12,7 +12,9 @@ import 'PhoneIcon.dart';
 class PhoneAnimation extends StatefulWidget {
   final double height;
   final double width;
-  PhoneAnimation({required this.height, required this.width});
+  final bool clickable;
+  PhoneAnimation(
+      {required this.height, required this.width, required this.clickable});
   @override
   _PhoneAnimationState createState() => _PhoneAnimationState();
 }
@@ -190,10 +192,33 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
         Positioned(
           top: getYOffset(1),
           left: getXOffset(3),
-          child: PhoneIcon(
-            icon: 0,
-            height: widget.height,
-            color: ColorPalette.getTheme(1),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(HeroDialogRoute(
+                builder: (context) {
+                  return FullProject(
+                    index: 0,
+                    text: ProjectData.descriptions[2],
+                    icon: 'sorting',
+                    tag: 'phone-sorting',
+                    isGif: false,
+                    isPhone: false,
+                    title: ProjectData.titles[2],
+                    device: Icons.phone_iphone,
+                    images: 0,
+                    videoURL: 'images/sorting/sorting.mp4',
+                  );
+                },
+                settings: RouteSettings(name: "test"),
+              ));
+            },
+            child: PhoneIcon(
+              icon: 5,
+              height: widget.height,
+              title: "Sortng",
+              color: Colors.white,
+              image: "sorting",
+            ),
           ),
         ),
         //Third row
@@ -283,6 +308,12 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
             ),
           ),
         ),
+        if (!widget.clickable)
+          Container(
+            height: widget.height,
+            width: widget.width,
+            child: AbsorbPointer(),
+          )
       ],
     );
   }
