@@ -4,8 +4,13 @@ class AboutAnimationController extends ChangeNotifier {
   List<bool> animated = [false, false, false, false, false];
   double _scrollPosition = 0.0;
   double screenHeight = 0.0;
+  double toggleHeight = 10000.0;
 
   double get scrollPosition => _scrollPosition;
+
+  void setToggleHeight(double height) {
+    toggleHeight = height;
+  }
 
   bool getAnimated(int index) {
     return animated[index];
@@ -17,7 +22,7 @@ class AboutAnimationController extends ChangeNotifier {
 
   checkAnimation() {
     if (animated[0] == false) {
-      if (scrollPosition >= 1190) {
+      if (scrollPosition >= toggleHeight) {
         animated[0] = true;
         Future.delayed(Duration(milliseconds: 500), () {
           completeAnimation();
