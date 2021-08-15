@@ -139,7 +139,7 @@ class EducationContainerState extends State<EducationContainer> {
                                   text:
                                       "Throughout high school, I selected every software "
                                       "oriented classes offerred. I learned proper code documentation "
-                                      "and clearly code implementation.",
+                                      "and clear code implementation.",
                                 ),
                               ),
                             if (educationController.animated[3])
