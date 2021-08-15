@@ -31,6 +31,20 @@ class ResumeContainerState extends State<ResumeContainer> {
   Widget build(BuildContext context) {
     var pageViewController = Provider.of<PageViewController>(context);
 
+    double titleSize = 350;
+
+    if (MediaQuery.of(context).size.width > 1500) {
+      titleSize = 350;
+    } else if (MediaQuery.of(context).size.width > 1400) {
+      titleSize = 275;
+    } else if (MediaQuery.of(context).size.width > 1000) {
+      titleSize = 200;
+    } else if (MediaQuery.of(context).size.width > 550) {
+      titleSize = 115;
+    } else {
+      titleSize = 75;
+    }
+
     double offset =
         pageViewController.getMovingOffset(6, getHeader(), getHeight());
     return SliverStickyHeader(
@@ -57,7 +71,7 @@ class ResumeContainerState extends State<ResumeContainer> {
                         child: Text(
                           "Resume",
                           style: TextStyle(
-                            fontSize: 350,
+                            fontSize: titleSize,
                             color: ColorPalette.lightMediumTurquise,
                           ),
                         ),
