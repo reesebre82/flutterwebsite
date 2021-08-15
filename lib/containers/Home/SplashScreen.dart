@@ -145,50 +145,69 @@ class SplashScreenState extends State<SplashScreen> {
         ),
       );
     }
-    return SliverStickyHeader(
-      header: Container(
-        height: 0,
-        // color: Colors.grey,
-        // child: Header(
-        //     title: "Brendan Reese, Software Development", showMenu: true),
-      ),
-      sliver: SliverList(
-        delegate: SliverChildListDelegate(
-          [
-            Container(
-              height: MediaQuery.of(context).size.height,
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Brendan Reese",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 65,
-                        color: ColorPalette.darkJungleGreen,
-                      ),
-                    ),
-                    Text(
-                      "Software Developer",
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: ColorPalette.darkJungleGreen,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 30.0),
-                      child: Text(
-                        "A Full Stack developer ready to change the world one line at a time.",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: ColorPalette.darkJungleGreen,
-                        ),
-                      ),
-                    ),
-                  ],
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      color: ColorPalette.mediumTurquise,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              "Brendan Reese",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 65,
+                color: ColorPalette.darkJungleGreen,
+              ),
+            ),
+            Text(
+              "Software Developer",
+              style: TextStyle(
+                fontSize: 24,
+                color: ColorPalette.darkJungleGreen,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 30.0),
+              child: Text(
+                "A full portfolio page is in development. Please stop by soon for the completed project.",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: ColorPalette.darkJungleGreen,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 30.0),
+              child: Text(
+                "In the meantime, you can view some of my public projects at:",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: ColorPalette.darkJungleGreen,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 15.0),
+              child: InkWell(
+                onTap: () {
+                  launch('https://github.com/reesebre82/');
+                },
+                onHover: (value) {
+                  setState(() {
+                    _hover = value;
+                  });
+                },
+                child: Text(
+                  "https://github.com/reesebre82/",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: color,
+                  ),
                 ),
               ),
             ),
