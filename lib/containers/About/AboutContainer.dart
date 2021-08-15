@@ -32,6 +32,7 @@ class AboutContainerState extends State<AboutContainer> {
   Widget build(BuildContext context) {
     var aboutController = Provider.of<AboutAnimationController>(context);
     var pageViewController = Provider.of<PageViewController>(context);
+    aboutController.setToggleHeight(pageViewController.getCombinedHeight(0));
 
     double offset =
         pageViewController.getMovingOffset(1, getHeader(), getHeight());
@@ -41,7 +42,7 @@ class AboutContainerState extends State<AboutContainer> {
     double titleHeight = getHeader();
 
     if (MediaQuery.of(context).size.width > 1500) {
-      titleSize = 350;
+      titleSize = 325;
     } else if (MediaQuery.of(context).size.width > 1400) {
       titleSize = 275;
     } else if (MediaQuery.of(context).size.width > 1000) {

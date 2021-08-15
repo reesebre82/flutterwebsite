@@ -87,7 +87,7 @@ class ContactContainerState extends State<ContactContainer> {
                     ),
                   ),
                   Positioned(
-                    top: 360,
+                    top: 420,
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.75,
                       width: MediaQuery.of(context).size.width,
@@ -135,7 +135,7 @@ class ContactContainerState extends State<ContactContainer> {
                                   child: ContactSection(
                                     title: "Phone Number",
                                     dataTitle: ["Mobile:"],
-                                    data: ["1(512)900-0702"],
+                                    data: ["1 (512) 900-0702"],
                                     icon: Foundation.mail,
                                     isLink: false,
                                   ),
