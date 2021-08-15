@@ -177,21 +177,23 @@ class ProjectContainerState extends State<ProjectContainer> {
                                       builder: (context) {
                                         return FullProject(
                                           index: 0,
-                                          text: "f",
-                                          icon: 'tset',
-                                          tag: 'test',
+                                          text: ProjectData.descriptions[2],
+                                          icon: 'sorting',
+                                          tag: 'sorting',
                                           isGif: false,
                                           isPhone: false,
                                           title: ProjectData.titles[2],
                                           device: Icons.phone_iphone,
                                           images: 0,
+                                          videoURL:
+                                              'images/sorting/sorting.mp4',
                                         );
                                       },
                                       settings: RouteSettings(name: "test"),
                                     ));
                                   },
                                   child: ProjectIcon(
-                                      icon: "test",
+                                      icon: "sorting",
                                       title: ProjectData.titles[2],
                                       description:
                                           ProjectData.shortDescriptions[2],
@@ -339,9 +341,9 @@ class ProjectContainerState extends State<ProjectContainer> {
                                         builder: (context) {
                                           return FullProject(
                                             index: 0,
-                                            text: "f",
-                                            icon: 'tset',
-                                            tag: 'test',
+                                            text: ProjectData.descriptions[2],
+                                            icon: 'sorting',
+                                            tag: 'sorting',
                                             isGif: false,
                                             isPhone: false,
                                             title: ProjectData.titles[2],
@@ -353,7 +355,7 @@ class ProjectContainerState extends State<ProjectContainer> {
                                       ));
                                     },
                                     child: ProjectIcon(
-                                        icon: "test",
+                                        icon: "sorting",
                                         title: ProjectData.titles[2],
                                         description:
                                             ProjectData.shortDescriptions[2],
@@ -487,9 +489,9 @@ class ProjectContainerState extends State<ProjectContainer> {
                                     builder: (context) {
                                       return FullProject(
                                         index: 0,
-                                        text: "f",
-                                        icon: 'tset',
-                                        tag: 'test',
+                                        text: ProjectData.descriptions[2],
+                                        icon: 'sorting',
+                                        tag: 'sorting',
                                         isGif: false,
                                         isPhone: false,
                                         title: ProjectData.titles[2],
@@ -501,7 +503,7 @@ class ProjectContainerState extends State<ProjectContainer> {
                                   ));
                                 },
                                 child: ProjectIcon(
-                                    icon: "test",
+                                    icon: "sorting",
                                     title: ProjectData.titles[2],
                                     description:
                                         ProjectData.shortDescriptions[2],
@@ -633,9 +635,9 @@ class ProjectContainerState extends State<ProjectContainer> {
                                   builder: (context) {
                                     return FullProject(
                                       index: 0,
-                                      text: "f",
-                                      icon: 'tset',
-                                      tag: 'test',
+                                      text: ProjectData.descriptions[2],
+                                      icon: 'sorting',
+                                      tag: 'sorting',
                                       isGif: false,
                                       isPhone: false,
                                       title: ProjectData.titles[2],
@@ -647,7 +649,7 @@ class ProjectContainerState extends State<ProjectContainer> {
                                 ));
                               },
                               child: ProjectIcon(
-                                  icon: "test",
+                                  icon: "sorting",
                                   title: ProjectData.titles[2],
                                   description: ProjectData.shortDescriptions[2],
                                   width: 350,

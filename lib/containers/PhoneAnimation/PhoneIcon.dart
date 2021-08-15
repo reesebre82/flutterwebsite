@@ -64,17 +64,19 @@ class _PhoneIconState extends State<PhoneIcon>
     if (shouldAnimateInt > 75) {
       shouldAnimate = true;
     }
-    if (shouldAnimate) {
-      double xOffset = (Random().nextDouble() * (0.35 - 0.0) + 0.0) - 0.175;
-      double yOffset = (Random().nextDouble() * (0.35 - 0.0) + 0.0) - 0.175;
-      animation = Tween(begin: Offset.zero, end: Offset(xOffset, yOffset))
-          .animate(
-              CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
-      _controller.forward();
-    } else {
-      Future.delayed(const Duration(milliseconds: 2000), () {
-        createNewAnimation();
-      });
+    if (mounted) {
+      if (shouldAnimate) {
+        double xOffset = (Random().nextDouble() * (0.35 - 0.0) + 0.0) - 0.175;
+        double yOffset = (Random().nextDouble() * (0.35 - 0.0) + 0.0) - 0.175;
+        animation = Tween(begin: Offset.zero, end: Offset(xOffset, yOffset))
+            .animate(
+                CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+        _controller.forward();
+      } else {
+        Future.delayed(const Duration(milliseconds: 2000), () {
+          createNewAnimation();
+        });
+      }
     }
   }
 
