@@ -53,9 +53,12 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  bool _COMPLETED = false;
+  bool _COMPLETED = true;
   @override
   Widget build(BuildContext context) {
+    if (Responsive.isMobile(context)) {
+      _COMPLETED = false;
+    }
     if (_COMPLETED) {
       if (!Responsive.isDesktop(context)) {
         return Scaffold(
