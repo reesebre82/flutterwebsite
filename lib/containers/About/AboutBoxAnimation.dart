@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:website/ColorPalette.dart';
 
@@ -97,6 +98,29 @@ class AboutBoxAnimationState extends State<AboutBoxAnimation>
                 spreadRadius: 5,
                 blurRadius: 7,
                 offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Text(
+                  widget.title,
+                  style: GoogleFonts.domine(
+                    textStyle: TextStyle(fontSize: 17),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 8.0),
+                child: Text(
+                  widget.text,
+                  style: GoogleFonts.domine(
+                    textStyle: TextStyle(fontSize: 14),
+                  ),
+                ),
               ),
             ],
           ),
