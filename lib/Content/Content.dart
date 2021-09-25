@@ -48,7 +48,7 @@ class ContentState extends State<Content> with SingleTickerProviderStateMixin {
         context
             .read<EducationAnimationController>()
             .updateScrollPosition(scrollController.offset);
-        print(scrollController.offset);
+        // print(scrollController.offset);
       });
 
     return Stack(

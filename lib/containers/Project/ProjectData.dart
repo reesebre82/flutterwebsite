@@ -1,7 +1,7 @@
 class ProjectData {
   static List<String> titles = [
     'Reelcasters',
-    'AI Sudoku Solver',
+    'Sudoku Solver',
     'iOS Sort Algorithms'
   ];
   static List<String> shortDescriptions = [

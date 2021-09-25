@@ -171,35 +171,35 @@ class ProjectContainerState extends State<ProjectContainer> {
                                     device: Icons.computer,
                                   ),
                                 ),
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context).push(HeroDialogRoute(
-                                      builder: (context) {
-                                        return FullProject(
-                                          index: 0,
-                                          text: ProjectData.descriptions[2],
-                                          icon: 'sorting',
-                                          tag: 'sorting',
-                                          isGif: false,
-                                          isPhone: false,
-                                          title: ProjectData.titles[2],
-                                          device: Icons.phone_iphone,
-                                          images: 0,
-                                          videoURL:
-                                              'images/sorting/sorting.mp4',
-                                        );
-                                      },
-                                      settings: RouteSettings(name: "test"),
-                                    ));
-                                  },
-                                  child: ProjectIcon(
-                                      icon: "sorting",
-                                      title: ProjectData.titles[2],
-                                      description:
-                                          ProjectData.shortDescriptions[2],
-                                      width: 450,
-                                      device: Icons.phone_iphone),
-                                ),
+                                // GestureDetector(
+                                //   onTap: () {
+                                //     Navigator.of(context).push(HeroDialogRoute(
+                                //       builder: (context) {
+                                //         return FullProject(
+                                //           index: 0,
+                                //           text: ProjectData.descriptions[2],
+                                //           icon: 'sorting',
+                                //           tag: 'sorting',
+                                //           isGif: false,
+                                //           isPhone: false,
+                                //           title: ProjectData.titles[2],
+                                //           device: Icons.phone_iphone,
+                                //           images: 0,
+                                //           videoURL:
+                                //               'images/sorting/sorting.mp4',
+                                //         );
+                                //       },
+                                //       settings: RouteSettings(name: "test"),
+                                //     ));
+                                //   },
+                                //   child: ProjectIcon(
+                                //       icon: "sorting",
+                                //       title: ProjectData.titles[2],
+                                //       description:
+                                //           ProjectData.shortDescriptions[2],
+                                //       width: 450,
+                                //       device: Icons.phone_iphone),
+                                // ),
                               ],
                             ),
                           ],
@@ -328,43 +328,43 @@ class ProjectContainerState extends State<ProjectContainer> {
                                 ],
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 15.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.of(context)
-                                          .push(HeroDialogRoute(
-                                        builder: (context) {
-                                          return FullProject(
-                                            index: 0,
-                                            text: ProjectData.descriptions[2],
-                                            icon: 'sorting',
-                                            tag: 'sorting',
-                                            isGif: false,
-                                            isPhone: false,
-                                            title: ProjectData.titles[2],
-                                            device: Icons.phone_iphone,
-                                            images: 0,
-                                          );
-                                        },
-                                        settings: RouteSettings(name: "test"),
-                                      ));
-                                    },
-                                    child: ProjectIcon(
-                                        icon: "sorting",
-                                        title: ProjectData.titles[2],
-                                        description:
-                                            ProjectData.shortDescriptions[2],
-                                        width: 450,
-                                        device: Icons.phone_iphone),
-                                  ),
-                                ],
-                              ),
-                            ),
+                            // Padding(
+                            //   padding: const EdgeInsets.only(bottom: 15.0),
+                            //   child: Row(
+                            //     mainAxisAlignment:
+                            //         MainAxisAlignment.spaceEvenly,
+                            //     children: [
+                            //       GestureDetector(
+                            //         onTap: () {
+                            //           Navigator.of(context)
+                            //               .push(HeroDialogRoute(
+                            //             builder: (context) {
+                            //               return FullProject(
+                            //                 index: 0,
+                            //                 text: ProjectData.descriptions[2],
+                            //                 icon: 'sorting',
+                            //                 tag: 'sorting',
+                            //                 isGif: false,
+                            //                 isPhone: false,
+                            //                 title: ProjectData.titles[2],
+                            //                 device: Icons.phone_iphone,
+                            //                 images: 0,
+                            //               );
+                            //             },
+                            //             settings: RouteSettings(name: "test"),
+                            //           ));
+                            //         },
+                            //         child: ProjectIcon(
+                            //             icon: "sorting",
+                            //             title: ProjectData.titles[2],
+                            //             description:
+                            //                 ProjectData.shortDescriptions[2],
+                            //             width: 450,
+                            //             device: Icons.phone_iphone),
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),
@@ -481,36 +481,36 @@ class ProjectContainerState extends State<ProjectContainer> {
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 15.0),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.of(context).push(HeroDialogRoute(
-                                    builder: (context) {
-                                      return FullProject(
-                                        index: 0,
-                                        text: ProjectData.descriptions[2],
-                                        icon: 'sorting',
-                                        tag: 'sorting',
-                                        isGif: false,
-                                        isPhone: false,
-                                        title: ProjectData.titles[2],
-                                        device: Icons.phone_iphone,
-                                        images: 0,
-                                      );
-                                    },
-                                    settings: RouteSettings(name: "test"),
-                                  ));
-                                },
-                                child: ProjectIcon(
-                                    icon: "sorting",
-                                    title: ProjectData.titles[2],
-                                    description:
-                                        ProjectData.shortDescriptions[2],
-                                    width: 400,
-                                    device: Icons.phone_iphone),
-                              ),
-                            ),
+                            // Padding(
+                            //   padding: const EdgeInsets.only(bottom: 15.0),
+                            //   child: GestureDetector(
+                            //     onTap: () {
+                            //       Navigator.of(context).push(HeroDialogRoute(
+                            //         builder: (context) {
+                            //           return FullProject(
+                            //             index: 0,
+                            //             text: ProjectData.descriptions[2],
+                            //             icon: 'sorting',
+                            //             tag: 'sorting',
+                            //             isGif: false,
+                            //             isPhone: false,
+                            //             title: ProjectData.titles[2],
+                            //             device: Icons.phone_iphone,
+                            //             images: 0,
+                            //           );
+                            //         },
+                            //         settings: RouteSettings(name: "test"),
+                            //       ));
+                            //     },
+                            //     child: ProjectIcon(
+                            //         icon: "sorting",
+                            //         title: ProjectData.titles[2],
+                            //         description:
+                            //             ProjectData.shortDescriptions[2],
+                            //         width: 400,
+                            //         device: Icons.phone_iphone),
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),
@@ -522,7 +522,6 @@ class ProjectContainerState extends State<ProjectContainer> {
           ),
         ),
       );
-
     return SliverStickyHeader(
       header: Container(
         height: 0,
@@ -627,35 +626,35 @@ class ProjectContainerState extends State<ProjectContainer> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 15.0),
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).push(HeroDialogRoute(
-                                  builder: (context) {
-                                    return FullProject(
-                                      index: 0,
-                                      text: ProjectData.descriptions[2],
-                                      icon: 'sorting',
-                                      tag: 'sorting',
-                                      isGif: false,
-                                      isPhone: false,
-                                      title: ProjectData.titles[2],
-                                      device: Icons.phone_iphone,
-                                      images: 0,
-                                    );
-                                  },
-                                  settings: RouteSettings(name: "test"),
-                                ));
-                              },
-                              child: ProjectIcon(
-                                  icon: "sorting",
-                                  title: ProjectData.titles[2],
-                                  description: ProjectData.shortDescriptions[2],
-                                  width: 350,
-                                  device: Icons.phone_iphone),
-                            ),
-                          ),
+                          // Padding(
+                          //   padding: const EdgeInsets.only(bottom: 15.0),
+                          //   child: GestureDetector(
+                          //     onTap: () {
+                          //       Navigator.of(context).push(HeroDialogRoute(
+                          //         builder: (context) {
+                          //           return FullProject(
+                          //             index: 0,
+                          //             text: ProjectData.descriptions[2],
+                          //             icon: 'sorting',
+                          //             tag: 'sorting',
+                          //             isGif: false,
+                          //             isPhone: false,
+                          //             title: ProjectData.titles[2],
+                          //             device: Icons.phone_iphone,
+                          //             images: 0,
+                          //           );
+                          //         },
+                          //         settings: RouteSettings(name: "test"),
+                          //       ));
+                          //     },
+                          //     child: ProjectIcon(
+                          //         icon: "sorting",
+                          //         title: ProjectData.titles[2],
+                          //         description: ProjectData.shortDescriptions[2],
+                          //         width: 350,
+                          //         device: Icons.phone_iphone),
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),

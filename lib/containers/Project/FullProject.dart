@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:website/ColorPalette.dart';
+import 'package:website/Responsive.dart';
 import 'package:website/containers/Project/ProjectPlayer.dart';
 import 'dart:html';
 
@@ -95,154 +96,325 @@ class _FullProjectState extends State<FullProject> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: ColorPalette.white,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            width: MediaQuery.of(context).size.width * 0.8,
-            height: MediaQuery.of(context).size.height * 0.9,
-            child: Stack(
-              children: [
-                Positioned(
-                  left: 30,
-                  top: 30,
-                  child: Hero(
-                    tag: widget.tag,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image(
-                        width: 200,
-                        height: 200,
-                        image: AssetImage("images/icons/${widget.icon}.png"),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  right: 15,
-                  top: 15,
-                  child: Material(
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          color: ColorPalette.grey,
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: Icon(
-                          Icons.close,
-                          size: 25,
-                          color: ColorPalette.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  top: 30,
-                  left: 260,
-                  child: Container(
-                    width: 45,
-                    height: 45,
-                    decoration: BoxDecoration(
-                      color: ColorPalette.mediumTurquise,
-                      borderRadius: BorderRadius.circular(45),
-                    ),
-                    child: Center(
-                      child: Icon(
-                        widget.device,
-                        size: 30,
-                        color: ColorPalette.mindaro,
-                      ),
-                    ),
-                  ),
-                ),
-                if (widget.githubURL != null)
+    if (Responsive.isDesktop(context) || Responsive.isTablet(context))
+      return Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: ColorPalette.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: MediaQuery.of(context).size.height * 0.9,
+              child: Stack(
+                children: [
                   Positioned(
-                    top: 45,
-                    left: 330,
+                    left: 30,
+                    top: 30,
+                    child: Hero(
+                      tag: widget.tag,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image(
+                          width: 200,
+                          height: 200,
+                          image: AssetImage("images/icons/${widget.icon}.png"),
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    right: 15,
+                    top: 15,
                     child: Material(
                       child: InkWell(
                         onTap: () {
-                          launch(widget.githubURL!);
+                          Navigator.pop(context);
                         },
-                        child: Text(
-                          widget.githubURL!,
-                          style: GoogleFonts.domine(
-                            textStyle: TextStyle(fontSize: 16),
+                        child: Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
                             color: ColorPalette.grey,
-                            decoration: TextDecoration.none,
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Icon(
+                            Icons.close,
+                            size: 25,
+                            color: ColorPalette.white,
                           ),
                         ),
                       ),
                     ),
                   ),
-                Positioned(
-                  top: 80,
-                  left: 260,
-                  child: Text(
-                    widget.title,
-                    style: GoogleFonts.domine(
-                      textStyle: TextStyle(fontSize: 50),
-                      color: ColorPalette.grey,
-                      decoration: TextDecoration.none,
+                  Positioned(
+                    top: 30,
+                    left: 260,
+                    child: Container(
+                      width: 45,
+                      height: 45,
+                      decoration: BoxDecoration(
+                        color: ColorPalette.mediumTurquise,
+                        borderRadius: BorderRadius.circular(45),
+                      ),
+                      child: Center(
+                        child: Icon(
+                          widget.device,
+                          size: 30,
+                          color: ColorPalette.mindaro,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-                Positioned(
-                  top: 140,
-                  left: 260,
-                  child: Container(
-                    constraints: BoxConstraints(
-                        maxWidth: MediaQuery.of(context).size.width * 0.575),
+                  if (widget.githubURL != null)
+                    Positioned(
+                      top: 45,
+                      left: 330,
+                      child: Material(
+                        child: InkWell(
+                          onTap: () {
+                            launch(widget.githubURL!);
+                          },
+                          child: Text(
+                            widget.githubURL!,
+                            style: GoogleFonts.domine(
+                              textStyle: TextStyle(fontSize: 16),
+                              color: ColorPalette.grey,
+                              decoration: TextDecoration.none,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  Positioned(
+                    top: 80,
+                    left: 260,
                     child: Text(
-                      widget.text,
-                      style: GoogleFonts.asap(
-                        textStyle: TextStyle(fontSize: 16),
+                      widget.title,
+                      style: GoogleFonts.domine(
+                        textStyle: TextStyle(fontSize: 50),
                         color: ColorPalette.grey,
                         decoration: TextDecoration.none,
                       ),
                     ),
                   ),
-                ),
-                if (widget.videoURL != null)
                   Positioned(
-                    top: 300,
-                    left: 280,
-                    child: screenshots(),
-                  ),
-                if (widget.videoURL != null)
-                  Positioned(
-                    top: 310,
-                    left: 50,
-                    child: ProjectPlayer(
-                      height: 450,
-                      width: 200,
-                      url: widget.videoURL!,
+                    top: 140,
+                    left: 260,
+                    child: Container(
+                      constraints: BoxConstraints(
+                          maxWidth: MediaQuery.of(context).size.width * 0.575),
+                      child: Text(
+                        widget.text,
+                        style: GoogleFonts.asap(
+                          textStyle: TextStyle(fontSize: 16),
+                          color: ColorPalette.grey,
+                          decoration: TextDecoration.none,
+                        ),
+                      ),
                     ),
                   ),
-                if (widget.videoURL == null)
-                  Positioned(
-                    top: 300,
-                    left: 30,
-                    child: screenshots(),
-                  ),
-              ],
+                  if (widget.videoURL != null)
+                    Positioned(
+                      top: 300,
+                      left: 280,
+                      child: screenshots(),
+                    ),
+                  if (widget.videoURL != null)
+                    Positioned(
+                      top: 310,
+                      left: 50,
+                      child: ProjectPlayer(
+                        height: 450,
+                        width: 200,
+                        url: widget.videoURL!,
+                      ),
+                    ),
+                  if (widget.videoURL == null)
+                    Positioned(
+                      top: 300,
+                      left: 30,
+                      child: screenshots(),
+                    ),
+                ],
+              ),
             ),
+          ],
+        ),
+      );
+
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: Center(
+        child: Container(
+          decoration: BoxDecoration(
+            color: ColorPalette.white,
+            borderRadius: BorderRadius.circular(20),
           ),
-        ],
+          width: MediaQuery.of(context).size.width * 0.9,
+          height: MediaQuery.of(context).size.height * 0.9,
+          child: Column(
+            children: [
+              Flexible(
+                flex: 1,
+                child: Container(
+                  color: Colors.red,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 15,
+                        top: 15,
+                        child: Hero(
+                          tag: widget.tag,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image(
+                              width: 75,
+                              height: 75,
+                              image:
+                                  AssetImage("images/icons/${widget.icon}.png"),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        right: 10,
+                        top: 10,
+                        child: Material(
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Container(
+                              width: 25,
+                              height: 25,
+                              decoration: BoxDecoration(
+                                color: ColorPalette.grey,
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: Icon(
+                                Icons.close,
+                                size: 25,
+                                color: ColorPalette.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 100,
+                        left: 15,
+                        child: Container(
+                          width: 30,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            color: ColorPalette.mediumTurquise,
+                            borderRadius: BorderRadius.circular(45),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              widget.device,
+                              size: 25,
+                              color: ColorPalette.mindaro,
+                            ),
+                          ),
+                        ),
+                      ),
+                      if (widget.githubURL != null)
+                        Positioned(
+                          top: 106,
+                          left: 55,
+                          child: Material(
+                            child: InkWell(
+                              onTap: () {
+                                launch(widget.githubURL!);
+                              },
+                              child: Text(
+                                widget.githubURL!
+                                    .substring(8, widget.githubURL!.length),
+                                style: GoogleFonts.domine(
+                                  textStyle: TextStyle(fontSize: 16),
+                                  color: ColorPalette.grey,
+                                  decoration: TextDecoration.none,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      Positioned(
+                        top: 55,
+                        left: 100,
+                        child: Text(
+                          widget.title,
+                          style: GoogleFonts.domine(
+                            textStyle: TextStyle(fontSize: 30),
+                            color: ColorPalette.grey,
+                            decoration: TextDecoration.none,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Positioned(
+                //   top: 150,
+                //   left: 15,
+                //   child: Container(
+                //     color: Colors.red,
+                //     constraints: BoxConstraints(
+                //         maxWidth: MediaQuery.of(context).size.width * 0.85),
+                //     child: Text(
+                //       widget.text,
+                //       style: GoogleFonts.asap(
+                //         textStyle: TextStyle(fontSize: 14),
+                //         color: ColorPalette.grey,
+                //         decoration: TextDecoration.none,
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                // if (widget.videoURL != null)
+                //   Positioned(
+                //     top: 300,
+                //     left: 15,
+                //     child: screenshots(),
+                //   ),
+                //       if (widget.videoURL != null)
+                //         Positioned(
+                //           top: 310,
+                //           left: 50,
+                //           child: ProjectPlayer(
+                //             height: 450,
+                //             width: 200,
+                //             url: widget.videoURL!,
+                //           ),
+                //         ),
+                //       if (widget.videoURL == null)
+                //         Positioned(
+                //           top: 300,
+                //           left: 30,
+                //           child: screenshots(),
+                //         ),
+                // ],
+                // ),
+              ),
+              Flexible(
+                flex: 3,
+                child: Container(
+                  color: Colors.yellow,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
