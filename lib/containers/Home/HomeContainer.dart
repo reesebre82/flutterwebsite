@@ -71,7 +71,7 @@ class HomeContainerState extends State<HomeContainer> {
                             Padding(
                               padding: EdgeInsets.only(top: 30.0),
                               child: Text(
-                                "A Full Stack developer ready to change the world one line at a time.",
+                                "A Full Stack developer ready to make an impact with one line at a time.",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 16,
@@ -144,7 +144,7 @@ class HomeContainerState extends State<HomeContainer> {
                     Padding(
                       padding: EdgeInsets.only(top: 30.0),
                       child: Text(
-                        "A Full Stack developer ready to change the world one line at a time.",
+                        "A Full Stack developer ready to make an impact with one line at a time.",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 16,
