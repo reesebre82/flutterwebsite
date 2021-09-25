@@ -189,38 +189,38 @@ class _PhoneAnimationState extends State<PhoneAnimation> {
             ),
           ),
         ),
-        Positioned(
-          top: getYOffset(1),
-          left: getXOffset(3),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.of(context).push(HeroDialogRoute(
-                builder: (context) {
-                  return FullProject(
-                    index: 0,
-                    text: ProjectData.descriptions[2],
-                    icon: 'sorting',
-                    tag: 'phone-sorting',
-                    isGif: false,
-                    isPhone: false,
-                    title: ProjectData.titles[2],
-                    device: Icons.phone_iphone,
-                    images: 0,
-                    videoURL: 'images/sorting/sorting.mp4',
-                  );
-                },
-                settings: RouteSettings(name: "test"),
-              ));
-            },
-            child: PhoneIcon(
-              icon: 5,
-              height: widget.height,
-              title: "Sortng",
-              color: Colors.white,
-              image: "sorting",
-            ),
-          ),
-        ),
+        // Positioned(
+        //   top: getYOffset(1),
+        //   left: getXOffset(3),
+        //   child: GestureDetector(
+        //     onTap: () {
+        //       Navigator.of(context).push(HeroDialogRoute(
+        //         builder: (context) {
+        //           return FullProject(
+        //             index: 0,
+        //             text: ProjectData.descriptions[2],
+        //             icon: 'sorting',
+        //             tag: 'phone-sorting',
+        //             isGif: false,
+        //             isPhone: false,
+        //             title: ProjectData.titles[2],
+        //             device: Icons.phone_iphone,
+        //             images: 0,
+        //             videoURL: 'images/sorting/sorting.mp4',
+        //           );
+        //         },
+        //         settings: RouteSettings(name: "test"),
+        //       ));
+        //     },
+        //     child: PhoneIcon(
+        //       icon: 5,
+        //       height: widget.height,
+        //       title: "Sortng",
+        //       color: Colors.white,
+        //       image: "sorting",
+        //     ),
+        //   ),
+        // ),
         //Third row
         Positioned(
           top: getYOffset(2),
