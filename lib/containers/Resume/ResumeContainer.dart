@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:provider/provider.dart';
 import 'package:website/ColorPalette.dart';
+import 'package:website/Responsive.dart';
 import 'package:website/controllers/PageViewController.dart';
 import 'dart:html' as html;
 import '../Header.dart';
@@ -14,7 +15,9 @@ class ResumeContainer extends StatefulWidget {
 
 class ResumeContainerState extends State<ResumeContainer> {
   double getHeight() {
-    return MediaQuery.of(context).size.height * 2.25;
+    if (Responsive.isDesktop(context))
+      return MediaQuery.of(context).size.height * 2.25;
+    return MediaQuery.of(context).size.height;
   }
 
   double getHeader() {
@@ -88,8 +91,7 @@ class ResumeContainerState extends State<ResumeContainer> {
                         children: [
                           InkWell(
                             onTap: () {
-                              downloadFile(
-                                  'lib/containers/Resume/Resume_Brendan2.pdf');
+                              downloadFile('Resume/Resume_Brendan2.pdf');
                             },
                             child: Text(
                               "Download Resume",
@@ -100,25 +102,26 @@ class ResumeContainerState extends State<ResumeContainer> {
                       ),
                     ),
                   ),
-                  Positioned(
-                    top: 400,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: MediaQuery.of(context).size.height * 2,
-                          width: MediaQuery.of(context).size.width,
-                          child: Padding(
-                            padding: const EdgeInsets.all(60.0),
-                            child: Image(
-                              image: AssetImage('images/Resume_Brendan2.jpg'),
+                  if (Responsive.isDesktop(context))
+                    Positioned(
+                      top: 400,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: MediaQuery.of(context).size.height * 2,
+                            width: MediaQuery.of(context).size.width,
+                            child: Padding(
+                              padding: const EdgeInsets.all(60.0),
+                              child: Image(
+                                image: AssetImage('images/Resume_Brendan2.jpg'),
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
                 ],
               ),
             ),

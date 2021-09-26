@@ -19,6 +19,9 @@ class ContactContainer extends StatefulWidget {
 
 class ContactContainerState extends State<ContactContainer> {
   double getHeight() {
+    if (MediaQuery.of(context).size.width < 680) {
+      MediaQuery.of(context).size.height * 1.75;
+    }
     return MediaQuery.of(context).size.height * 1.25;
   }
 
@@ -49,7 +52,205 @@ class ContactContainerState extends State<ContactContainer> {
     } else {
       titleSize = 75;
     }
-
+    if (MediaQuery.of(context).size.width > 660)
+      return SliverStickyHeader(
+        header: Container(
+          height: 0,
+          // color: Colors.grey,
+          // child: Header(title: "Contact Me", showMenu: false),
+        ),
+        sliver: SliverList(
+          delegate: SliverChildListDelegate(
+            [
+              Container(
+                height: getHeight(),
+                color: ColorPalette.white,
+                child: Stack(
+                  children: [
+                    Transform.translate(
+                      offset: Offset(0, offset),
+                      child: Container(
+                        height: getHeader(),
+                        child: Center(
+                          child: Text(
+                            "Contact",
+                            style: TextStyle(
+                              fontSize: titleSize,
+                              color: ColorPalette.lightGrey,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 380,
+                      child: ContactForm(
+                        height: MediaQuery.of(context).size.height * 0.4,
+                        width: MediaQuery.of(context).size.width,
+                      ),
+                    ),
+                    Positioned(
+                      top: 420,
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.75,
+                        width: MediaQuery.of(context).size.width,
+                        child: Column(
+                          children: [
+                            Spacer(),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 100.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10.0),
+                                    child: ContactSection(
+                                      title: "Github",
+                                      dataTitle: ["GitHub Link: \nReesebre82"],
+                                      data: ["https://github.com/reesebre82/"],
+                                      icon: Foundation.social_github,
+                                      isLink: true,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10.0),
+                                    child: ContactSection(
+                                      title: "Email",
+                                      dataTitle: [
+                                        "brendan@brendanreese.com",
+                                      ],
+                                      data: [""],
+                                      icon: Foundation.mail,
+                                      isLink: false,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10.0),
+                                    child: ContactSection(
+                                      title: "Phone Number",
+                                      dataTitle: ["Mobile:"],
+                                      data: ["1 (512) 900-0702"],
+                                      icon: Foundation.mail,
+                                      isLink: false,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    if (MediaQuery.of(context).size.width > 460)
+      return SliverStickyHeader(
+        header: Container(
+          height: 0,
+          // color: Colors.grey,
+          // child: Header(title: "Contact Me", showMenu: false),
+        ),
+        sliver: SliverList(
+          delegate: SliverChildListDelegate(
+            [
+              Container(
+                height: getHeight(),
+                color: ColorPalette.white,
+                child: Stack(
+                  children: [
+                    Transform.translate(
+                      offset: Offset(0, offset),
+                      child: Container(
+                        height: getHeader(),
+                        child: Center(
+                          child: Text(
+                            "Contact",
+                            style: TextStyle(
+                              fontSize: titleSize,
+                              color: ColorPalette.lightGrey,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 200,
+                      child: ContactForm(
+                        height: MediaQuery.of(context).size.height * 0.4,
+                        width: MediaQuery.of(context).size.width,
+                      ),
+                    ),
+                    Positioned(
+                      top: 420,
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.75,
+                        width: MediaQuery.of(context).size.width,
+                        child: Column(
+                          children: [
+                            Spacer(),
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: ContactSection(
+                                      title: "Github",
+                                      dataTitle: ["GitHub Link: \nReesebre82"],
+                                      data: ["https://github.com/reesebre82/"],
+                                      icon: Foundation.social_github,
+                                      isLink: true,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: ContactSection(
+                                      title: "Email",
+                                      dataTitle: [
+                                        "brendan@brendanreese.com",
+                                      ],
+                                      data: [
+                                        "",
+                                      ],
+                                      icon: Foundation.mail,
+                                      isLink: false,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: ContactSection(
+                                title: "Phone Number",
+                                dataTitle: ["Mobile:"],
+                                data: ["1 (512) 900-0702"],
+                                icon: Foundation.mail,
+                                isLink: false,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
     return SliverStickyHeader(
       header: Container(
         height: 0,
@@ -80,7 +281,7 @@ class ContactContainerState extends State<ContactContainer> {
                     ),
                   ),
                   Positioned(
-                    top: 380,
+                    top: 200,
                     child: ContactForm(
                       height: MediaQuery.of(context).size.height * 0.4,
                       width: MediaQuery.of(context).size.width,
@@ -95,52 +296,40 @@ class ContactContainerState extends State<ContactContainer> {
                         children: [
                           Spacer(),
                           Padding(
-                            padding:
-                                const EdgeInsets.symmetric(vertical: 100.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10.0),
-                                  child: ContactSection(
-                                    title: "Github",
-                                    dataTitle: ["GitHub Link: \nReesebre82"],
-                                    data: ["https://github.com/reesebre82/"],
-                                    icon: Foundation.social_github,
-                                    isLink: true,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10.0),
-                                  child: ContactSection(
-                                    title: "Email",
-                                    dataTitle: [
-                                      "Preferred Email:",
-                                      "Alternate: "
-                                    ],
-                                    data: [
-                                      "brendan@brendanreese.com",
-                                      "reesebre82@gmail.com"
-                                    ],
-                                    icon: Foundation.mail,
-                                    isLink: false,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10.0),
-                                  child: ContactSection(
-                                    title: "Phone Number",
-                                    dataTitle: ["Mobile:"],
-                                    data: ["1 (512) 900-0702"],
-                                    icon: Foundation.mail,
-                                    isLink: false,
-                                  ),
-                                ),
+                            padding: const EdgeInsets.all(10.0),
+                            child: ContactSection(
+                              title: "Github",
+                              dataTitle: ["GitHub Link: \nReesebre82"],
+                              data: ["https://github.com/reesebre82/"],
+                              icon: Foundation.social_github,
+                              isLink: true,
+                              width: 60,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: ContactSection(
+                              title: "Email",
+                              dataTitle: [
+                                "brendan@brendanreese.com",
                               ],
+                              data: [
+                                "",
+                              ],
+                              icon: Foundation.mail,
+                              isLink: false,
+                              width: 60,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: ContactSection(
+                              title: "Phone Number",
+                              dataTitle: ["Mobile:"],
+                              data: ["1 (512) 900-0702"],
+                              icon: Foundation.mail,
+                              isLink: false,
+                              width: 60,
                             ),
                           ),
                         ],

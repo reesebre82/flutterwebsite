@@ -522,6 +522,151 @@ class ProjectContainerState extends State<ProjectContainer> {
           ),
         ),
       );
+    if (MediaQuery.of(context).size.width > 350)
+      return SliverStickyHeader(
+        header: Container(
+          height: 0,
+          // color: Colors.grey,
+          // child: Header(title: "Projects", showMenu: false),
+        ),
+        sliver: SliverList(
+          delegate: SliverChildListDelegate(
+            [
+              Container(
+                height: getHeight(),
+                color: ColorPalette.white,
+                child: Stack(
+                  children: [
+                    Transform.translate(
+                      offset: Offset(0, offset),
+                      child: Container(
+                        height: getHeader(),
+                        child: Center(
+                          child: Text(
+                            "Projects",
+                            style: TextStyle(
+                              fontSize: titleSize,
+                              color: ColorPalette.lightGrey,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: contentOffset,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        // color: Colors.deepOrange,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 15.0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(HeroDialogRoute(
+                                    builder: (context) {
+                                      return FullProject(
+                                        index: 0,
+                                        title: ProjectData.titles[0],
+                                        text: ProjectData.descriptions[0],
+                                        icon: 'reelcaster',
+                                        tag: 'reelcaster',
+                                        device: Icons.phone_iphone,
+                                        images: 4,
+                                        isGif: false,
+                                        isPhone: true,
+                                        videoURL:
+                                            'images/reelcaster/reelcastervideo.mov',
+                                        githubURL:
+                                            'https://github.com/reesebre82/ReelCaster',
+                                      );
+                                    },
+                                    settings: RouteSettings(name: "test"),
+                                  ));
+                                },
+                                child: ProjectIcon(
+                                  icon: "reelcaster",
+                                  title: ProjectData.titles[0],
+                                  description: ProjectData.shortDescriptions[0],
+                                  width: 350,
+                                  device: Icons.phone_iphone,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 15.0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(HeroDialogRoute(
+                                    builder: (context) {
+                                      return FullProject(
+                                        index: 0,
+                                        text: ProjectData.descriptions[1],
+                                        icon: 'sudoku',
+                                        tag: 'sudoku',
+                                        title: ProjectData.titles[1],
+                                        device: Icons.computer,
+                                        isGif: true,
+                                        isPhone: false,
+                                        images: 2,
+                                        githubURL:
+                                            'https://github.com/reesebre82/SudokuSolver',
+                                      );
+                                    },
+                                    settings: RouteSettings(name: "test"),
+                                  ));
+                                },
+                                child: ProjectIcon(
+                                  icon: "sudoku",
+                                  title: ProjectData.titles[1],
+                                  description: ProjectData.shortDescriptions[1],
+                                  width: 350,
+                                  device: Icons.computer,
+                                ),
+                              ),
+                            ),
+                            // Padding(
+                            //   padding: const EdgeInsets.only(bottom: 15.0),
+                            //   child: GestureDetector(
+                            //     onTap: () {
+                            //       Navigator.of(context).push(HeroDialogRoute(
+                            //         builder: (context) {
+                            //           return FullProject(
+                            //             index: 0,
+                            //             text: ProjectData.descriptions[2],
+                            //             icon: 'sorting',
+                            //             tag: 'sorting',
+                            //             isGif: false,
+                            //             isPhone: false,
+                            //             title: ProjectData.titles[2],
+                            //             device: Icons.phone_iphone,
+                            //             images: 0,
+                            //           );
+                            //         },
+                            //         settings: RouteSettings(name: "test"),
+                            //       ));
+                            //     },
+                            //     child: ProjectIcon(
+                            //         icon: "sorting",
+                            //         title: ProjectData.titles[2],
+                            //         description: ProjectData.shortDescriptions[2],
+                            //         width: 350,
+                            //         device: Icons.phone_iphone),
+                            //   ),
+                            // ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
     return SliverStickyHeader(
       header: Container(
         height: 0,
@@ -589,7 +734,7 @@ class ProjectContainerState extends State<ProjectContainer> {
                                 icon: "reelcaster",
                                 title: ProjectData.titles[0],
                                 description: ProjectData.shortDescriptions[0],
-                                width: 350,
+                                width: MediaQuery.of(context).size.width,
                                 device: Icons.phone_iphone,
                               ),
                             ),
@@ -621,7 +766,7 @@ class ProjectContainerState extends State<ProjectContainer> {
                                 icon: "sudoku",
                                 title: ProjectData.titles[1],
                                 description: ProjectData.shortDescriptions[1],
-                                width: 350,
+                                width: MediaQuery.of(context).size.width,
                                 device: Icons.computer,
                               ),
                             ),

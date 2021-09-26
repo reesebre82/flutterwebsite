@@ -33,6 +33,21 @@ class HomeContainerState extends State<HomeContainer> {
 
     double scrollTextWidth = 300;
 
+    double textOffset = 0;
+    double pageWidth = MediaQuery.of(context).size.width;
+
+    if (pageWidth > 1400) {
+      textOffset = 0;
+    } else if (pageWidth <= 1400 && pageWidth > 1300) {
+      textOffset = 50;
+    } else if (pageWidth <= 1300 && pageWidth > 1215) {
+      textOffset = 100;
+    } else if (pageWidth <= 1215 && pageWidth > 1135) {
+      textOffset = 150;
+    } else if (pageWidth <= 1135) {
+      textOffset = 200;
+    }
+
     if (Responsive.isDesktop(context)) {
       return SliverStickyHeader(
         header: Container(
@@ -46,7 +61,8 @@ class HomeContainerState extends State<HomeContainer> {
                 child: Stack(
                   children: [
                     Positioned(
-                      right: MediaQuery.of(context).size.width * 0.2,
+                      right:
+                          MediaQuery.of(context).size.width * 0.2 - textOffset,
                       top: MediaQuery.of(context).size.height * 0.3,
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.4,

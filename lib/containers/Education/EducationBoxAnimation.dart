@@ -77,12 +77,83 @@ class EducationBoxAnimationState extends State<EducationBoxAnimation>
         CurvedAnimation(parent: _opacityController, curve: Curves.easeOut));
     _opacityController.forward();
 
+    bool shrink = false;
+    if (MediaQuery.of(context).size.width < 385) {
+      shrink = true;
+    }
+
+    if (!shrink)
+      return Transform.translate(
+        offset: Offset(animation.value, 0),
+        child: Opacity(
+          opacity: opacityAnimation.value,
+          child: Container(
+            height: widget.height,
+            width: widget.width,
+            decoration: BoxDecoration(
+              color: ColorPalette.mindaro,
+              borderRadius: BorderRadius.circular(15.0),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        widget.title,
+                        style: GoogleFonts.domine(
+                          textStyle: TextStyle(fontSize: 17),
+                        ),
+                      ),
+                      Spacer(),
+                      Text(
+                        widget.date,
+                        style: GoogleFonts.domine(
+                          textStyle: TextStyle(fontSize: 17),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                if (widget.subTitle != null)
+                  Padding(
+                    padding: EdgeInsets.only(left: 8.0),
+                    child: Text(
+                      widget.subTitle!,
+                      style: GoogleFonts.domine(
+                        textStyle: TextStyle(fontSize: 14),
+                      ),
+                    ),
+                  ),
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text(
+                    widget.text,
+                    style: GoogleFonts.domine(
+                      textStyle: TextStyle(fontSize: 15),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
     return Transform.translate(
       offset: Offset(animation.value, 0),
       child: Opacity(
         opacity: opacityAnimation.value,
         child: Container(
-          height: widget.height,
           width: widget.width,
           decoration: BoxDecoration(
             color: ColorPalette.mindaro,

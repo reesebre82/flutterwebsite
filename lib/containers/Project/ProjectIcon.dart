@@ -21,6 +21,7 @@ class ProjectIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     double titleText = 24;
     double bodyText = 16;
+    bool showIcon = true;
 
     if (MediaQuery.of(context).size.width < 1000) {
       titleText = 22;
@@ -30,7 +31,9 @@ class ProjectIcon extends StatelessWidget {
       titleText = 20;
       bodyText = 12;
     }
-
+    if (MediaQuery.of(context).size.width < 350) {
+      showIcon = false;
+    }
     return Stack(
       children: [
         Container(
@@ -46,6 +49,9 @@ class ProjectIcon extends StatelessWidget {
                 offset: Offset(0, 4), // changes position of shadow
               ),
             ],
+          ),
+          constraints: BoxConstraints(
+            minHeight: 115,
           ),
           child: Row(
             children: [
@@ -91,22 +97,23 @@ class ProjectIcon extends StatelessWidget {
             ],
           ),
         ),
-        Positioned(
-          bottom: 5,
-          right: 5,
-          child: Container(
-            width: 35,
-            height: 35,
-            decoration: BoxDecoration(
-              color: ColorPalette.mediumTurquise,
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Icon(
-              device,
-              color: ColorPalette.mindaro,
+        if (showIcon)
+          Positioned(
+            bottom: 5,
+            right: 5,
+            child: Container(
+              width: 35,
+              height: 35,
+              decoration: BoxDecoration(
+                color: ColorPalette.mediumTurquise,
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Icon(
+                device,
+                color: ColorPalette.mindaro,
+              ),
             ),
           ),
-        ),
       ],
     );
   }

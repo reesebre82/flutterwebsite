@@ -82,6 +82,53 @@ class AboutBoxAnimationState extends State<AboutBoxAnimation>
         CurvedAnimation(parent: _opacityController, curve: Curves.easeOut));
     _opacityController.forward();
 
+    if (widget.height == 0) {
+      return Transform.translate(
+        offset: Offset(animation.value, 0),
+        child: Opacity(
+          opacity: opacityAnimation.value,
+          child: Container(
+            width: widget.width,
+            decoration: BoxDecoration(
+              color: ColorPalette.yellow,
+              borderRadius: BorderRadius.circular(15.0),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Text(
+                    widget.title,
+                    style: GoogleFonts.domine(
+                      textStyle: TextStyle(fontSize: 17),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 8.0),
+                  child: Text(
+                    widget.text,
+                    style: GoogleFonts.domine(
+                      textStyle: TextStyle(fontSize: 14),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+
     return Transform.translate(
       offset: Offset(animation.value, 0),
       child: Opacity(

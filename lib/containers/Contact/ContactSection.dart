@@ -9,17 +9,24 @@ class ContactSection extends StatelessWidget {
   final List<String> dataTitle;
   final List<String> data;
   final bool isLink;
+  int? width = 100;
 
-  ContactSection(
-      {required this.icon,
-      required this.title,
-      required this.dataTitle,
-      required this.data,
-      required this.isLink});
+  ContactSection({
+    required this.icon,
+    required this.title,
+    required this.dataTitle,
+    required this.data,
+    required this.isLink,
+    this.width,
+  });
 
   @override
   Widget build(BuildContext context) {
     final List<String> combinedData = [];
+    if (width == null) {
+      width = 100;
+    }
+
     for (var i = 0; i < dataTitle.length; i++) {
       combinedData.add(dataTitle[i]);
       combinedData.add(data[i]);
@@ -32,15 +39,15 @@ class ContactSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              width: 100,
-              height: 100,
+              width: width!.toDouble(),
+              height: width!.toDouble(),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
                 color: ColorPalette.mindaro,
               ),
               child: Icon(
                 icon,
-                size: 50,
+                size: width! / 2,
               ),
             ),
             Padding(
@@ -72,15 +79,15 @@ class ContactSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            width: 100,
-            height: 100,
+            width: width!.toDouble(),
+            height: width!.toDouble(),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
               color: ColorPalette.mindaro,
             ),
             child: Icon(
               icon,
-              size: 50,
+              size: width! / 2,
             ),
           ),
           Padding(

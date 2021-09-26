@@ -43,6 +43,8 @@ class EducationContainerState extends State<EducationContainer> {
     List<double> centerOffsets = [-300, -150, 150, 300];
     double topOffset = 360;
 
+    double contentWidth = 400;
+
     if (MediaQuery.of(context).size.width > 1500) {
       topOffset = 360;
       titleSize = 300;
@@ -57,10 +59,18 @@ class EducationContainerState extends State<EducationContainer> {
       titleSize = 110;
       centerOffsets = [0, 0, 0, 0];
       topOffset = 200;
-    } else {
+    } else if (MediaQuery.of(context).size.width > 380) {
       titleSize = 70;
       centerOffsets = [0, 0, 0, 0];
       topOffset = 200;
+    } else {
+      titleSize = 60;
+      centerOffsets = [0, 0, 0, 0];
+      topOffset = 200;
+    }
+
+    if (MediaQuery.of(context).size.width < 405) {
+      contentWidth = MediaQuery.of(context).size.width;
     }
     return SliverStickyHeader(
       header: Container(
@@ -103,7 +113,7 @@ class EducationContainerState extends State<EducationContainer> {
                             if (educationController.animated[0])
                               EducationBoxAnimation(
                                 centerOffset: centerOffsets[0],
-                                width: 400,
+                                width: contentWidth,
                                 height: 175,
                                 title: "Self Learning",
                                 date: "2011",
@@ -117,7 +127,7 @@ class EducationContainerState extends State<EducationContainer> {
                                 padding: const EdgeInsets.only(top: 20.0),
                                 child: EducationBoxAnimation(
                                   centerOffset: centerOffsets[1],
-                                  width: 400,
+                                  width: contentWidth,
                                   height: 175,
                                   title: "Deployment",
                                   date: "2015",
@@ -132,7 +142,7 @@ class EducationContainerState extends State<EducationContainer> {
                                 padding: const EdgeInsets.only(top: 20.0),
                                 child: EducationBoxAnimation(
                                   centerOffset: centerOffsets[2],
-                                  width: 400,
+                                  width: contentWidth,
                                   height: 175,
                                   title: "Graduated High School",
                                   date: "2016",
@@ -147,7 +157,7 @@ class EducationContainerState extends State<EducationContainer> {
                                 padding: const EdgeInsets.only(top: 20.0),
                                 child: EducationBoxAnimation(
                                   centerOffset: centerOffsets[3],
-                                  width: 400,
+                                  width: contentWidth,
                                   height: 175,
                                   title: "Graduated College",
                                   subTitle:
