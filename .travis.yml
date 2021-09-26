@@ -16,7 +16,7 @@ notifications:
   email: false
 
 after_success:
-  - ./flutter/bin/flutter build web
+  - ./flutter/bin/flutter build web --web-renderer html --release
   - tar -czf package.tgz build/web
   - export SSHPASS=$DEPLOY_PASS
   - sshpass -e scp -o stricthostkeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
