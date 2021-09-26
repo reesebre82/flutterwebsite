@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:website/Content/Content.dart';
 import 'package:website/Responsive.dart';
+import 'package:website/containers/Home/ScreenTooSmall.dart';
 import 'package:website/containers/Home/SplashScreen.dart';
 import 'package:website/controllers/EducationAnimationController.dart';
 import 'package:website/controllers/MenuController.dart';
@@ -56,6 +57,11 @@ class MyHomePage extends StatelessWidget {
   bool _COMPLETED = true;
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
+    if (width <= 310) {
+      return ScreenTooSmall();
+    }
     if (Responsive.isMobile(context)) {
       _COMPLETED = false;
     }
