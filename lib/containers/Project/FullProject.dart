@@ -46,43 +46,94 @@ class _FullProjectState extends State<FullProject> {
     for (int i = 0; i < widget.images; i++) {
       images.add(getImage(i));
     }
-
-    if (widget.isPhone) {
+//850 or lower pixels
+    if (MediaQuery.of(context).size.width < 850) {
+      if (widget.isPhone) {
+        return Container(
+          width: MediaQuery.of(context).size.width * 0.8,
+          height: MediaQuery.of(context).size.height * 0.5,
+          child: Scrollbar(
+            isAlwaysShown: true,
+            child: ListView.builder(
+              itemCount: widget.images,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, i) {
+                return Padding(
+                  padding: EdgeInsets.only(right: 0),
+                  child: ScreenshotImage(
+                    image: images[i],
+                    height: 300,
+                    width: 240,
+                  ),
+                );
+              },
+            ),
+          ),
+        );
+      }
       return Container(
-        width: MediaQuery.of(context).size.width * 0.75,
-        height: MediaQuery.of(context).size.height * 0.5,
+        width: MediaQuery.of(context).size.width * 0.85,
+        height: 350,
         child: ListView.builder(
           itemCount: widget.images,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, i) {
             return Padding(
-              padding: EdgeInsets.only(right: 0),
+              padding: EdgeInsets.all(15),
               child: ScreenshotImage(
                 image: images[i],
-                height: 550,
-                width: 250,
+                height: 75,
+                width: 400,
               ),
             );
           },
         ),
       );
     }
+//TABLET OR LARGER SCREENSHOTS
+    if (widget.isPhone) {
+      return Container(
+        width: MediaQuery.of(context).size.width * 0.75 - 250,
+        height: MediaQuery.of(context).size.height * 0.5,
+        child: Scrollbar(
+          isAlwaysShown: true,
+          child: ListView.builder(
+            itemCount: widget.images,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, i) {
+              return Padding(
+                padding: EdgeInsets.only(right: 0),
+                child: ScreenshotImage(
+                  image: images[i],
+                  height: 300,
+                  width: 240,
+                ),
+              );
+            },
+          ),
+        ),
+      );
+    }
+
     return Container(
       width: MediaQuery.of(context).size.width * 0.75,
-      height: MediaQuery.of(context).size.height * 0.5,
-      child: ListView.builder(
-        itemCount: widget.images,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, i) {
-          return Padding(
-            padding: EdgeInsets.only(right: 30),
-            child: ScreenshotImage(
-              image: images[i],
-              height: 100,
-              width: 600,
-            ),
-          );
-        },
+      height: 400,
+      child: Scrollbar(
+        isAlwaysShown: true,
+        child: ListView.builder(
+          itemCount: widget.images,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, i) {
+            return Padding(
+              padding: EdgeInsets.all(30),
+              child: ScreenshotImage(
+                image: images[i],
+                height: 100,
+                width: 500,
+              ),
+            );
+          },
+        ),
       ),
     );
   }
@@ -96,6 +147,12 @@ class _FullProjectState extends State<FullProject> {
 
   @override
   Widget build(BuildContext context) {
+    int smallScreenCutoff = 8;
+
+    if (MediaQuery.of(context).size.width < 385) {
+      smallScreenCutoff = 19;
+    }
+
     if (Responsive.isDesktop(context) || Responsive.isTablet(context))
       return Container(
         width: MediaQuery.of(context).size.width,
@@ -181,7 +238,8 @@ class _FullProjectState extends State<FullProject> {
                             launch(widget.githubURL!);
                           },
                           child: Text(
-                            widget.githubURL!,
+                            widget.githubURL!
+                                .substring(8, widget.githubURL!.length),
                             style: GoogleFonts.domine(
                               textStyle: TextStyle(fontSize: 16),
                               color: ColorPalette.grey,
@@ -209,6 +267,7 @@ class _FullProjectState extends State<FullProject> {
                     child: Container(
                       constraints: BoxConstraints(
                           maxWidth: MediaQuery.of(context).size.width * 0.575),
+                      width: MediaQuery.of(context).size.width * 0.7 - 250,
                       child: Text(
                         widget.text,
                         style: GoogleFonts.asap(
@@ -261,155 +320,131 @@ class _FullProjectState extends State<FullProject> {
           height: MediaQuery.of(context).size.height * 0.9,
           child: Column(
             children: [
-              Flexible(
-                flex: 1,
-                child: Container(
-                  color: Colors.red,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 15,
-                        top: 15,
-                        child: Hero(
-                          tag: widget.tag,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Image(
-                              width: 75,
-                              height: 75,
-                              image:
-                                  AssetImage("images/icons/${widget.icon}.png"),
-                              fit: BoxFit.fill,
+              Container(
+                height: 150,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      left: 15,
+                      top: 15,
+                      child: Hero(
+                        tag: widget.tag,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image(
+                            width: 75,
+                            height: 75,
+                            image:
+                                AssetImage("images/icons/${widget.icon}.png"),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      right: 10,
+                      top: 10,
+                      child: Material(
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            width: 25,
+                            height: 25,
+                            decoration: BoxDecoration(
+                              color: ColorPalette.grey,
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: Icon(
+                              Icons.close,
+                              size: 25,
+                              color: ColorPalette.white,
                             ),
                           ),
                         ),
                       ),
+                    ),
+                    Positioned(
+                      top: 100,
+                      left: 15,
+                      child: Container(
+                        width: 30,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          color: ColorPalette.mediumTurquise,
+                          borderRadius: BorderRadius.circular(45),
+                        ),
+                        child: Center(
+                          child: Icon(
+                            widget.device,
+                            size: 25,
+                            color: ColorPalette.mindaro,
+                          ),
+                        ),
+                      ),
+                    ),
+                    if (widget.githubURL != null)
                       Positioned(
-                        right: 10,
-                        top: 10,
+                        top: 106,
+                        left: 55,
                         child: Material(
                           child: InkWell(
                             onTap: () {
-                              Navigator.pop(context);
+                              launch(widget.githubURL!);
                             },
-                            child: Container(
-                              width: 25,
-                              height: 25,
-                              decoration: BoxDecoration(
+                            child: Text(
+                              widget.githubURL!.substring(
+                                  smallScreenCutoff, widget.githubURL!.length),
+                              style: GoogleFonts.domine(
+                                textStyle: TextStyle(fontSize: 16),
                                 color: ColorPalette.grey,
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              child: Icon(
-                                Icons.close,
-                                size: 25,
-                                color: ColorPalette.white,
+                                decoration: TextDecoration.none,
                               ),
                             ),
                           ),
                         ),
                       ),
-                      Positioned(
-                        top: 100,
-                        left: 15,
-                        child: Container(
-                          width: 30,
-                          height: 30,
-                          decoration: BoxDecoration(
-                            color: ColorPalette.mediumTurquise,
-                            borderRadius: BorderRadius.circular(45),
-                          ),
-                          child: Center(
-                            child: Icon(
-                              widget.device,
-                              size: 25,
-                              color: ColorPalette.mindaro,
-                            ),
-                          ),
+                    Positioned(
+                      top: 55,
+                      left: 100,
+                      child: Text(
+                        widget.title,
+                        style: GoogleFonts.domine(
+                          textStyle: TextStyle(fontSize: 30),
+                          color: ColorPalette.grey,
+                          decoration: TextDecoration.none,
                         ),
                       ),
-                      if (widget.githubURL != null)
-                        Positioned(
-                          top: 106,
-                          left: 55,
-                          child: Material(
-                            child: InkWell(
-                              onTap: () {
-                                launch(widget.githubURL!);
-                              },
-                              child: Text(
-                                widget.githubURL!
-                                    .substring(8, widget.githubURL!.length),
-                                style: GoogleFonts.domine(
-                                  textStyle: TextStyle(fontSize: 16),
-                                  color: ColorPalette.grey,
-                                  decoration: TextDecoration.none,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      Positioned(
-                        top: 55,
-                        left: 100,
-                        child: Text(
-                          widget.title,
-                          style: GoogleFonts.domine(
-                            textStyle: TextStyle(fontSize: 30),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  constraints: BoxConstraints(
+                    maxWidth: MediaQuery.of(context).size.width * 0.85,
+                    minHeight: 850,
+                  ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          widget.text,
+                          style: GoogleFonts.asap(
+                            textStyle: TextStyle(fontSize: 14),
                             color: ColorPalette.grey,
                             decoration: TextDecoration.none,
                           ),
                         ),
-                      ),
-                    ],
+                        SizedBox(
+                          height: 20,
+                        ),
+                        screenshots(),
+                      ],
+                    ),
                   ),
-                ),
-
-                // Positioned(
-                //   top: 150,
-                //   left: 15,
-                //   child: Container(
-                //     color: Colors.red,
-                //     constraints: BoxConstraints(
-                //         maxWidth: MediaQuery.of(context).size.width * 0.85),
-                //     child: Text(
-                //       widget.text,
-                //       style: GoogleFonts.asap(
-                //         textStyle: TextStyle(fontSize: 14),
-                //         color: ColorPalette.grey,
-                //         decoration: TextDecoration.none,
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                // if (widget.videoURL != null)
-                //   Positioned(
-                //     top: 300,
-                //     left: 15,
-                //     child: screenshots(),
-                //   ),
-                //       if (widget.videoURL != null)
-                //         Positioned(
-                //           top: 310,
-                //           left: 50,
-                //           child: ProjectPlayer(
-                //             height: 450,
-                //             width: 200,
-                //             url: widget.videoURL!,
-                //           ),
-                //         ),
-                //       if (widget.videoURL == null)
-                //         Positioned(
-                //           top: 300,
-                //           left: 30,
-                //           child: screenshots(),
-                //         ),
-                // ],
-                // ),
-              ),
-              Flexible(
-                flex: 3,
-                child: Container(
-                  color: Colors.yellow,
                 ),
               ),
             ],

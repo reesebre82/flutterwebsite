@@ -62,9 +62,9 @@ class MyHomePage extends StatelessWidget {
     if (width <= 310) {
       return ScreenTooSmall();
     }
-    if (Responsive.isMobile(context)) {
-      _COMPLETED = false;
-    }
+    // if (Responsive.isMobile(context)) {
+    //   _COMPLETED = false;
+    // }
     if (_COMPLETED) {
       if (!Responsive.isDesktop(context)) {
         return Scaffold(
